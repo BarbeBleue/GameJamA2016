@@ -1,8 +1,9 @@
 ﻿using System;
 using UnityEngine;
+using System.Collections;
 
 [Serializable]
-public class BaseCharacter
+public class BaseCharacter : MonoBehaviour
 {
 	[HideInInspector] public int m_ArtLevel;
 	[HideInInspector] public int m_ProgLevel;
@@ -22,6 +23,7 @@ public class BaseCharacter
 	public void Setup()
 	{
 		m_SleepLevel = m_MaxSleep;
+		//m_Instance.GetComponent<> ();
 	}
 
 	public void IsNotSleeping ()
@@ -57,12 +59,13 @@ public class BaseCharacter
 
 	IEnumerator SleepyHead()
 	{
-		
 		//I'm feeling sleepy
+		yield return null;
 	}
 
 	IEnumerator Dead()
 	{
 		//I'm dead QQ
+		yield return null;
 	}
 }
