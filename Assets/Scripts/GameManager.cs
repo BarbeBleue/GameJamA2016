@@ -6,11 +6,9 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
 
-
-    //Private DietyManager
-
+    private DeusExManager deusExManager;
     private Timer timer;
-    private Team[] teams = new Team[2];
+    public Team[] teams = new Team[2];
     private EventSystem eventSystem;
     private static GameManager patate = null;
     private bool gameIsRunning = false;
@@ -42,8 +40,11 @@ public class GameManager : MonoBehaviour {
     void Awake()
     {
         eventSystem = new EventSystem(eventChance);
-        teams[0] = this.gameObject.AddComponent<Team>();
-        teams[1] = this.gameObject.AddComponent<Team>();
+        /*
+            teams[0] = this.gameObject.AddComponent<Team>();
+            teams[1] = this.gameObject.AddComponent<Team>();
+            */
+        deusExManager = this.gameObject.AddComponent<DeusExManager>();
         patate = this;
     }
 
@@ -276,6 +277,13 @@ public class GameManager : MonoBehaviour {
     {
 
         return eventSystem.GetCurrentEvent();
+
+    }
+
+    public DeusExManager getDatDeuxSexManager()
+    {
+
+        return deusExManager;
 
     }
 

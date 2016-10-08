@@ -38,13 +38,30 @@ public class BaseCharacter : MonoBehaviour
 	private int m_ProgProduced;
 	private int m_AttackProduced;
 
-	public void Awake()
+	void Awake()
 	{
 		m_SleepLevel = m_MaxSleep;
 		//m_Instance.GetComponent<> ();
 
 		m_characterPosition = this.transform;
-	}
+        
+
+    }
+
+    virtual public void Init()
+    {
+        
+    }
+
+    void Start()
+    {
+        m_ArtGod = GameManager.Instance.getDatDeuxSexManager().GetAGod(0);
+        m_ProgGod = GameManager.Instance.getDatDeuxSexManager().GetAGod(1);
+        m_SaltGod = GameManager.Instance.getDatDeuxSexManager().GetAGod(2);
+        m_SleepGod = GameManager.Instance.getDatDeuxSexManager().GetAGod(3);
+        
+        Init();
+    }
 
 	public void IsNotSleeping ()
 	{

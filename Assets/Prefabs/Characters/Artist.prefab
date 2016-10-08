@@ -21,6 +21,7 @@ GameObject:
   - 4: {fileID: 4000010528772008}
   - 212: {fileID: 212000010578282332}
   - 95: {fileID: 95000011543255562}
+  - 114: {fileID: 114000010280537882}
   m_Layer: 0
   m_Name: Artist
   m_TagString: Untagged
@@ -35,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011434842436}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.438, y: 3.595, z: 0}
+  m_LocalPosition: {x: 1.6977303, y: 1.0138462, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -58,6 +59,40 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114000010280537882
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011434842436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e936fec477fd0694f9dfa56b2f8f3744, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ArtLevel: 0
+  m_ProgLevel: 0
+  m_SleepResist: 0
+  m_AttackLevel: 0
+  moving: 0
+  m_SleepyHead: {fileID: 1000012981143674, guid: 7fa3fc14364fc2346abaabf3b966e78c,
+    type: 2}
+  m_Dead: {fileID: 1000012084083462, guid: 73392986e46912b4e97b089bee281874, type: 2}
+  m_FeelingFresh: {fileID: 1000012074528332, guid: 3103dfae685775b4aa951e3a7616e821,
+    type: 2}
+  m_Attacking: {fileID: 1000013131417436, guid: 14dd1b31e3532644ba1b0c3cb125dc36,
+    type: 2}
+  m_Sleeping: {fileID: 1000012080278536, guid: 012a228b0c3e8224c90824bb81eaadb5, type: 2}
+  m_Programming: {fileID: 1000011401563408, guid: d8d227a86a3836a49a640afcb84396f7,
+    type: 2}
+  m_Arting: {fileID: 1000011565244230, guid: fee946d594e7f8e4ca3d59fefb2126bd, type: 2}
+  m_characterPosition: {fileID: 0}
+  m_ArtGod: {fileID: 0}
+  m_ProgGod: {fileID: 0}
+  m_SleepGod: {fileID: 0}
+  m_SaltGod: {fileID: 0}
+  m_AwakeInstance: {fileID: 0}
+  m_SleepingInstance: {fileID: 0}
 --- !u!212 &212000010578282332
 SpriteRenderer:
   m_ObjectHideFlags: 1
