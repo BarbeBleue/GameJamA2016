@@ -9,6 +9,10 @@ public class BaseCharacter : MonoBehaviour
 	[HideInInspector] public int m_ProgLevel;
 	[HideInInspector] public int m_SleepResist; // must be a value between 1 and 5
 	[HideInInspector] public int m_AttackLevel;
+	//[HideInInspector] public bool ArtMoving = false;
+	//[HideInInspector] public bool ProgMoving = false;
+	//[HideInInspector] public bool AttackMoving = false;
+	[HideInInspector] public bool moving = false;
 
 	public GameObject m_SleepyHead;
 	public GameObject m_Dead;
@@ -18,14 +22,14 @@ public class BaseCharacter : MonoBehaviour
 	public GameObject m_Programming;
 	public GameObject m_Arting;
 
-	public DeusEx m_DeusInstance;
+	public Transform m_characterPosition;
+
+	public DeusEx m_ArtGod;
+	public DeusEx m_ProgGod;
+	public DeusEx m_SleepGod;
+	public DeusEx m_SaltGod;
 	public GameObject m_Instance;
 
-	private Transform m_ArtGodPosition;
-	private Transform m_ProgGodPosition;
-	private Transform m_SleepGodPosition;
-	private Transform m_SaltGodPosition;
-	private Transform m_characterPosition;
 	private int m_SleepLevel;
 	private int m_MaxSleep = 100;
 	//private int m_MinSleep = 0;
@@ -44,6 +48,8 @@ public class BaseCharacter : MonoBehaviour
 	{
 		m_SleepLevel = m_MaxSleep;
 		//m_Instance.GetComponent<> ();
+
+		m_characterPosition = this.transform;
 	}
 
 	public void IsNotSleeping ()
@@ -70,29 +76,34 @@ public class BaseCharacter : MonoBehaviour
         return m_SleepLevel;
 	}
 
-	public int ProgAction()
+	public int ProgAction(bool player)
 	{
         
 		int m_TempProgLevel = m_ProgLevel * (m_SleepLevel/m_MaxSleep);
 		m_ProgProduced = 10 * m_TempProgLevel;
+
+		StartCoroutine (Programming (player));
+
         return m_ProgProduced;
+
 	}
 
-	public float ArtAction()
+	public float ArtAction(bool player)
 	{
 		float m_TempArtLevel = m_ArtLevel * (m_SleepLevel / m_MaxSleep);
 		m_ArtProduced = 0.1f * m_TempArtLevel;
 
-		StartCoroutine (Arting ());
+		StartCoroutine (Arting (player));
+
         return m_ArtProduced;
 	}
 
-	public int AttackAction()
+	public int AttackAction(bool player)
 	{
 		int m_TempAttackLevel = m_AttackLevel * (m_SleepLevel / m_MaxSleep);
 		m_AttackProduced = 10 * m_TempAttackLevel;
 
-		StartCoroutine (Attacking ());
+		StartCoroutine (Attacking (player));
 
 		return m_AttackProduced;
 	}
@@ -102,7 +113,9 @@ public class BaseCharacter : MonoBehaviour
 		//I'm feeling sleepy
 		GameObject patate = Instantiate (m_SleepyHead, m_characterPosition.position, m_characterPosition.rotation) as GameObject;
 
-		yield return null;
+		yield return new WaitForSeconds(5);
+
+		DestroyObject(patate);
 	}
 
 	IEnumerator Dead()
@@ -110,7 +123,9 @@ public class BaseCharacter : MonoBehaviour
 		//I'm dead QQ
 		GameObject patate = Instantiate (m_Dead, m_characterPosition.position, m_characterPosition.rotation) as GameObject;
 
-		yield return null;
+		yield return new WaitForSeconds(5);
+
+		DestroyObject(patate);
 	}
 
 	IEnumerator FeelingFresh()
@@ -118,45 +133,84 @@ public class BaseCharacter : MonoBehaviour
 		//Je me sens reposé!
 		GameObject patate = Instantiate (m_FeelingFresh, m_characterPosition.position, m_characterPosition.rotation) as GameObject;
 
-		yield return null;
+		yield return new WaitForSeconds(5);
+
+		DestroyObject(patate);
 	}
 
 	IEnumerator Sleeping()
 	{
 		//move character to couch
 		GameObject patate = Instantiate (m_Sleeping, m_characterPosition.position, m_characterPosition.rotation) as GameObject;
+		yield return new WaitForSeconds(5);
 
-		yield return null;
+		DestroyObject(patate);
 	}
 
-	IEnumerator Attacking()
+	IEnumerator Attacking(bool player)
 	{
 		//bubble d'attaque vers le dieu du sel
 		GameObject patate = Instantiate (m_Attacking, m_characterPosition.position, m_characterPosition.rotation) as GameObject;
 		float statImportance = m_AttackLevel / 10f;
 		patate.transform.localScale = new Vector3 (1f * statImportance, 1f * statImportance, 0);
 
+		Vector3 godPosition = m_SaltGod.transform.position;
+
+		//bool AttackMoving = false;
+
+		StartCoroutine (MoveFromTo (m_characterPosition.position, godPosition, 2.0f));
+
 		yield return null;
+
+		DestroyObject(patate);
 	}
 
-	IEnumerator Programming()
+	IEnumerator Programming(bool player)
 	{
 		//bubble de prog vers le dieu de la prog
 		GameObject patate = Instantiate (m_Programming, m_characterPosition.position, m_characterPosition.rotation) as GameObject;
 		float statImportance = m_ProgLevel / 10f;
 		patate.transform.localScale = new Vector3 (1f * statImportance, 1f * statImportance, 0);
 
+		Vector3 godPosition = m_ProgGod.transform.position;
+
+		//bool ProgMoving = false;
+
+		StartCoroutine (MoveFromTo (m_characterPosition.position, godPosition, 2.0f));
+
 		yield return null;
+
+		DestroyObject(patate);
 	}
 
-	IEnumerator Arting ()
+	IEnumerator Arting (bool player)
 	{
 		//bubble de art vers le dieu Pierre
 		GameObject patate = Instantiate (m_Arting, m_characterPosition.position, m_characterPosition.rotation) as GameObject;
 		float statImportance = m_ArtLevel / 10f;
 		patate.transform.localScale = new Vector3 (1f * statImportance, 1f * statImportance, 0);
 
+		Vector3 godPosition = m_ArtGod.transform.position;
+
+		//bool ArtMoving = false;
+
+		StartCoroutine (MoveFromTo (m_characterPosition.position, godPosition, 2.0f));
+
 		yield return null;
+
+		DestroyObject(patate);
 	}
 
+	IEnumerator MoveFromTo(Vector3 pointA, Vector3 pointB, float time){
+		if (!moving){ // do nothing if already moving
+			moving = true; // signals "I'm moving, don't bother me!"
+			float t = 0f;
+			while (t < 1f){
+				t += Time.deltaTime / time; // sweeps from 0 to 1 in time seconds
+				transform.position = Vector3.Lerp(pointA, pointB, t); // set position proportional to t
+				yield return 0; // leave the routine and return here in the next frame
+			}
+			moving = false; // finished moving
+		}
+	}
 }
