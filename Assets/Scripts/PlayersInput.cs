@@ -2,12 +2,14 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class Player : MonoBehaviour {
+public class PlayersInput : MonoBehaviour {
 
     public int selectedMemberP1 = 0;
     public int selectedMemberP2 = 0;
     public int[] actionsP1 = new int[4];
     public int[] actionsP2 = new int[4];
+    public bool P1Ready = false;
+    public bool P2Ready = false;
 
     // Use this for initialization
     void Start () {
@@ -46,6 +48,11 @@ public class Player : MonoBehaviour {
             actionsP1[selectedMemberP1] = 0;
         }
 
+        if (Input.GetButtonDown("BoutonStartP1"))
+        {
+            P1Ready = true;
+        }
+
         if (Input.GetAxis("XDpadP1") == 1)
         {
             //UP ARROW ARTISTE
@@ -66,7 +73,6 @@ public class Player : MonoBehaviour {
             //LEFT ARROW HACKER
             selectedMemberP1 = 3;
         }
-
 
         //*************************************************************************//
         //INPUTS PLAYER 2
@@ -91,6 +97,11 @@ public class Player : MonoBehaviour {
             actionsP2[selectedMemberP2] = 0;
         }
 
+        if (Input.GetButtonDown("BoutonStartP2"))
+        {
+            P2Ready = true;
+        }
+
         if (Input.GetAxis("XDpadP2") == 1)
         {
             //UP ARROW ARTISTE
@@ -112,7 +123,9 @@ public class Player : MonoBehaviour {
             selectedMemberP2 = 3;
         }
 
-        Debug.Log(selectedMemberP1);
-        Debug.Log(selectedMemberP2);
+
+        if(P1Ready && P2Ready)
+            GameManager.Instance.setAction(actionsP1, actionsP2);
+
     }
 }

@@ -11,16 +11,12 @@ public class DeusEx : MonoBehaviour {
 	public Image m_FillImage;
 	public Color m_FullFavorColor = Color.green;
 	public Color m_ZeroFavorColor = Color.red;
+    public enum Diet {Salty, Prog, Art, Sleep};
 
 	public static DeusEx instance = null;
 
 	void Awake ()
-	{
-		if (instance == null)
-			instance = this;
-		else if (instance != this)
-			Destroy (gameObject);
-		
+	{		
 		m_StartingFavor = m_CurrentFavor = 0.5f;
 	}
 

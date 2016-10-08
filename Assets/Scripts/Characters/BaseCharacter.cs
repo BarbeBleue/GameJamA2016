@@ -10,9 +10,18 @@ public class BaseCharacter : MonoBehaviour
 	[HideInInspector] public int m_SleepResist; // must be a value between 1 and 5
 	[HideInInspector] public int m_AttackLevel;
 
+	public GameObject sleepyHead;
+	public GameObject dead;
+	public GameObject feelingFresh;
+	public GameObject attacking;
+	public GameObject sleeping;
+	public GameObject programming;
+	public GameObject arting;
+
 	public DeusEx m_DeusInstance;
 	public GameObject m_Instance;
 
+	private Transform characterPosition;
 	private int m_SleepLevel;
 	private int m_MaxSleep = 100;
 	//private int m_MinSleep = 0;
@@ -87,6 +96,8 @@ public class BaseCharacter : MonoBehaviour
 	IEnumerator SleepyHead()
 	{
 		//I'm feeling sleepy
+		GameObject patate = Instantiate ();
+
 		yield return null;
 	}
 
