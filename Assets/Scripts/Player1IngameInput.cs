@@ -2,10 +2,12 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class Player1Input : MonoBehaviour {
+public class Player1IngameInput : MonoBehaviour {
 
     private int selectedMemberP1 = 0;
     private int[] actionsP1 = new int[4];
+
+    public SpriteRenderer fleche;
 
     // Use this for initialization
     void Start () {
@@ -54,22 +56,38 @@ public class Player1Input : MonoBehaviour {
         if (Input.GetAxis("XDpadP1") == 1)
         {
             //UP ARROW ARTISTE
-            selectedMemberP1 = 0;
+            if (selectedMemberP1 != 0)
+            {
+                selectedMemberP1 = 0;
+                fleche.transform.position = new Vector3((float)-3.36, (float)5.02, 0);
+            }
         }
         if (Input.GetAxis("XDpadP1") == -1)
         {
             //DOWN ARROW PROGRAMMEUR
-            selectedMemberP1 = 2;
+            if (selectedMemberP1 != 2)
+            {
+                selectedMemberP1 = 2;
+                fleche.transform.position = new Vector3((float)-3.39, (float)2.83, 0);
+            }
         }
         if (Input.GetAxis("YDpadP1") == 1)
         {
             //RIGHT ARROW GENERALISTE
-            selectedMemberP1 = 1;
+            if (selectedMemberP1 != 1)
+            {
+                selectedMemberP1 = 1;
+                fleche.transform.position = new Vector3((float)-1.77, (float)4.02, 0);
+            }
         }
         if (Input.GetAxis("YDpadP1") == -1)
         {
             //LEFT ARROW HACKER
-            selectedMemberP1 = 3;
+            if (selectedMemberP1 != 3)
+            {
+                selectedMemberP1 = 3;
+                fleche.transform.position = new Vector3((float)-4.89, (float)3.87, 0);
+            }
         }
 
 
