@@ -73,6 +73,12 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    public void InitGame()
+    {
+
+
+    }
+
     private void LaunnchAPotato()
     {
         switch ((int)Random.Range(0, 4))
