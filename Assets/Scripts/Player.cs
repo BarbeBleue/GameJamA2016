@@ -4,64 +4,115 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
-    public Text actionHacker;
-    public Text actionProg;
-    public Text actionArtiste;
-    public Text actionGen;
-    public Text PersonneChoisi;
-
-    public int selectedMember = 0;
-    public int[] actions = new int[4]; 
+    public int selectedMemberP1 = 0;
+    public int selectedMemberP2 = 0;
+    public int[] actionsP1 = new int[4];
+    public int[] actionsP2 = new int[4];
 
     // Use this for initialization
     void Start () {
-        foreach (int x in actions)
+        foreach (int x in actionsP1)
         {
-            actions[x] = -1;
+            actionsP1[x] = -1;
         }
-	}
+        foreach (int x in actionsP2)
+        {
+            actionsP2[x] = -1;
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetButtonDown("OptionA"))
+
+        //INPUTS PLAYER 1
+        if (Input.GetButtonDown("BoutonAP1"))
         {
             //ART
-            actions[selectedMember] = 2;
+            actionsP1[selectedMemberP1] = 2;
         }
-        if (Input.GetButtonDown("OptionB"))
+        if (Input.GetButtonDown("BoutonBP1"))
         {
             //PROGRAMMER
-            actions[selectedMember] = 1;
+            actionsP1[selectedMemberP1] = 1;
         }
-        if (Input.GetButtonDown("OptionY"))
-        {
-            //DORMIR
-            actions[selectedMember] = 0;
-        }
-        if (Input.GetButtonDown("OptionX"))
+        if (Input.GetButtonDown("BoutonXP1"))
         {
             //HACKER
-            actions[selectedMember] = 3;
+            actionsP1[selectedMemberP1] = 3;
         }
-        if (Input.GetAxis("XDpad") == 1)
+        if (Input.GetButtonDown("BoutonYP1"))
+        {
+            //DORMIR
+            actionsP1[selectedMemberP1] = 0;
+        }
+
+        if (Input.GetAxis("XDpadP1") == 1)
         {
             //UP ARROW ARTISTE
-            selectedMember = 0;
+            selectedMemberP1 = 0;
         }
-        if (Input.GetAxis("XDpad") == -1)
+        if (Input.GetAxis("XDpadP1") == -1)
         {
             //DOWN ARROW PROGRAMMEUR
-            selectedMember = 2;
+            selectedMemberP1 = 2;
         }
-        if (Input.GetAxis("YDpad") == 1)
+        if (Input.GetAxis("YDpadP1") == 1)
         {
             //RIGHT ARROW GENERALISTE
-            selectedMember = 1;
+            selectedMemberP1 = 1;
         }
-        if (Input.GetAxis("YDpad") == -1)
+        if (Input.GetAxis("YDpadP1") == -1)
         {
             //LEFT ARROW HACKER
-            selectedMember = 3;
+            selectedMemberP1 = 3;
         }
+
+
+        //*************************************************************************//
+        //INPUTS PLAYER 2
+        if (Input.GetButtonDown("BoutonAP2"))
+        {
+            //ART
+            actionsP2[selectedMemberP2] = 2;
+        }
+        if (Input.GetButtonDown("BoutonBP2"))
+        {
+            //PROGRAMMER
+            actionsP2[selectedMemberP2] = 1;
+        }
+        if (Input.GetButtonDown("BoutonXP2"))
+        {
+            //HACKER
+            actionsP2[selectedMemberP2] = 3;
+        }
+        if (Input.GetButtonDown("BoutonYP2"))
+        {
+            //DORMIR
+            actionsP2[selectedMemberP2] = 0;
+        }
+
+        if (Input.GetAxis("XDpadP2") == 1)
+        {
+            //UP ARROW ARTISTE
+            selectedMemberP2 = 0;
+        }
+        if (Input.GetAxis("XDpadP2") == -1)
+        {
+            //DOWN ARROW PROGRAMMEUR
+            selectedMemberP2 = 2;
+        }
+        if (Input.GetAxis("YDpadP2") == 1)
+        {
+            //RIGHT ARROW GENERALISTE
+            selectedMemberP2 = 1;
+        }
+        if (Input.GetAxis("YDpadP2") == -1)
+        {
+            //LEFT ARROW HACKER
+            selectedMemberP2 = 3;
+        }
+
+        Debug.Log(selectedMemberP1);
+        Debug.Log(selectedMemberP2);
     }
 }
