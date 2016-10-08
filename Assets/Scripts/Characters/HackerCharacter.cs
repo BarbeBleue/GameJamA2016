@@ -3,13 +3,16 @@ using System.Collections;
 
 public class HackerCharacter : BaseCharacter {
 
-	// Use this for initialization
-	void Start () {
+	void Awake () {
+
+		m_ArtLevel = 1;
+		m_ProgLevel = 5;
+		m_AttackLevel = 10;
+		m_SleepResist = 5;	
 	
 	}
+
+	/*void Update () {
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+	}*/
 }

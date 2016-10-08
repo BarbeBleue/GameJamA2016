@@ -3,13 +3,16 @@ using System.Collections;
 
 public class ArtCharacter : BaseCharacter {
 
-	// Use this for initialization
-	void Start () {
-	
+	void Awake () {
+		
+		m_ArtLevel = 10;
+		m_ProgLevel = 4;
+		m_AttackLevel = 2;
+		m_SleepResist = 3;	
+
 	}
+
+	/*void Update () {
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+	}*/
 }

@@ -3,13 +3,16 @@ using System.Collections;
 
 public class ProgCharacter : BaseCharacter {
 
-	// Use this for initialization
 	void Start () {
+
+		m_ArtLevel = 1;
+		m_ProgLevel = 10;
+		m_AttackLevel = 5;
+		m_SleepResist = 3;	
 	
 	}
+
+	/*void Update () {
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+	}*/
 }
