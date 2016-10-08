@@ -3,12 +3,15 @@ using System.Collections;
 
 public class Player2IngameInput : MonoBehaviour {
 
-    private int selectedMemberP2 = 0;
-    private int[] actionsP2 = new int[4];
+    private int selectedMember = 0;
+    private int[] actions = new int[4];
+
+    public SpriteRenderer fleche;
+
     // Use this for initialization
     void Start () {
-        foreach (int x in actionsP2)
-            actionsP2[x] = -1;
+        foreach (int x in actions)
+            actions[x] = -1;
     }
 	
 	// Update is called once per frame
@@ -17,33 +20,33 @@ public class Player2IngameInput : MonoBehaviour {
         if (Input.GetButtonDown("BoutonAP2"))
         {
             //ART
-            actionsP2[selectedMemberP2] = 2;
+            actions[selectedMember] = 2;
         }
         if (Input.GetButtonDown("BoutonBP2"))
         {
             //PROGRAMMER
-            actionsP2[selectedMemberP2] = 1;
+            actions[selectedMember] = 1;
         }
         if (Input.GetButtonDown("BoutonXP2"))
         {
             //HACKER
-            actionsP2[selectedMemberP2] = 3;
+            actions[selectedMember] = 3;
         }
         if (Input.GetButtonDown("BoutonYP2"))
         {
             //DORMIR
-            actionsP2[selectedMemberP2] = 0;
+            actions[selectedMember] = 0;
         }
 
         if (Input.GetButtonDown("BoutonStartP2"))
         {
             int cpt = 0;
-            foreach (int x in actionsP2)
+            foreach (int x in actions)
             {
                 if (x == -1)
                     break;
                 if (cpt == 3)
-                    GameManager.Instance.setAction(actionsP2, 1);
+                    GameManager.Instance.setAction(actions, 1);
                 cpt++;
             }
         }
@@ -51,22 +54,38 @@ public class Player2IngameInput : MonoBehaviour {
         if (Input.GetAxis("XDpadP2") == 1)
         {
             //UP ARROW ARTISTE
-            selectedMemberP2 = 0;
+            if (selectedMember != 0)
+            {
+                selectedMember = 0;
+                fleche.transform.position = new Vector3((float)2, (float)5.2, 0);
+            }
         }
         if (Input.GetAxis("XDpadP2") == -1)
         {
             //DOWN ARROW PROGRAMMEUR
-            selectedMemberP2 = 2;
+            if (selectedMember != 2)
+            {
+                selectedMember = 2;
+                fleche.transform.position = new Vector3((float)2.09, (float)3.15, 0);
+            }
         }
         if (Input.GetAxis("YDpadP2") == 1)
         {
             //RIGHT ARROW GENERALISTE
-            selectedMemberP2 = 1;
+            if (selectedMember != 1)
+            {
+                selectedMember = 1;
+                fleche.transform.position = new Vector3((float)3.63, (float)4.26, 0);
+            }
         }
         if (Input.GetAxis("YDpadP2") == -1)
         {
             //LEFT ARROW HACKER
-            selectedMemberP2 = 3;
+            if (selectedMember != 3)
+            {
+                selectedMember = 3;
+                fleche.transform.position = new Vector3((float)0.58, (float)4.26, 0);
+            }
         }
     }
 }
