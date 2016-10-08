@@ -10,18 +10,22 @@ public class BaseCharacter : MonoBehaviour
 	[HideInInspector] public int m_SleepResist; // must be a value between 1 and 5
 	[HideInInspector] public int m_AttackLevel;
 
-	public GameObject sleepyHead;
-	public GameObject dead;
-	public GameObject feelingFresh;
-	public GameObject attacking;
-	public GameObject sleeping;
-	public GameObject programming;
-	public GameObject arting;
+	public GameObject m_SleepyHead;
+	public GameObject m_Dead;
+	public GameObject m_FeelingFresh;
+	public GameObject m_Attacking;
+	public GameObject m_Sleeping;
+	public GameObject m_Programming;
+	public GameObject m_Arting;
 
 	public DeusEx m_DeusInstance;
 	public GameObject m_Instance;
 
-	private Transform characterPosition;
+	private Transform m_ArtGodPosition;
+	private Transform m_ProgGodPosition;
+	private Transform m_SleepGodPosition;
+	private Transform m_SaltGodPosition;
+	private Transform m_characterPosition;
 	private int m_SleepLevel;
 	private int m_MaxSleep = 100;
 	//private int m_MinSleep = 0;
@@ -96,7 +100,7 @@ public class BaseCharacter : MonoBehaviour
 	IEnumerator SleepyHead()
 	{
 		//I'm feeling sleepy
-		GameObject patate = Instantiate ();
+		GameObject patate = Instantiate (m_SleepyHead, m_characterPosition.position, m_characterPosition.rotation) as GameObject;
 
 		yield return null;
 	}
@@ -104,36 +108,54 @@ public class BaseCharacter : MonoBehaviour
 	IEnumerator Dead()
 	{
 		//I'm dead QQ
+		GameObject patate = Instantiate (m_Dead, m_characterPosition.position, m_characterPosition.rotation) as GameObject;
+
 		yield return null;
 	}
 
 	IEnumerator FeelingFresh()
 	{
 		//Je me sens reposé!
-		yield return null;
-	}
+		GameObject patate = Instantiate (m_FeelingFresh, m_characterPosition.position, m_characterPosition.rotation) as GameObject;
 
-	IEnumerator Attacking()
-	{
-		//bubble d'attaque vers le dieu du sel
 		yield return null;
 	}
 
 	IEnumerator Sleeping()
 	{
 		//move character to couch
+		GameObject patate = Instantiate (m_Sleeping, m_characterPosition.position, m_characterPosition.rotation) as GameObject;
+
+		yield return null;
+	}
+
+	IEnumerator Attacking()
+	{
+		//bubble d'attaque vers le dieu du sel
+		GameObject patate = Instantiate (m_Attacking, m_characterPosition.position, m_characterPosition.rotation) as GameObject;
+		float statImportance = m_AttackLevel / 10f;
+		patate.transform.localScale = new Vector3 (1f * statImportance, 1f * statImportance, 0);
+
 		yield return null;
 	}
 
 	IEnumerator Programming()
 	{
 		//bubble de prog vers le dieu de la prog
+		GameObject patate = Instantiate (m_Programming, m_characterPosition.position, m_characterPosition.rotation) as GameObject;
+		float statImportance = m_ProgLevel / 10f;
+		patate.transform.localScale = new Vector3 (1f * statImportance, 1f * statImportance, 0);
+
 		yield return null;
 	}
 
 	IEnumerator Arting ()
 	{
 		//bubble de art vers le dieu Pierre
+		GameObject patate = Instantiate (m_Arting, m_characterPosition.position, m_characterPosition.rotation) as GameObject;
+		float statImportance = m_ArtLevel / 10f;
+		patate.transform.localScale = new Vector3 (1f * statImportance, 1f * statImportance, 0);
+
 		yield return null;
 	}
 
