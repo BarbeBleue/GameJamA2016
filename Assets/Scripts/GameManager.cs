@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        timer = Timer.Instance;
         playerReadiness[0] = false;
         playerReadiness[1] = false;
 		teams[0].defineTeam(P1);
