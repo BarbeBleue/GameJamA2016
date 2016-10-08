@@ -34,10 +34,14 @@ public class Team : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        character[0] =  this.gameObject.AddComponent<ArtCharacter>();
+        character[0] = this.gameObject.AddComponent<ArtCharacter>();
+		//character [0].PutInScene (playerId);
         character[1] = this.gameObject.AddComponent<NADCharacter>();
+		//character [1].PutInScene (playerId);
         character[2] = this.gameObject.AddComponent<ProgCharacter>();
+		//character [2].PutInScene (playerId);
         character[3] = this.gameObject.AddComponent<HackerCharacter>();
+		//character [3].PutInScene (playerId);
 
         //SetEventValues();
     }
@@ -112,7 +116,7 @@ public class Team : MonoBehaviour {
 
     private void incrementSleep(int x)
     {
-        SleepnessScore += character[x].SleepAction() * eventEffect[3];
+        SleepnessScore += character[x].SleepAction(playerId) * eventEffect[3];
         //SleepnessScore++;
 
     }

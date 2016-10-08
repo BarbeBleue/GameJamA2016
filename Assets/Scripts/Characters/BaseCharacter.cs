@@ -56,7 +56,7 @@ public class BaseCharacter : MonoBehaviour
 			StartCoroutine (Dead ());
 	}
 
-	public int SleepAction()
+	public int SleepAction(bool player)
 	{
 		m_SleepLevel += 50;
 
@@ -66,7 +66,7 @@ public class BaseCharacter : MonoBehaviour
 			StartCoroutine (FeelingFresh ());
 		}
 
-		StartCoroutine (Sleeping ());
+		StartCoroutine (Sleeping (player));
         return m_SleepLevel;
 	}
 
@@ -74,7 +74,7 @@ public class BaseCharacter : MonoBehaviour
 	{
         
 		int m_TempProgLevel = m_ProgLevel * (m_SleepLevel/m_MaxSleep);
-		m_ProgProduced = 10 * m_TempProgLevel;
+		m_ProgProduced = 10 * m_TempProgLevel;		
 
 		StartCoroutine (Programming (player));
 
@@ -129,11 +129,16 @@ public class BaseCharacter : MonoBehaviour
 		DestroyObject(patate);
 	}
 
-	IEnumerator Sleeping()
+	IEnumerator Sleeping(bool player)
 	{
 		GameObject patate = Instantiate (m_Sleeping, m_characterPosition.position, m_characterPosition.rotation) as GameObject;
-		yield return new WaitForSeconds(5);
-
+		yield return new WaitForSeconds(2);
+		/*
+		if (player == false)
+			m_SleepGod.Player1Favor ();
+		else if (player == true)
+			m_SleepGod.Player2Favor ();
+		*/
 		DestroyObject(patate);
 	}
 
@@ -147,7 +152,13 @@ public class BaseCharacter : MonoBehaviour
 
 		StartCoroutine (MoveFromTo (m_characterPosition.position, godPosition, 2.0f, patate));
 
-		yield return null;
+		yield return new WaitForSeconds(2);
+		/*
+		if (player == false)
+			m_SaltGod.Player1Favor ();
+		else if (player == true)
+			m_SaltGod.Player2Favor ();
+			*/
 	}
 
 	IEnumerator Programming(bool player)
@@ -160,7 +171,13 @@ public class BaseCharacter : MonoBehaviour
 
 		StartCoroutine (MoveFromTo (m_characterPosition.position, godPosition, 2.0f, patate));
 
-		yield return null;
+		yield return new WaitForSeconds(2);
+		/*
+		if (player == false)
+			m_ProgGod.Player1Favor ();
+		else if (player == true)
+			m_ProgGod.Player2Favor ();
+			*/
 	}
 
 	IEnumerator Arting (bool player)
@@ -173,7 +190,13 @@ public class BaseCharacter : MonoBehaviour
 
 		StartCoroutine (MoveFromTo (m_characterPosition.position, godPosition, 2.0f, patate));
 
-		yield return null;
+		yield return new WaitForSeconds(2);
+		/*
+		if (player == false)
+			m_ArtGod.Player1Favor ();
+		else if (player == true)
+			m_ArtGod.Player2Favor ();
+			*/
 	}
 
 	IEnumerator MoveFromTo(Vector3 pointA, Vector3 pointB, float time, GameObject potato){
