@@ -22,7 +22,7 @@
          <teamSleepEffect>1.25</teamSleepEffect>
        </Event>
      <Event id="3">
-       <FlavorText>"Le prog a trouver un sac de cocaine"</FlavorText>
+       <FlavorText>"Livraison de café!"</FlavorText>
        <teamProgEffect>1.25</teamProgEffect>
        <teamArtEffect>1.25</teamArtEffect>
        <teamSaltEffect>1</teamSaltEffect>
