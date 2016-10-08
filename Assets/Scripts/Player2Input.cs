@@ -13,6 +13,7 @@ public class Player2Input : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
         if (Input.GetButtonDown("BoutonAP2"))
         {
             //ART
@@ -42,6 +43,7 @@ public class Player2Input : MonoBehaviour {
                 if (x == -1)
                     break;
                 if (cpt == 3)
+                    GameManager.Instance.setAction(actionsP2, 1);
                 cpt++;
             }
         }
