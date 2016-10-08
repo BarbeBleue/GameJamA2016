@@ -7,7 +7,6 @@ public class Player1Input : MonoBehaviour {
     private int selectedMemberP1 = 0;
     private int[] actionsP1 = new int[4];
 
-
     // Use this for initialization
     void Start () {
         foreach (int x in actionsP1)
@@ -47,7 +46,7 @@ public class Player1Input : MonoBehaviour {
                 if (x == -1)
                     break;
                 if (cpt == 3)
-                   
+                    GameManager.Instance.setAction(actionsP1, 0);
                 cpt++;
             }
         }

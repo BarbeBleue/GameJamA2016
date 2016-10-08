@@ -158,11 +158,9 @@ public class BaseCharacter : MonoBehaviour
 
 		//bool AttackMoving = false;
 
-		StartCoroutine (MoveFromTo (m_characterPosition.position, godPosition, 2.0f));
+		StartCoroutine (MoveFromTo (m_characterPosition.position, godPosition, 2.0f, patate));
 
 		yield return null;
-
-		DestroyObject(patate);
 	}
 
 	IEnumerator Programming(bool player)
@@ -176,11 +174,9 @@ public class BaseCharacter : MonoBehaviour
 
 		//bool ProgMoving = false;
 
-		StartCoroutine (MoveFromTo (m_characterPosition.position, godPosition, 2.0f));
+		StartCoroutine (MoveFromTo (m_characterPosition.position, godPosition, 2.0f, patate));
 
 		yield return null;
-
-		DestroyObject(patate);
 	}
 
 	IEnumerator Arting (bool player)
@@ -194,14 +190,12 @@ public class BaseCharacter : MonoBehaviour
 
 		//bool ArtMoving = false;
 
-		StartCoroutine (MoveFromTo (m_characterPosition.position, godPosition, 2.0f));
+		StartCoroutine (MoveFromTo (m_characterPosition.position, godPosition, 2.0f, patate));
 
 		yield return null;
-
-		DestroyObject(patate);
 	}
 
-	IEnumerator MoveFromTo(Vector3 pointA, Vector3 pointB, float time){
+	IEnumerator MoveFromTo(Vector3 pointA, Vector3 pointB, float time, GameObject potato){
 		if (!moving){ // do nothing if already moving
 			moving = true; // signals "I'm moving, don't bother me!"
 			float t = 0f;
@@ -211,6 +205,8 @@ public class BaseCharacter : MonoBehaviour
 				yield return 0; // leave the routine and return here in the next frame
 			}
 			moving = false; // finished moving
+
+			DestroyObject(potato);
 		}
 	}
 }
