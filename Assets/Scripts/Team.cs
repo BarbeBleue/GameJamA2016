@@ -11,6 +11,7 @@ public class Team : MonoBehaviour {
     private float[] eventEffect = new float[4];
     private BaseCharacter[] character = new BaseCharacter[4];
 	[HideInInspector] public bool playerId;
+    private string style;
 
     // gets
     public float GetProgScore()
@@ -33,12 +34,16 @@ public class Team : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        character[0] =  this.gameObject.AddComponent<ArtCharacter>();
+        character[0] = this.gameObject.AddComponent<ArtCharacter>();
+		//character [0].PutInScene (playerId);
         character[1] = this.gameObject.AddComponent<NADCharacter>();
+		//character [1].PutInScene (playerId);
         character[2] = this.gameObject.AddComponent<ProgCharacter>();
+		//character [2].PutInScene (playerId);
         character[3] = this.gameObject.AddComponent<HackerCharacter>();
+		//character [3].PutInScene (playerId);
 
-        SetEventValues();
+        //SetEventValues();
     }
 
 	public void defineTeam (int player)
@@ -111,7 +116,7 @@ public class Team : MonoBehaviour {
 
     private void incrementSleep(int x)
     {
-        SleepnessScore += character[x].SleepAction() * eventEffect[3];
+        SleepnessScore += character[x].SleepAction(playerId) * eventEffect[3];
         //SleepnessScore++;
 
     }
@@ -124,6 +129,11 @@ public class Team : MonoBehaviour {
         eventEffect[2] = GameManager.Instance.GetCurrentEvent().teamSaltEffect;
         eventEffect[3] = GameManager.Instance.GetCurrentEvent().teamSleepEffect;
 
+    }
+
+    public void setStyle(string _style)
+    {
+        style = _style;
     }
 
 }

@@ -13,13 +13,17 @@ public class GameManager : MonoBehaviour {
     private Team[] teams = new Team[2];
     private EventSystem eventSystem;
     private static GameManager patate = null;
-    private bool gameIsRunning = true;
+    private bool gameIsRunning = false;
     private int turn = 0;
+    private bool[] playersHasAnswered = new bool[2];
     private int[] actionP1 = new int[4];
     private int[] actionP2 = new int[4];
     [HideInInspector] public bool[] playerReadiness = new bool[2];
+    private bool[] styleSet = new bool[2];
+    private bool themeSet;
     private bool bothPlayerReady = false;
 	private int P1 = 1, P2 = 2;
+    private string theme;
 
     private Vector3[] spawnpoints = { new Vector3(-1,10,0),
                                       new Vector3(-1,20,0),
@@ -30,6 +34,7 @@ public class GameManager : MonoBehaviour {
     private GameObject refato;
 
     public float eventChance = 0.25f;
+    public float timeBetweenTurn = 2.0f;
 
     //gets
 
@@ -45,33 +50,88 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        themeSet = false;
+        styleSet[0] = false;
+        styleSet[1] = false;
+        timer = Timer.Instance;
         playerReadiness[0] = false;
         playerReadiness[1] = false;
 		teams[0].defineTeam(P1);
 		teams[1].defineTeam(P2);
-        StartGame();
+        
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        CheckPlayerStatus();
-        if (Input.GetKeyDown("r") == true)
+
+        if (gameIsRunning)
         {
-            RestartGame();
+            CheckPlayerStatus();
+            if (Input.GetKeyDown("r") == true)
+            {
+                RestartGame();
+            }
+            if (Input.GetKeyDown("f") == true)
+            {
+                int[] x = { 0, 1, 2, 3 };
+                int[] y = { 0, 1, 2, 3 };
+                setAction(x, 0);
+                setAction(y, 1);
+            }
         }
-        if (Input.GetKeyDown("f") == true)
+        else
         {
-            int[] x = { 0, 1, 2, 3 };
-            int[] y = { 0, 1, 2, 3 };
-            setAction(x,0);
-            setAction(y,1);
+
+            CheckMenuStatus();
+
         }
+
         if (Input.GetKeyDown("p") == true)
         {
             LaunnchAPotato();
-
         }
+        if (Input.GetKeyDown("s") == true)
+        {
+            SetTeamStyle("Scrub",0);
+            SetTeamStyle("Wololol",1);
+            SetTheme("Simon");
+        }
+    }
+
+
+
+    private void InitGame()
+    {
+
+        gameIsRunning = true;
+        playersHasAnswered[0] = false;
+        playersHasAnswered[1] = false;
+        StartGame();
+    }
+
+    public void SetTeamStyle(string _style, int teamId)
+    {
+        if (teamId == 0)
+        {
+            teams[0].setStyle(_style);
+            styleSet[0] = true;
+            playersHasAnswered[0] = true;
+        }
+        else
+        {
+            teams[1].setStyle(_style);
+            styleSet[1] = true;
+            playersHasAnswered[1] = true;
+        }
+
+
+    }
+
+    public void SetTheme(string _theme)
+    {
+        theme = _theme;
+        themeSet = true;
     }
 
     private void LaunnchAPotato()
@@ -116,20 +176,33 @@ public class GameManager : MonoBehaviour {
         {
             actionP1 = teamAction;
             playerReadiness[0] = true;
+            playersHasAnswered[0] = true;
         }
 
         else
         {
             actionP2 = teamAction;
             playerReadiness[1] = true;
+            playersHasAnswered[1] = true;
         }
             
 
     }
 
+    private void CheckMenuStatus()
+    {
+        if(styleSet[0] == true && styleSet[1] == true && themeSet)
+        {
+            InitGame();
+            
+        }
+
+    }
+
     private void CheckPlayerStatus()
     {
-        if(playerReadiness[0] == true && playerReadiness[1] == true)
+
+        if (playerReadiness[0] == true && playerReadiness[1] == true)
         {
             bothPlayerReady = true;
         }
@@ -156,18 +229,21 @@ public class GameManager : MonoBehaviour {
             Debug.Log("Turn : " + turn);
             eventSystem.newTurn();
             Debug.Log(GetCurrentEvent().FlavorText);
-            //Debug.Log("START WAIT FOR INPUT");
+            Debug.Log("START WAIT FOR INPUT");
             yield return new WaitUntil(() => bothPlayerReady == true);
-            //Debug.Log("END WAIT FOR INPUT");
+            Debug.Log("END WAIT FOR INPUT");
             bothPlayerReady = false;
-            timer.Ready();
+            //timer.Ready();
             turn++;
 
+            playersHasAnswered[0] = false;
+            playersHasAnswered[1] = false;
             playerReadiness[0] = false;
             playerReadiness[1] = false;
 
             executeActions();
-            
+
+            yield return new WaitForSeconds(timeBetweenTurn);            
         }
     }
 
@@ -207,5 +283,6 @@ public class GameManager : MonoBehaviour {
     {
         Debug.Log("AFHAJDHS");
     }
+
 
 }

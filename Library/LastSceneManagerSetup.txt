@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/_Scenes/Scene_David.unity
-=======
-- path: Assets/_Scenes/Scene_Gillian.unity
->>>>>>> 40a53b3ceea22fe5be35cac2bb36ddfeeede5206
+- path: Assets/_Scenes/Scene_Samuel.unity
   isLoaded: 1
   isActive: 1
