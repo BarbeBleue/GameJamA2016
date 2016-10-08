@@ -3,13 +3,16 @@ using System.Collections;
 
 public class NewBehaviourScript : BaseCharacter {
 
-	// Use this for initialization
 	void Start () {
+
+		m_ArtLevel = 6;
+		m_ProgLevel = 5;
+		m_AttackLevel = 5;
+		m_SleepResist = 2;	
 	
 	}
+
+	/*void Update () {
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+	}*/
 }
