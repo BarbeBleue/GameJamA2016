@@ -102,7 +102,9 @@ public class BaseCharacter : MonoBehaviour
 		//I'm feeling sleepy
 		GameObject patate = Instantiate (m_SleepyHead, m_characterPosition.position, m_characterPosition.rotation) as GameObject;
 
-		yield return null;
+		yield return new WaitForSeconds(5);
+
+		DestroyObject(patate);
 	}
 
 	IEnumerator Dead()
@@ -110,7 +112,9 @@ public class BaseCharacter : MonoBehaviour
 		//I'm dead QQ
 		GameObject patate = Instantiate (m_Dead, m_characterPosition.position, m_characterPosition.rotation) as GameObject;
 
-		yield return null;
+		yield return new WaitForSeconds(5);
+
+		DestroyObject(patate);
 	}
 
 	IEnumerator FeelingFresh()
@@ -118,15 +122,18 @@ public class BaseCharacter : MonoBehaviour
 		//Je me sens reposé!
 		GameObject patate = Instantiate (m_FeelingFresh, m_characterPosition.position, m_characterPosition.rotation) as GameObject;
 
-		yield return null;
+		yield return new WaitForSeconds(5);
+
+		DestroyObject(patate);
 	}
 
 	IEnumerator Sleeping()
 	{
 		//move character to couch
 		GameObject patate = Instantiate (m_Sleeping, m_characterPosition.position, m_characterPosition.rotation) as GameObject;
+		yield return new WaitForSeconds(5);
 
-		yield return null;
+		DestroyObject(patate);
 	}
 
 	IEnumerator Attacking()
@@ -137,6 +144,8 @@ public class BaseCharacter : MonoBehaviour
 		patate.transform.localScale = new Vector3 (1f * statImportance, 1f * statImportance, 0);
 
 		yield return null;
+
+		DestroyObject(patate);
 	}
 
 	IEnumerator Programming()
@@ -147,6 +156,8 @@ public class BaseCharacter : MonoBehaviour
 		patate.transform.localScale = new Vector3 (1f * statImportance, 1f * statImportance, 0);
 
 		yield return null;
+
+		DestroyObject(patate);
 	}
 
 	IEnumerator Arting ()
@@ -157,6 +168,8 @@ public class BaseCharacter : MonoBehaviour
 		patate.transform.localScale = new Vector3 (1f * statImportance, 1f * statImportance, 0);
 
 		yield return null;
+
+		DestroyObject(patate);
 	}
 
 }
