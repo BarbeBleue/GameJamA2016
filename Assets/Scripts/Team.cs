@@ -9,7 +9,8 @@ public class Team : MonoBehaviour {
     private float SaltynessScore = 0;
     private float SleepnessScore = 0;
     private float[] eventEffect = new float[4];
-    private BaseCharacter[] character = new BaseCharacter[4]; 
+    private BaseCharacter[] character = new BaseCharacter[4];
+	[HideInInspector] public bool playerId;
 
     // gets
     public float GetProgScore()
@@ -39,6 +40,14 @@ public class Team : MonoBehaviour {
 
         SetEventValues();
     }
+
+	public void defineTeam (int player)
+	{
+		if (player == 1)
+			playerId = false;
+		else
+			playerId = true;			
+	}
 	
 	// Update is called once per frame
 	void Update ()
@@ -79,7 +88,7 @@ public class Team : MonoBehaviour {
     private void incrementProg(int x)
     {
 
-        ProgrammingScore += character[x].ProgAction()*eventEffect[0];
+		ProgrammingScore += character[x].ProgAction(playerId)*eventEffect[0];
         //ProgrammingScore++;
 
     }
@@ -87,7 +96,7 @@ public class Team : MonoBehaviour {
     private void incrementArt(int x)
     {
 
-        ArtScore += character[x].ArtAction() * eventEffect[1];
+		ArtScore += character[x].ArtAction(playerId) * eventEffect[1];
         //ArtScore++;
 
     }
@@ -95,7 +104,7 @@ public class Team : MonoBehaviour {
     private void incrementSalt(int x)
     {
 
-        SaltynessScore += character[x].AttackAction() * eventEffect[2];
+		SaltynessScore += character[x].AttackAction(playerId) * eventEffect[2];
         //SaltynessScore++;
 
     }

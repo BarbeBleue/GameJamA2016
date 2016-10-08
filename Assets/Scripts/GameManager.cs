@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour {
     private int[] actionP1 = new int[4];
     private int[] actionP2 = new int[4];
     private bool bothPlayerReady = false;
+	private int P1 = 1, P2 = 2;
 
 
     public float eventChance = 0.25f;
@@ -34,6 +35,8 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+		teams[0].defineTeam(P1);
+		teams[1].defineTeam(P2);
         StartCoroutine(GameLoop());
 	}
 	
