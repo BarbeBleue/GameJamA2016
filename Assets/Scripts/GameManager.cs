@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour {
 
     //Private PlayerManager
     //Private DietyManager
-    //Private TeamManager
 
+    private Team[] teams = new Team[2];
     private static GameManager patate = null;
     private bool gameIsRunning = true;
     private int turn = 0;
@@ -14,12 +15,14 @@ public class GameManager : MonoBehaviour {
     private int[] actionP2 = new int[4];
     public bool bothPlayerReady = false;
 
+    //gets
 
     //Called Before start
     void Awake()
     {
+        teams[0] = this.gameObject.AddComponent<Team>();
+        teams[1] = this.gameObject.AddComponent<Team>();
         patate = this;
-
     }
 
 	// Use this for initialization
@@ -29,15 +32,14 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
         if (Input.GetKeyDown("f") == true)
         {
-            int[] x = { 1, 1, 3, 4 };
-            int[] y = { 0, 2, 4, 6 };
+            int[] x = { 0, 1, 2, 3 };
+            int[] y = { 0, 1, 2, 3 };
             setAction(x,y);
-        }
-            
-           
+        }     
     }
 
     public static GameManager Instance
@@ -56,10 +58,11 @@ public class GameManager : MonoBehaviour {
         bothPlayerReady = true;
     }
 
-    private void executeAction()
+    private void executeActions()
     {
 
-        debugActionTab();
+            teams[0].executeAction(actionP1);
+            teams[1].executeAction(actionP2);
 
     }
 
@@ -75,7 +78,7 @@ public class GameManager : MonoBehaviour {
             bothPlayerReady = false;
             turn++;
 
-            executeAction();
+            executeActions();
             
         }
     }
@@ -84,6 +87,11 @@ public class GameManager : MonoBehaviour {
     {
         Debug.Log("ActionP1: " + actionP1[0] + actionP1[1] + actionP1[2] + actionP1[3]);
         Debug.Log("ActionP2: " + actionP2[0] + actionP2[1] + actionP2[2] + actionP2[3]);
+    }
+
+    public Team GetATeam(int player)
+    {
+        return teams[player];
     }
 
     public void FUCK()
