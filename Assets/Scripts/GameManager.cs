@@ -4,22 +4,28 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour {
 
-    //Private PlayerManager
+
+
     //Private DietyManager
 
     private Team[] teams = new Team[2];
+    private EventSystem eventSystem;
     private static GameManager patate = null;
     private bool gameIsRunning = true;
     private int turn = 0;
     private int[] actionP1 = new int[4];
     private int[] actionP2 = new int[4];
-    public bool bothPlayerReady = false;
+    private bool bothPlayerReady = false;
+
+
+    public float eventChance = 0.25f;
 
     //gets
 
     //Called Before start
     void Awake()
     {
+        eventSystem = new EventSystem(eventChance);
         teams[0] = this.gameObject.AddComponent<Team>();
         teams[1] = this.gameObject.AddComponent<Team>();
         patate = this;
@@ -72,9 +78,11 @@ public class GameManager : MonoBehaviour {
         while (gameIsRunning)
         {
             Debug.Log("Turn : " + turn);
-            Debug.Log("START WAIT FOR INPUT");
+            eventSystem.newTurn();
+            Debug.Log(GetCurrentEvent().FlavorText);
+            //Debug.Log("START WAIT FOR INPUT");
             yield return new WaitUntil(() => bothPlayerReady == true);
-            Debug.Log("END WAIT FOR INPUT");
+            //Debug.Log("END WAIT FOR INPUT");
             bothPlayerReady = false;
             turn++;
 
@@ -92,6 +100,13 @@ public class GameManager : MonoBehaviour {
     public Team GetATeam(int player)
     {
         return teams[player];
+    }
+
+    public Event GetCurrentEvent()
+    {
+
+        return eventSystem.GetCurrentEvent();
+
     }
 
     public void FUCK()
