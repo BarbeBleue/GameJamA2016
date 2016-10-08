@@ -8,6 +8,7 @@ public class Team : MonoBehaviour {
     private float ArtScore = 0;
     private float SaltynessScore = 0;
     private float SleepnessScore = 0;
+    private float[] eventEffect = new float[4];
     private BaseCharacter[] character = new BaseCharacter[4]; 
 
     // gets
@@ -35,6 +36,8 @@ public class Team : MonoBehaviour {
         character[1] = this.gameObject.AddComponent<NADCharacter>();
         character[2] = this.gameObject.AddComponent<ProgCharacter>();
         character[3] = this.gameObject.AddComponent<HackerCharacter>();
+
+        SetEventValues();
     }
 	
 	// Update is called once per frame
@@ -47,6 +50,7 @@ public class Team : MonoBehaviour {
 
     public void executeAction(int[] actions)
     {
+        SetEventValues();
         int index = 0;
         foreach (int x in actions)
         {
@@ -75,7 +79,7 @@ public class Team : MonoBehaviour {
     private void incrementProg(int x)
     {
 
-        ProgrammingScore += character[x].ProgAction();
+        ProgrammingScore += character[x].ProgAction()*eventEffect[0];
         //ProgrammingScore++;
 
     }
@@ -83,7 +87,7 @@ public class Team : MonoBehaviour {
     private void incrementArt(int x)
     {
 
-        ArtScore += character[x].ArtAction();
+        ArtScore += character[x].ArtAction() * eventEffect[1];
         //ArtScore++;
 
     }
@@ -91,18 +95,26 @@ public class Team : MonoBehaviour {
     private void incrementSalt(int x)
     {
 
-        SaltynessScore += character[x].AttackAction();
+        SaltynessScore += character[x].AttackAction() * eventEffect[2];
         //SaltynessScore++;
 
     }
 
     private void incrementSleep(int x)
     {
-        SleepnessScore += character[x].SleepAction();
+        SleepnessScore += character[x].SleepAction() * eventEffect[3];
         //SleepnessScore++;
 
     }
 
+    private void SetEventValues()
+    {
 
+        eventEffect[0] = GameManager.Instance.GetCurrentEvent().teamProgEffect;
+        eventEffect[1] = GameManager.Instance.GetCurrentEvent().teamArtEffect;
+        eventEffect[2] = GameManager.Instance.GetCurrentEvent().teamSaltEffect;
+        eventEffect[3] = GameManager.Instance.GetCurrentEvent().teamSleepEffect;
+
+    }
 
 }
