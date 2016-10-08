@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: abfef25e28edecc4c81d6f9e4ef200ba
-timeCreated: 1475961599
+guid: c67d2143cf3784a44ac59d3f2fd8e032
+timeCreated: 1475961401
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: HackerProb_sheet_0
-    21300002: HackerProb_sheet_1
-    21300004: HackerProb_sheet_2
-    21300006: HackerProb_sheet_3
+    21300000: ArtistProb_sheet_0
+    21300002: ArtistProb_sheet_1
+    21300004: ArtistProb_sheet_2
+    21300006: ArtistProb_sheet_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -57,7 +57,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HackerProb_sheet_0
+      name: ArtistProb_sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -70,7 +70,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HackerProb_sheet_1
+      name: ArtistProb_sheet_1
       rect:
         serializedVersion: 2
         x: 160
@@ -83,7 +83,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HackerProb_sheet_2
+      name: ArtistProb_sheet_2
       rect:
         serializedVersion: 2
         x: 320
@@ -96,7 +96,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HackerProb_sheet_3
+      name: ArtistProb_sheet_3
       rect:
         serializedVersion: 2
         x: 480
