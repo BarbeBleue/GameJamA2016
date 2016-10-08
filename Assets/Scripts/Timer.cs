@@ -1,15 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Timer : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    public Slider m_Slider;
 	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	 public void Ready () {
+        m_Slider.value++;
 	}
 }

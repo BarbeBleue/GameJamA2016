@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour {
 
     //Private DietyManager
 
+    private Timer timer;
     private Team[] teams = new Team[2];
     private EventSystem eventSystem;
     private static GameManager patate = null;
@@ -16,7 +17,7 @@ public class GameManager : MonoBehaviour {
     private int turn = 0;
     private int[] actionP1 = new int[4];
     private int[] actionP2 = new int[4];
-    private bool[] playerReadiness = new bool[2];
+    [HideInInspector] public bool[] playerReadiness = new bool[2];
     private bool bothPlayerReady = false;
 	private int P1 = 1, P2 = 2;
 
@@ -165,6 +166,7 @@ public class GameManager : MonoBehaviour {
             yield return new WaitUntil(() => bothPlayerReady == true);
             //Debug.Log("END WAIT FOR INPUT");
             bothPlayerReady = false;
+            timer.Ready();
             turn++;
 
             playerReadiness[0] = false;
