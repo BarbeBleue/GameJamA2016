@@ -96,7 +96,7 @@ public class BaseCharacter : MonoBehaviour
 	IEnumerator SleepyHead()
 	{
 		//I'm feeling sleepy
-		GameObject patate = Instantiate (m_SleepyHead, m_characterPosition.position, m_characterPosition.rotation);
+		GameObject patate = (GameObject) Instantiate (m_SleepyHead, m_characterPosition.position, m_characterPosition.rotation);
 
 		yield return null;
 	}
@@ -104,36 +104,48 @@ public class BaseCharacter : MonoBehaviour
 	IEnumerator Dead()
 	{
 		//I'm dead QQ
+		GameObject patate = (GameObject) Instantiate (m_Dead, m_characterPosition.position, m_characterPosition.rotation);
+
 		yield return null;
 	}
 
 	IEnumerator FeelingFresh()
 	{
 		//Je me sens reposé!
+		GameObject patate = (GameObject) Instantiate (m_FeelingFresh, m_characterPosition.position, m_characterPosition.rotation);
+
 		yield return null;
 	}
 
 	IEnumerator Attacking()
 	{
 		//bubble d'attaque vers le dieu du sel
+		GameObject patate = (GameObject) Instantiate (m_Attacking, m_characterPosition.position, m_characterPosition.rotation);
+
 		yield return null;
 	}
 
 	IEnumerator Sleeping()
 	{
 		//move character to couch
+		GameObject patate = (GameObject) Instantiate (m_Sleeping, m_characterPosition.position, m_characterPosition.rotation);
+
 		yield return null;
 	}
 
 	IEnumerator Programming()
 	{
 		//bubble de prog vers le dieu de la prog
+		GameObject patate = (GameObject) Instantiate (m_Programming, m_characterPosition.position, m_characterPosition.rotation);
+
 		yield return null;
 	}
 
 	IEnumerator Arting ()
 	{
 		//bubble de art vers le dieu Pierre
+		GameObject patate = (GameObject) Instantiate (m_Arting, m_characterPosition.position, m_characterPosition.rotation);
+
 		yield return null;
 	}
 
