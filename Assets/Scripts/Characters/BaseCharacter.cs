@@ -10,15 +10,18 @@ public class BaseCharacter : MonoBehaviour
 	[HideInInspector] public int m_SleepResist; // must be a value between 1 and 5
 	[HideInInspector] public int m_AttackLevel;
 
+	public DeusEx m_DeusInstance;
 	public GameObject m_Instance;
 
 	private int m_SleepLevel;
 	private int m_MaxSleep = 100;
 	//private int m_MinSleep = 0;
 
+	/*
 	private float m_TempArtLevel;  //Temporary values for character's stats affected by the sleepLevel of said Character
 	private int m_TempProgLevel;
 	private int m_TempAttackLevel;
+	*/
 
 	private float m_ArtProduced;
 	private int m_ProgProduced;
@@ -55,7 +58,7 @@ public class BaseCharacter : MonoBehaviour
 
 	public int ProgAction()
 	{
-		m_TempProgLevel = m_ProgLevel * (m_SleepLevel/m_MaxSleep);
+		int m_TempProgLevel = m_ProgLevel * (m_SleepLevel/m_MaxSleep);
 		m_ProgProduced = 10 * m_ProgProduced;
 
 		return m_ProgProduced;
@@ -63,7 +66,7 @@ public class BaseCharacter : MonoBehaviour
 
 	public float ArtAction()
 	{
-		m_TempArtLevel = m_ArtLevel * (m_SleepLevel / m_MaxSleep);
+		flaot m_TempArtLevel = m_ArtLevel * (m_SleepLevel / m_MaxSleep);
 		m_ArtProduced = 0.1f * m_TempArtLevel;
 
 		StartCoroutine (Arting ());
@@ -73,7 +76,7 @@ public class BaseCharacter : MonoBehaviour
 
 	public int AttackAction()
 	{
-		m_TempAttackLevel = m_AttackLevel * (m_SleepLevel / m_MaxSleep);
+		int m_TempAttackLevel = m_AttackLevel * (m_SleepLevel / m_MaxSleep);
 		m_AttackProduced = 10 * m_TempAttackLevel;
 
 		StartCoroutine (Attacking ());
