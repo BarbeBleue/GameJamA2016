@@ -47,7 +47,7 @@ public class Player1Input : MonoBehaviour {
                 if (x == -1)
                     break;
                 if (cpt == 3)
-
+                   
                 cpt++;
             }
         }
