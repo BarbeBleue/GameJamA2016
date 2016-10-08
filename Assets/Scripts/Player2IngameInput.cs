@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Player2Input : MonoBehaviour {
+public class Player2IngameInput : MonoBehaviour {
 
     private int selectedMemberP2 = 0;
     private int[] actionsP2 = new int[4];
