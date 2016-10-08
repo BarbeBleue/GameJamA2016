@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour {
         themeSet = false;
         styleSet[0] = false;
         styleSet[1] = false;
+        timer = Timer.Instance;
         playerReadiness[0] = false;
         playerReadiness[1] = false;
 		teams[0].defineTeam(P1);
