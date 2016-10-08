@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NewBehaviourScript : BaseCharacter {
+public class NADCharacter : BaseCharacter {
 
 	void Start () {
 

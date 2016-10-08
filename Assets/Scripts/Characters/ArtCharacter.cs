@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ArtCharacter : BaseCharacter {
 
-	void Awake () {
+	void Start () {
 		
 		m_ArtLevel = 10;
 		m_ProgLevel = 4;

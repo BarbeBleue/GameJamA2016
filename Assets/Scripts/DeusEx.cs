@@ -21,7 +21,7 @@ public class DeusEx : MonoBehaviour {
 		else if (instance != this)
 			Destroy (gameObject);
 		
-		m_StartingFavor = m_CurrentFavor = 0.5;
+		m_StartingFavor = m_CurrentFavor = 0.5f;
 	}
 
 	public void Player2Favor(float adder)
