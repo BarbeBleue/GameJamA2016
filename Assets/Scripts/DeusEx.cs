@@ -11,6 +11,7 @@ public class DeusEx : MonoBehaviour {
 	public Image m_FillImage;
 	public Color m_FullFavorColor = Color.green;
 	public Color m_ZeroFavorColor = Color.red;
+    public enum Diet {Salty, Prog, Art, Sleep};
 
 	public static DeusEx instance = null;
 
