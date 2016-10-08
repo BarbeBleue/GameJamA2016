@@ -15,12 +15,7 @@ public class DeusEx : MonoBehaviour {
 	public static DeusEx instance = null;
 
 	void Awake ()
-	{
-		if (instance == null)
-			instance = this;
-		else if (instance != this)
-			Destroy (gameObject);
-		
+	{		
 		m_StartingFavor = m_CurrentFavor = 0.5f;
 	}
 
