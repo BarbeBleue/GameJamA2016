@@ -17,6 +17,13 @@ public class GameManager : MonoBehaviour {
     private int[] actionP2 = new int[4];
     private bool bothPlayerReady = false;
 
+    private Vector3[] spawnpoints = { new Vector3(-1,10,0),
+                                      new Vector3(-1,20,0),
+                                      new Vector3(26,10,0),
+                                      new Vector3(26,20,0)};
+
+    public GameObject potato;
+    private GameObject refato;
 
     public float eventChance = 0.25f;
 
@@ -45,7 +52,35 @@ public class GameManager : MonoBehaviour {
             int[] x = { 0, 1, 2, 3 };
             int[] y = { 0, 1, 2, 3 };
             setAction(x,y);
-        }     
+        }
+        if (Input.GetKeyDown("p") == true)
+        {
+            
+            switch ((int)Random.Range(0, 4))
+            {
+                case 0:
+                    refato = Instantiate(potato, spawnpoints[0], Quaternion.identity) as GameObject;
+                    refato.GetComponent<Rigidbody2D>().velocity = new Vector2(12, 12);
+                    break;
+                case 1:
+                    refato = Instantiate(potato, spawnpoints[1], Quaternion.identity) as GameObject;
+                    refato.GetComponent<Rigidbody2D>().velocity = new Vector2(12, 0);
+                    break;
+                case 2:
+                    refato = Instantiate(potato, spawnpoints[2], Quaternion.identity) as GameObject;
+                    refato.GetComponent<Rigidbody2D>().velocity = new Vector2(-12, 12);
+                    break;
+                case 3:
+                    refato = Instantiate(potato, spawnpoints[3], Quaternion.identity) as GameObject;
+                    refato.GetComponent<Rigidbody2D>().velocity = new Vector2(-12, 0);
+                    break;
+                default:
+                    refato = Instantiate(potato, spawnpoints[0], Quaternion.identity) as GameObject;
+                    refato.GetComponent<Rigidbody2D>().velocity = new Vector2(12, 12);
+                    break;
+            }
+
+        }
     }
 
     public static GameManager Instance
