@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour {
 	private int P1 = 1, P2 = 2;
     private string theme;
 
+    public bool newT;
+
     private Vector3[] spawnpoints = { new Vector3(-1,10,0),
                                       new Vector3(-1,20,0),
                                       new Vector3(26,10,0),
@@ -228,12 +230,13 @@ public class GameManager : MonoBehaviour {
         {
             Debug.Log("Turn : " + turn);
             eventSystem.newTurn();
+            newT = true;
             Debug.Log(GetCurrentEvent().FlavorText);
             Debug.Log("START WAIT FOR INPUT");
             yield return new WaitUntil(() => bothPlayerReady == true);
             Debug.Log("END WAIT FOR INPUT");
             bothPlayerReady = false;
-            //timer.Ready();
+            timer.Ready();
             turn++;
 
             playersHasAnswered[0] = false;
