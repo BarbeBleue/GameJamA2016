@@ -27,7 +27,7 @@ public class BaseCharacter : MonoBehaviour
 	private int m_ProgProduced;
 	private int m_AttackProduced;
 
-	public void Setup()
+	public void Awake()
 	{
 		m_SleepLevel = m_MaxSleep;
 		//m_Instance.GetComponent<> ();
@@ -43,7 +43,7 @@ public class BaseCharacter : MonoBehaviour
 			StartCoroutine (Dead ());
 	}
 
-	public void SleepAction()
+	public int SleepAction()
 	{
 		m_SleepLevel += 50;
 
@@ -54,14 +54,15 @@ public class BaseCharacter : MonoBehaviour
 		}
 
 		StartCoroutine (Sleeping ());
+        return m_SleepLevel;
 	}
 
 	public int ProgAction()
 	{
+        
 		int m_TempProgLevel = m_ProgLevel * (m_SleepLevel/m_MaxSleep);
-		m_ProgProduced = 10 * m_ProgProduced;
-
-		return m_ProgProduced;
+		m_ProgProduced = 10 * m_TempProgLevel;
+        return m_ProgProduced;
 	}
 
 	public float ArtAction()
@@ -70,8 +71,7 @@ public class BaseCharacter : MonoBehaviour
 		m_ArtProduced = 0.1f * m_TempArtLevel;
 
 		StartCoroutine (Arting ());
-
-		return m_ArtProduced;
+        return m_ArtProduced;
 	}
 
 	public int AttackAction()

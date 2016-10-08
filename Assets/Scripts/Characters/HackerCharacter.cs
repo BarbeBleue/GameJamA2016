@@ -3,7 +3,7 @@ using System.Collections;
 
 public class HackerCharacter : BaseCharacter {
 
-	void Awake () {
+	void Start () {
 
 		m_ArtLevel = 1;
 		m_ProgLevel = 5;
