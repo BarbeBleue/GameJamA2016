@@ -10,6 +10,6 @@ public class ROTATO : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        this.gameObject.transform.Rotate(0, 0, 5);
+        this.gameObject.transform.Rotate(5, -5, -5);
     }
 }
