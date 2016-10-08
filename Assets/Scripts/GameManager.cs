@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour {
         actionP1 = team1;
         actionP2 = team2;
         bothPlayerReady = true;
+        Debug.Log("Both teams are ready!");
     }
 
     private void executeActions()
