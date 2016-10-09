@@ -12,7 +12,7 @@ public class ProgCharacter : BaseCharacter {
 		m_AttackLevel = 5;
 		m_SleepResist = 3;
 
-        anim = gameObject.GetComponent(typeof(Animator)) as Animator;
+        anim = m_AwakeInstance.GetComponent(typeof(Animator)) as Animator;
     }
 
     override public void Panic()
@@ -25,7 +25,7 @@ public class ProgCharacter : BaseCharacter {
     IEnumerator panicUnpanic()
     {
         anim.SetBool("ProgrammerProblem", true);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(4);
         anim.SetBool("ProgrammerProblem", false);
     }
 

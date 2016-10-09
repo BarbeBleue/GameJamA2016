@@ -12,6 +12,12 @@ public class GameManager : MonoBehaviour {
     public AudioSource welcome;
     public SpriteRenderer fb;
     public SpriteRenderer fr;
+    public SpriteRenderer checkB;
+    public SpriteRenderer checkR;
+
+    public Player1IngameInput P1IngameInputs;
+    public Player2IngameInput P2IngameInputs;
+
     private Timer timer;
     public Team[] teams = new Team[2];
     private EventSystem eventSystem;
@@ -30,6 +36,7 @@ public class GameManager : MonoBehaviour {
     private string theme;
     public int maxTurn = 16;
     public bool newT;
+    private Event Eve;
 
     ScorePatate scoreFinal;
 
@@ -61,6 +68,8 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        P1IngameInputs.enabled = false;
+        P2IngameInputs.enabled = false;
         //deusExManager = DeusExManager.Instance;
         scoreFinal = ScorePatate.Instance;
         themeSet = false;
@@ -233,6 +242,8 @@ public class GameManager : MonoBehaviour {
         if (styleSet[0] == true && styleSet[1] == true && themeSet)
         {
             InitGame();
+            P1IngameInputs.enabled = true;
+            P2IngameInputs.enabled = true;
         }
 
     }
@@ -266,22 +277,30 @@ public class GameManager : MonoBehaviour {
         {
             Debug.Log("Turn : " + turn);
             eventSystem.newTurn();
+
+            Eve = eventSystem.GetCurrentEvent();
+
+            if (Eve.id != -1)
+            {
+                Debug.Log("patate");
+                foreach (BaseCharacter Char in teams[0].character)
+                    Char.Panic();
+                foreach (BaseCharacter Char in teams[1].character)
+                    Char.Panic();
+            }
+
             newT = true;
             Debug.Log(GetCurrentEvent().FlavorText);
             Debug.Log("START WAIT FOR INPUT");
             yield return new WaitUntil(() => bothPlayerReady == true);
+
             Debug.Log("END WAIT FOR INPUT");
             bothPlayerReady = false;
             timer.Ready();
             turn++;
 
-            GameObject checkteam1GO = GameObject.Find("checkTeam1");
-            SpriteRenderer checkP1 = checkteam1GO.GetComponent<SpriteRenderer>();
-            checkP1.enabled = false;
-
-            GameObject checkteam2GO = GameObject.Find("checkTeam2");
-            SpriteRenderer checkP2 = checkteam2GO.GetComponent<SpriteRenderer>();
-            checkP2.enabled = false;
+            checkB.enabled = false;
+            checkR.enabled = false;
 
             playersHasAnswered[0] = false;
             playersHasAnswered[1] = false;
@@ -294,6 +313,8 @@ public class GameManager : MonoBehaviour {
             yield return new WaitForSeconds(timeBetweenTurn);
             fb.enabled = true;
             fr.enabled = true;
+            P1IngameInputs.enabled = true;
+            P2IngameInputs.enabled = true;
         }
     }
 
@@ -326,9 +347,13 @@ public class GameManager : MonoBehaviour {
         scoreFinal.GodFavor[1] = deusExManager.s_artGod.gameObject.GetComponentInChildren<DeusEx>().m_Slider.value;
         scoreFinal.GodFavor[2] = deusExManager.s_sleepGod.gameObject.GetComponentInChildren<DeusEx>().m_Slider.value;
         scoreFinal.GodFavor[3] = deusExManager.s_saltGod.gameObject.GetComponentInChildren<DeusEx>().m_Slider.value;
+        fb.enabled = false;
+        fr.enabled = false;
+        checkB.enabled = false;
+        checkR.enabled = false;
+
         gameHasEnded = true;
         gameIsRunning = false;
-        Debug.Log("FUCK DA POLICE");
         StartCoroutine(Potagnarök());
 
     }
