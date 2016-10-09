@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
-
-    private DeusExManager deusExManager;
+    public Camera m_MainCamera;
+    public DeusExManager deusExManager;
     private Timer timer;
     public Team[] teams = new Team[2];
     private EventSystem eventSystem;
@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour {
             teams[0] = this.gameObject.AddComponent<Team>();
             teams[1] = this.gameObject.AddComponent<Team>();
             */
-        deusExManager = this.gameObject.AddComponent<DeusExManager>();
+        //deusExManager = this.gameObject.GetComponent<DeusExManager>();
         patate = this;
     }
 
