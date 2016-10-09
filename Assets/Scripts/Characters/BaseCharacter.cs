@@ -46,7 +46,8 @@ public class BaseCharacter : MonoBehaviour
 	void Awake()
 	{
 		m_SleepLevel = m_MaxSleep;
-		//m_Instance.GetComponent<> ();
+        //m_Instance.GetComponent<>();
+        m_AwakeInstance.GetComponent<Animator>().enabled = false;
 
     }
 
@@ -57,6 +58,14 @@ public class BaseCharacter : MonoBehaviour
 
     virtual public void Panic()
     {
+
+    }
+
+    IEnumerator ResetAnimator()
+    {
+
+        yield return new WaitForSeconds(GameManager.Instance.timeBetweenTurn);
+        m_AwakeInstance.GetComponent<Animator>().enabled = false;
 
     }
 
@@ -93,9 +102,10 @@ public class BaseCharacter : MonoBehaviour
 	{
         
 		int m_TempProgLevel = m_ProgLevel * (m_SleepLevel/m_MaxSleep);
-		m_ProgProduced = 10 * m_TempProgLevel;		
-
-		StartCoroutine (Programming (player));
+		m_ProgProduced = 10 * m_TempProgLevel;
+        m_AwakeInstance.GetComponent<Animator>().enabled = true;
+        StartCoroutine(ResetAnimator());
+        StartCoroutine (Programming (player));
 
         return m_ProgProduced;
 
@@ -105,8 +115,9 @@ public class BaseCharacter : MonoBehaviour
 	{
 		float m_TempArtLevel = m_ArtLevel * (m_SleepLevel / m_MaxSleep);
 		m_ArtProduced = 10 * m_TempArtLevel;
-
-		StartCoroutine (Arting (player));
+        m_AwakeInstance.GetComponent<Animator>().enabled = true;
+        StartCoroutine(ResetAnimator());
+        StartCoroutine (Arting (player));
 
         return m_ArtProduced;
 	}
@@ -115,8 +126,9 @@ public class BaseCharacter : MonoBehaviour
 	{
 		int m_TempAttackLevel = m_AttackLevel * (m_SleepLevel / m_MaxSleep);
 		m_AttackProduced = 10 * m_TempAttackLevel;
-
-		StartCoroutine (Attacking (player));
+        m_AwakeInstance.GetComponent<Animator>().enabled = true;
+        StartCoroutine(ResetAnimator());
+        StartCoroutine (Attacking (player));
 
 		return m_AttackProduced;
 	}
