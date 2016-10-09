@@ -102,6 +102,8 @@ GameObject:
   - 92: {fileID: 1250021924}
   - 124: {fileID: 1250021923}
   - 81: {fileID: 1250021922}
+  - 114: {fileID: 1250021927}
+  - 114: {fileID: 1250021928}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -178,6 +180,51 @@ Transform:
   - {fileID: 1896124308}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &1250021927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1250021921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aed72e3a96329a548b08360f3ccc29a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teams:
+  - {fileID: 1250021928}
+  - {fileID: 0}
+  playerReadiness: 0000
+  newT: 0
+  potato: {fileID: 0}
+  eventChance: 0.25
+  timeBetweenTurn: 2
+--- !u!114 &1250021928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1250021921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c694bf2a4bb551f4f810ed7a7aee02b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ProgrammingScore: 0
+  ArtScore: 0
+  SaltynessScore: 0
+  SleepnessScore: 0
+  eventEffect:
+  - 0
+  - 0
+  - 0
+  - 0
+  character:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  playerId: 0
 --- !u!1001 &1896124295
 Prefab:
   m_ObjectHideFlags: 0

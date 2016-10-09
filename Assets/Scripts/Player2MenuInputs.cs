@@ -48,20 +48,32 @@ public class Player2MenuInputs : MonoBehaviour {
         if (Input.GetButtonDown("BoutonAP2"))
         {
             if (styleChoisi != "")
+            {
                 Player2Fond.color = Color.green;
+                GameManager.Instance.SetTeamStyle(styleChoisi, 1);
+            }
         }
 
         if (Input.GetButtonDown("BoutonBP2"))
         {
             styleChoisi = choix3P2;
+            textStyle3P2.color = Color.white;
+            textStyle1P2.color = Color.black;
+            textStyle2P2.color = Color.black;
         }
         if (Input.GetButtonDown("BoutonXP2"))
         {
             styleChoisi = choix2P2;
+            textStyle1P2.color = Color.black;
+            textStyle2P2.color = Color.white;
+            textStyle3P2.color = Color.black;
         }
         if (Input.GetButtonDown("BoutonYP2"))
         {
             styleChoisi = choix1P2;
+            textStyle1P2.color = Color.white;
+            textStyle3P2.color = Color.black;
+            textStyle2P2.color = Color.black;
         }
 
         if (Input.GetAxis("XDpadP2") == 1)
@@ -74,6 +86,11 @@ public class Player2MenuInputs : MonoBehaviour {
                 choix1P2 = lesStyles[0];
                 choix2P2 = lesStyles[1];
                 choix3P2 = lesStyles[2];
+
+                styleChoisi = "";
+                textStyle1P2.color = Color.black;
+                textStyle2P2.color = Color.black;
+                textStyle3P2.color = Color.black;
             }
         }
         if (Input.GetAxis("XDpadP2") == -1)
@@ -86,6 +103,11 @@ public class Player2MenuInputs : MonoBehaviour {
                 choix1P2 = lesStyles[6];
                 choix2P2 = lesStyles[7];
                 choix3P2 = lesStyles[8];
+
+                styleChoisi = "";
+                textStyle1P2.color = Color.black;
+                textStyle2P2.color = Color.black;
+                textStyle3P2.color = Color.black;
             }
         }
         if (Input.GetAxis("YDpadP2") == 1)
@@ -98,6 +120,11 @@ public class Player2MenuInputs : MonoBehaviour {
                 choix1P2 = lesStyles[3];
                 choix2P2 = lesStyles[4];
                 choix3P2 = lesStyles[5];
+
+                styleChoisi = "";
+                textStyle1P2.color = Color.black;
+                textStyle2P2.color = Color.black;
+                textStyle3P2.color = Color.black;
             }
         }
         if (Input.GetAxis("YDpadP2") == -1)
@@ -110,6 +137,11 @@ public class Player2MenuInputs : MonoBehaviour {
                 choix1P2 = lesStyles[9];
                 choix2P2 = lesStyles[10];
                 choix3P2 = lesStyles[11];
+
+                styleChoisi = "";
+                textStyle1P2.color = Color.black;
+                textStyle2P2.color = Color.black;
+                textStyle3P2.color = Color.black;
             }
         }
 

@@ -57,8 +57,9 @@ public class Player1MenuInputs : MonoBehaviour {
         choix2P1 = lesStyles[1];
         choix3P1 = lesStyles[2];
 
-        leTheme.text = "Theme: " + lesThemes[new System.Random().Next(0,lesThemes.Count)];
-
+        string themeChoisi = lesThemes[new System.Random().Next(0, lesThemes.Count)];
+        leTheme.text = "Theme: " + themeChoisi;
+        GameManager.Instance.SetTheme(themeChoisi);
     }
 	
 	// Update is called once per frame
@@ -66,20 +67,32 @@ public class Player1MenuInputs : MonoBehaviour {
         if (Input.GetButtonDown("BoutonAP1"))
         {
             if (styleChoisi != "")
+            {
                 Player1Fond.color = Color.green;
+                GameManager.Instance.SetTeamStyle(styleChoisi, 0);
+            }
         }
 
         if (Input.GetButtonDown("BoutonBP1"))
         {
             styleChoisi = choix3P1;
+            textStyle3P1.color = Color.white;
+            textStyle1P1.color = Color.black;
+            textStyle2P1.color = Color.black;
         }
         if (Input.GetButtonDown("BoutonXP1"))
         {
             styleChoisi = choix2P1;
+            textStyle2P1.color = Color.white;
+            textStyle1P1.color = Color.black;
+            textStyle3P1.color = Color.black;
         }
         if (Input.GetButtonDown("BoutonYP1"))
         {
             styleChoisi = choix1P1;
+            textStyle1P1.color = Color.white;
+            textStyle3P1.color = Color.black;
+            textStyle2P1.color = Color.black;
         }
 
         if (Input.GetAxis("XDpadP1") == 1)
@@ -92,6 +105,11 @@ public class Player1MenuInputs : MonoBehaviour {
                 choix1P1 = lesStyles[0];
                 choix2P1 = lesStyles[1];
                 choix3P1 = lesStyles[2];
+
+                styleChoisi = "";
+                textStyle1P1.color = Color.black;
+                textStyle2P1.color = Color.black;
+                textStyle3P1.color = Color.black;
             }
         }
         if (Input.GetAxis("XDpadP1") == -1)
@@ -104,6 +122,11 @@ public class Player1MenuInputs : MonoBehaviour {
                 choix1P1 = lesStyles[6];
                 choix2P1 = lesStyles[7];
                 choix3P1 = lesStyles[8];
+
+                styleChoisi = "";
+                textStyle1P1.color = Color.black;
+                textStyle2P1.color = Color.black;
+                textStyle3P1.color = Color.black;
             }
         }
         if (Input.GetAxis("YDpadP1") == 1)
@@ -116,6 +139,11 @@ public class Player1MenuInputs : MonoBehaviour {
                 choix1P1 = lesStyles[3];
                 choix2P1 = lesStyles[4];
                 choix3P1 = lesStyles[5];
+
+                styleChoisi = "";
+                textStyle1P1.color = Color.black;
+                textStyle2P1.color = Color.black;
+                textStyle3P1.color = Color.black;
             }
         }
         if (Input.GetAxis("YDpadP1") == -1)
@@ -128,6 +156,11 @@ public class Player1MenuInputs : MonoBehaviour {
                 choix1P1 = lesStyles[9];
                 choix2P1 = lesStyles[10];
                 choix3P1 = lesStyles[11];
+
+                styleChoisi = "";
+                textStyle1P1.color = Color.black;
+                textStyle2P1.color = Color.black;
+                textStyle3P1.color = Color.black;
             }
         }
         
