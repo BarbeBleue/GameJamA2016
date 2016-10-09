@@ -145,28 +145,34 @@ public class BaseCharacter : MonoBehaviour
 
 	IEnumerator Sleeping(bool player)
 	{
-		GameObject patate = Instantiate (m_Sleeping, m_characterPosition.position + translate, m_characterPosition.rotation) as GameObject;
-        GameObject patate2 = Instantiate(m_Sleeping, m_characterPosition.position + translate, m_characterPosition.rotation) as GameObject;
+		GameObject patate = Instantiate (m_Sleeping, m_AwakeInstance.transform.position + translate, m_AwakeInstance.transform.rotation) as GameObject;
+        GameObject patate2 = Instantiate(m_Sleeping, m_SleepingInstance.transform.position + translate, m_SleepingInstance.transform.rotation) as GameObject;
+        
+        m_AwakeInstance.GetComponent<SpriteRenderer>().enabled = false;
+        m_SleepingInstance.GetComponent<SpriteRenderer>().enabled = true;
 
         Vector3 godPosition = GameManager.Instance.m_MainCamera.ScreenToWorldPoint(m_SleepGod.transform.position);
 
-        StartCoroutine(MoveFromTo(m_characterPosition.position + translate, godPosition, 2.0f, patate));
+        StartCoroutine(MoveFromTo(m_SleepingInstance.transform.position + translate, godPosition, 2.0f, patate));
 
         yield return new WaitForSeconds(2);
 
-		if (m_SleepLevel >= 100)
+        m_AwakeInstance.GetComponent<SpriteRenderer>().enabled = true;
+        m_SleepingInstance.GetComponent<SpriteRenderer>().enabled = false;
+
+        if (m_SleepLevel >= 100)
 		{
 			m_SleepLevel = 100;
 			StartCoroutine (FeelingFresh ());
 		}
-		/*
+        /*
 		if (player == false)
 			m_SleepGod.Player1Favor ();
 		else if (player == true)
 			m_SleepGod.Player2Favor ();
 		*/
-		DestroyObject(patate2, 2f);
-	}
+        DestroyObject(patate2, 2f);
+    }
 
 	IEnumerator Attacking(bool player)
 	{
