@@ -17,26 +17,20 @@ public class DeusEx : MonoBehaviour {
 
 	void Awake ()
 	{		
-		m_StartingFavor = m_CurrentFavor = 0.5f;
+		m_StartingFavor = m_CurrentFavor = m_Slider.value = 0.5f;
 	}
 
 	public void Player2Favor(float substracter)
 	{
         if(m_CurrentFavor > 0)
-        {
-            m_CurrentFavor -= substracter;
-            SetFavorUI();
-        }
+            m_Slider.value -= substracter;
 		    
     }
 
 	public void Player1Favor(float adder)
 	{
         if (m_CurrentFavor < 1)
-        {
-            m_CurrentFavor += adder;
-            SetFavorUI();
-        }	    
+            m_Slider.value += adder;    
     }
 
 	public void SetFavorUI()
