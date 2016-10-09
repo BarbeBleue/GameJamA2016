@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 
-public class MenuInputsPlayer2 : MonoBehaviour {
+public class Player2MenuInputs : MonoBehaviour {
 
     string pathStyles;
 
@@ -14,12 +14,15 @@ public class MenuInputsPlayer2 : MonoBehaviour {
     public Text textStyle2P2;
     public Text textStyle3P2;
 
+    public Image Player2Fond;
 
     private string choix1P2;
     private string choix2P2;
     private string choix3P2;
 
     private int pageSelectionnee = 1;
+
+    private string styleChoisi = "";
 
     // Use this for initialization
     void Start () {
@@ -33,16 +36,33 @@ public class MenuInputsPlayer2 : MonoBehaviour {
             }
 
         }
-
         //Choix du Player 2 (Page 1)
         choix1P2 = lesStyles[0];
         choix2P2 = lesStyles[1];
         choix3P2 = lesStyles[2];
-
     }
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (Input.GetButtonDown("BoutonAP2"))
+        {
+            if (styleChoisi != "")
+                Player2Fond.color = Color.green;
+        }
+
+        if (Input.GetButtonDown("BoutonBP2"))
+        {
+            styleChoisi = choix3P2;
+        }
+        if (Input.GetButtonDown("BoutonXP2"))
+        {
+            styleChoisi = choix2P2;
+        }
+        if (Input.GetButtonDown("BoutonYP2"))
+        {
+            styleChoisi = choix1P2;
+        }
 
         if (Input.GetAxis("XDpadP2") == 1)
         {

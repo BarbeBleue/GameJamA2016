@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 
 
-public class MenuInputsPlayer1 : MonoBehaviour {
+public class Player1MenuInputs : MonoBehaviour {
     string pathThemes;
     string pathStyles;
 
@@ -18,12 +18,15 @@ public class MenuInputsPlayer1 : MonoBehaviour {
     public Text textStyle2P1;
     public Text textStyle3P1;
 
+    public Image Player1Fond;
     
     private string choix1P1;
     private string choix2P1;
     private string choix3P1;
 
     private int pageSelectionnee = 1;
+
+    private string styleChoisi = "";
 
     // Use this for initialization
     void Start () {
@@ -60,6 +63,25 @@ public class MenuInputsPlayer1 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (Input.GetButtonDown("BoutonAP1"))
+        {
+            if (styleChoisi != "")
+                Player1Fond.color = Color.green;
+        }
+
+        if (Input.GetButtonDown("BoutonBP1"))
+        {
+            styleChoisi = choix3P1;
+        }
+        if (Input.GetButtonDown("BoutonXP1"))
+        {
+            styleChoisi = choix2P1;
+        }
+        if (Input.GetButtonDown("BoutonYP1"))
+        {
+            styleChoisi = choix1P1;
+        }
+
         if (Input.GetAxis("XDpadP1") == 1)
         {
             //UP ARROW

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class NADCharacter : BaseCharacter {
 
-	void Start () {
+    override public void Init () {
 
 		m_ArtLevel = 6;
 		m_ProgLevel = 5;

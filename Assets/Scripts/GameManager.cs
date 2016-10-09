@@ -6,11 +6,9 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
 
-
-    //Private DietyManager
-
+    private DeusExManager deusExManager;
     private Timer timer;
-    private Team[] teams = new Team[2];
+    public Team[] teams = new Team[2];
     private EventSystem eventSystem;
     private static GameManager patate = null;
     private bool gameIsRunning = false;
@@ -24,6 +22,8 @@ public class GameManager : MonoBehaviour {
     private bool bothPlayerReady = false;
 	private int P1 = 1, P2 = 2;
     private string theme;
+
+    public bool newT;
 
     private Vector3[] spawnpoints = { new Vector3(-1,10,0),
                                       new Vector3(-1,20,0),
@@ -42,8 +42,11 @@ public class GameManager : MonoBehaviour {
     void Awake()
     {
         eventSystem = new EventSystem(eventChance);
-        teams[0] = this.gameObject.AddComponent<Team>();
-        teams[1] = this.gameObject.AddComponent<Team>();
+        /*
+            teams[0] = this.gameObject.AddComponent<Team>();
+            teams[1] = this.gameObject.AddComponent<Team>();
+            */
+        deusExManager = this.gameObject.AddComponent<DeusExManager>();
         patate = this;
     }
 
@@ -228,6 +231,7 @@ public class GameManager : MonoBehaviour {
         {
             Debug.Log("Turn : " + turn);
             eventSystem.newTurn();
+            newT = true;
             Debug.Log(GetCurrentEvent().FlavorText);
             Debug.Log("START WAIT FOR INPUT");
             yield return new WaitUntil(() => bothPlayerReady == true);
@@ -276,6 +280,13 @@ public class GameManager : MonoBehaviour {
     {
 
         return eventSystem.GetCurrentEvent();
+
+    }
+
+    public DeusExManager getDatDeuxSexManager()
+    {
+
+        return deusExManager;
 
     }
 

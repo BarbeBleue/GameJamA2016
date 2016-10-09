@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Ressources/Sprite_sheets.meta
+guid: 9f3daddb4e8d3854aae3003f658e2655
+folderAsset: yes
+timeCreated: 1475952119
+=======
 guid: d0596fb1243f3ae4a93413c8994a4abc
 folderAsset: yes
 timeCreated: 1475959536
+>>>>>>> c4c9e786e1f4d2e5e66fee1f74173267b9be93cd:Assets/Prefabs/Characters.meta
 licenseType: Free
 DefaultImporter:
   userData: 

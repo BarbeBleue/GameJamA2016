@@ -4,13 +4,13 @@ using System.Collections;
 public class Team : MonoBehaviour {
 
     //private character characters[4];
-    private float ProgrammingScore = 0;
-    private float ArtScore = 0;
-    private float SaltynessScore = 0;
-    private float SleepnessScore = 0;
-    private float[] eventEffect = new float[4];
-    private BaseCharacter[] character = new BaseCharacter[4];
-	[HideInInspector] public bool playerId;
+    public float ProgrammingScore = 0;
+    public float ArtScore = 0;
+    public float SaltynessScore = 0;
+    public float SleepnessScore = 0;
+    public float[] eventEffect = new float[4];
+    public BaseCharacter[] character = new BaseCharacter[4];
+	public bool playerId;
     private string style;
 
     // gets
@@ -34,13 +34,17 @@ public class Team : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        character[0] = this.gameObject.AddComponent<ArtCharacter>();
-		//character [0].PutInScene (playerId);
-        character[1] = this.gameObject.AddComponent<NADCharacter>();
-		//character [1].PutInScene (playerId);
-        character[2] = this.gameObject.AddComponent<ProgCharacter>();
-		//character [2].PutInScene (playerId);
-        character[3] = this.gameObject.AddComponent<HackerCharacter>();
+        if(character[0] == null)
+            character[0] = this.gameObject.AddComponent<ArtCharacter>();
+        //character [0].PutInScene (playerId);
+        if (character[1] == null)
+            character[1] = this.gameObject.AddComponent<NADCharacter>();
+        //character [1].PutInScene (playerId);
+        if (character[2] == null)
+            character[2] = this.gameObject.AddComponent<ProgCharacter>();
+        //character [2].PutInScene (playerId);
+        if (character[3] == null)
+            character[3] = this.gameObject.AddComponent<HackerCharacter>();
 		//character [3].PutInScene (playerId);
 
         //SetEventValues();

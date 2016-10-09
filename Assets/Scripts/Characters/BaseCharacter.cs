@@ -38,13 +38,32 @@ public class BaseCharacter : MonoBehaviour
 	private int m_ProgProduced;
 	private int m_AttackProduced;
 
-	public void Awake()
+	private Vector3 translate = new Vector3 (0f, 1f, 0f);
+
+	void Awake()
 	{
 		m_SleepLevel = m_MaxSleep;
 		//m_Instance.GetComponent<> ();
 
 		m_characterPosition = this.transform;
-	}
+        
+
+    }
+
+    virtual public void Init()
+    {
+        
+    }
+
+    void Start()
+    {
+        m_ArtGod = GameManager.Instance.getDatDeuxSexManager().GetAGod(0);
+        m_ProgGod = GameManager.Instance.getDatDeuxSexManager().GetAGod(1);
+        m_SaltGod = GameManager.Instance.getDatDeuxSexManager().GetAGod(2);
+        m_SleepGod = GameManager.Instance.getDatDeuxSexManager().GetAGod(3);
+        
+        Init();
+    }
 
 	public void IsNotSleeping ()
 	{
@@ -59,12 +78,6 @@ public class BaseCharacter : MonoBehaviour
 	public int SleepAction(bool player)
 	{
 		m_SleepLevel += 50;
-
-		if (m_SleepLevel >= 100)
-		{
-			m_SleepLevel = 100;
-			StartCoroutine (FeelingFresh ());
-		}
 
 		StartCoroutine (Sleeping (player));
         return m_SleepLevel;
@@ -122,17 +135,23 @@ public class BaseCharacter : MonoBehaviour
 
 	IEnumerator FeelingFresh()
 	{
-		GameObject patate = Instantiate (m_FeelingFresh, m_characterPosition.position, m_characterPosition.rotation) as GameObject;
+		GameObject patate = Instantiate (m_FeelingFresh, m_characterPosition.position + translate, m_characterPosition.rotation) as GameObject;
 
-		yield return new WaitForSeconds(5);
+		yield return null;
 
-		DestroyObject(patate);
+		DestroyObject (patate, 2f);
 	}
 
 	IEnumerator Sleeping(bool player)
 	{
-		GameObject patate = Instantiate (m_Sleeping, m_characterPosition.position, m_characterPosition.rotation) as GameObject;
+		GameObject patate = Instantiate (m_Sleeping, m_characterPosition.position + translate, m_characterPosition.rotation) as GameObject;
 		yield return new WaitForSeconds(2);
+
+		if (m_SleepLevel >= 100)
+		{
+			m_SleepLevel = 100;
+			StartCoroutine (FeelingFresh ());
+		}
 		/*
 		if (player == false)
 			m_SleepGod.Player1Favor ();
@@ -144,13 +163,15 @@ public class BaseCharacter : MonoBehaviour
 
 	IEnumerator Attacking(bool player)
 	{
-		GameObject patate = Instantiate (m_Attacking, m_characterPosition.position, m_characterPosition.rotation) as GameObject;
+		GameObject patate = Instantiate (m_Attacking, m_characterPosition.position  + translate, m_characterPosition.rotation) as GameObject;
 		float statImportance = m_AttackLevel / 10f;
-		patate.transform.localScale = new Vector3 (1f * statImportance, 1f * statImportance, 0);
+        float x = patate.transform.localScale.x * statImportance;
+        float y = patate.transform.localScale.y * statImportance;
+        patate.transform.localScale = new Vector3(x, y, 0f);
 
 		Vector3 godPosition = m_SaltGod.transform.position;
 
-		StartCoroutine (MoveFromTo (m_characterPosition.position, godPosition, 2.0f, patate));
+		StartCoroutine (MoveFromTo (m_characterPosition.position + translate, godPosition, 2.0f, patate));
 
 		yield return new WaitForSeconds(2);
 		/*
@@ -163,13 +184,15 @@ public class BaseCharacter : MonoBehaviour
 
 	IEnumerator Programming(bool player)
 	{
-		GameObject patate = Instantiate (m_Programming, m_characterPosition.position, m_characterPosition.rotation) as GameObject;
+		GameObject patate = Instantiate (m_Programming, m_characterPosition.position  + translate, m_characterPosition.rotation) as GameObject;
 		float statImportance = m_ProgLevel / 10f;
-		patate.transform.localScale = new Vector3 (1f * statImportance, 1f * statImportance, 0);
+        float x = patate.transform.localScale.x * statImportance;
+        float y = patate.transform.localScale.y * statImportance;
+        patate.transform.localScale = new Vector3(x, y, 0f);
 
 		Vector3 godPosition = m_ProgGod.transform.position;
 
-		StartCoroutine (MoveFromTo (m_characterPosition.position, godPosition, 2.0f, patate));
+		StartCoroutine (MoveFromTo (m_characterPosition.position + translate, godPosition, 2.0f, patate));
 
 		yield return new WaitForSeconds(2);
 		/*
@@ -182,13 +205,16 @@ public class BaseCharacter : MonoBehaviour
 
 	IEnumerator Arting (bool player)
 	{
-		GameObject patate = Instantiate (m_Arting, m_characterPosition.position, m_characterPosition.rotation) as GameObject;
+		GameObject patate = Instantiate (m_Arting, m_characterPosition.position  + translate, m_characterPosition.rotation) as GameObject;
 		float statImportance = m_ArtLevel / 10f;
-		patate.transform.localScale = new Vector3 (1f * statImportance, 1f * statImportance, 0);
+        float x = patate.transform.localScale.x * statImportance;
+        float y = patate.transform.localScale.y * statImportance;
+        patate.transform.localScale = new Vector3(x, y, 0f);
+        //    new Vector3 (1f * statImportance, 1f * statImportance, 0);
 
-		Vector3 godPosition = m_ArtGod.transform.position;
+        Vector3 godPosition = m_ArtGod.transform.position;
 
-		StartCoroutine (MoveFromTo (m_characterPosition.position, godPosition, 2.0f, patate));
+		StartCoroutine (MoveFromTo (m_characterPosition.position + translate, godPosition, 2.0f, patate));
 
 		yield return new WaitForSeconds(2);
 		/*
