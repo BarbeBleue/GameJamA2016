@@ -181,7 +181,7 @@ public class BaseCharacter : MonoBehaviour
         patate.transform.localScale = new Vector3(x, y, 0f);
 
 		Vector3 godPosition = m_MainCamera.WorldToScreenPoint(m_SaltGod.transform.position);
-        Debug.Log(godPosition);
+        Debug.Log(m_MainCamera.WorldToScreenPoint(m_characterPosition.position + translate) + " to " + godPosition);
 
 		StartCoroutine (MoveFromTo (m_MainCamera.WorldToScreenPoint(m_characterPosition.position + translate), godPosition, 2.0f, patate));
 
@@ -203,7 +203,7 @@ public class BaseCharacter : MonoBehaviour
         patate.transform.localScale = new Vector3(x, y, 0f);
 
 		Vector3 godPosition = m_MainCamera.WorldToScreenPoint(m_ProgGod.transform.position);
-        Debug.Log(godPosition);
+        Debug.Log(m_MainCamera.WorldToScreenPoint(m_characterPosition.position + translate) + " to " + godPosition);
 
         StartCoroutine (MoveFromTo (m_MainCamera.WorldToScreenPoint(m_characterPosition.position + translate), godPosition, 2.0f, patate));
 
@@ -226,7 +226,7 @@ public class BaseCharacter : MonoBehaviour
         //    new Vector3 (1f * statImportance, 1f * statImportance, 0);
 
         Vector3 godPosition = m_MainCamera.WorldToScreenPoint(m_ArtGod.transform.position);
-        Debug.Log(godPosition);
+        Debug.Log(m_MainCamera.WorldToScreenPoint(m_characterPosition.position + translate) + " to " + godPosition);
 
         StartCoroutine (MoveFromTo (m_MainCamera.WorldToScreenPoint(m_characterPosition.position + translate), godPosition, 2.0f, patate));
 
