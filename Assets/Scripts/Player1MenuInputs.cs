@@ -30,10 +30,10 @@ public class Player1MenuInputs : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-       
-        pathStyles = "Assets/Ressources/styles.txt";
 
-        
+        pathStyles = Application.dataPath + "/styles.txt";
+
+
 
         using (StreamReader sr = File.OpenText(pathStyles))
         {
