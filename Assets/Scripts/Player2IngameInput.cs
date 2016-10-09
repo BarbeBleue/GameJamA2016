@@ -9,6 +9,11 @@ public class Player2IngameInput : MonoBehaviour {
     public SpriteRenderer fleche;
     public SpriteRenderer check;
 
+    public SpriteRenderer ArtCheck;
+    public SpriteRenderer HackCheck;
+    public SpriteRenderer GenCheck;
+    public SpriteRenderer ProgCheck;
+
     // Use this for initialization
     void Start () {
         foreach (int x in actions)
@@ -23,21 +28,89 @@ public class Player2IngameInput : MonoBehaviour {
         {
             //ART
             actions[selectedMember] = 1;
+            switch (selectedMember)
+            {
+                case 0:
+                    ArtCheck.enabled = true;
+                    break;
+                case 1:
+                    GenCheck.enabled = true;
+                    break;
+                case 2:
+                    ProgCheck.enabled = true;
+                    break;
+                case 3:
+                    HackCheck.enabled = true;
+                    break;
+                default:
+                    break;
+            }
         }
         if (Input.GetButtonDown("BoutonBP2"))
         {
             //PROGRAMMER
             actions[selectedMember] = 0;
+            switch (selectedMember)
+            {
+                case 0:
+                    ArtCheck.enabled = true;
+                    break;
+                case 1:
+                    GenCheck.enabled = true;
+                    break;
+                case 2:
+                    ProgCheck.enabled = true;
+                    break;
+                case 3:
+                    HackCheck.enabled = true;
+                    break;
+                default:
+                    break;
+            }
         }
         if (Input.GetButtonDown("BoutonXP2"))
         {
             //HACKER
             actions[selectedMember] = 2;
+            switch (selectedMember)
+            {
+                case 0:
+                    ArtCheck.enabled = true;
+                    break;
+                case 1:
+                    GenCheck.enabled = true;
+                    break;
+                case 2:
+                    ProgCheck.enabled = true;
+                    break;
+                case 3:
+                    HackCheck.enabled = true;
+                    break;
+                default:
+                    break;
+            }
         }
         if (Input.GetButtonDown("BoutonYP2"))
         {
             //DORMIR
             actions[selectedMember] = 3;
+            switch (selectedMember)
+            {
+                case 0:
+                    ArtCheck.enabled = true;
+                    break;
+                case 1:
+                    GenCheck.enabled = true;
+                    break;
+                case 2:
+                    ProgCheck.enabled = true;
+                    break;
+                case 3:
+                    HackCheck.enabled = true;
+                    break;
+                default:
+                    break;
+            }
         }
 
         if (Input.GetButtonDown("BoutonStartP2"))
@@ -52,6 +125,10 @@ public class Player2IngameInput : MonoBehaviour {
                     GameManager.Instance.setAction(actions, 1);
                     check.enabled = true;
                     fleche.enabled = false;
+                    ArtCheck.enabled = false;
+                    GenCheck.enabled = false;
+                    ProgCheck.enabled = false;
+                    HackCheck.enabled = false;
                     this.enabled = false;
                 }
                 cpt++;
