@@ -5,10 +5,12 @@ using System.Collections;
 public class ScoreFinal : MonoBehaviour {
 
     ScorePatate scoreP;
+    public GameObject gameHallah_doors;
     public Text M_P1;
     public Text M_P2;
     public Text TP1;
     public Text TP2;
+    public Text winnerText;
     public GameObject art_god_1;
     public GameObject prog_god_1;
     public GameObject salt_god_1;
@@ -31,6 +33,7 @@ public class ScoreFinal : MonoBehaviour {
     // Use this for initialization
     void Start () {
         scoreP = GameObject.FindGameObjectWithTag("Score").GetComponent<ScorePatate>();
+        StartCoroutine("LaunchDoorsAnimation");
         if (scoreP.GodFavor[0] > 0.5)
         {
             prog_god_1.SetActive(false);
@@ -121,7 +124,7 @@ public class ScoreFinal : MonoBehaviour {
         }
         if(scoreP.style[0] == multThemeStyle[theme,0] || scoreP.style[0] == multThemeStyle[theme, 1])
             mult_P1 = 1.10f;
-        if (scoreP.style[1] == multThemeStyle[theme, 0] || scoreP.style[0] == multThemeStyle[theme, 1])
+        if (scoreP.style[1] == multThemeStyle[theme, 0] || scoreP.style[1] == multThemeStyle[theme, 1])
             mult_P2 = 1.10f;
         Debug.Log(mult_P1);
         M_P1.text = mult_P1.ToString();
@@ -136,4 +139,27 @@ public class ScoreFinal : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    IEnumerator LaunchDoorsAnimation()
+    {
+        gameHallah_doors.GetComponent<Animator>().enabled = false;
+        winnerText.text = "";
+
+        yield return new WaitForSeconds(5);
+
+        gameHallah_doors.GetComponent<Animator>().enabled = true;
+        winnerText.text = winnerPlayer();
+    }
+
+    private string winnerPlayer()
+    {
+        if (totalP1 > totalP2)
+            return "PLAYER 1 WIN";
+        else if (totalP2 < totalP1)
+            return "PLAYER 2 WIN";
+        else
+            return "TIE !";
+    }
 }
+
+
