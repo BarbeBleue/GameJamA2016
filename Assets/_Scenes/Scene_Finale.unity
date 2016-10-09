@@ -1415,7 +1415,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!1 &590231806
 GameObject:
   m_ObjectHideFlags: 0
@@ -1698,7 +1698,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!1 &791533417
 GameObject:
   m_ObjectHideFlags: 0
@@ -2196,7 +2196,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 7
 --- !u!1 &1165312336
 GameObject:
   m_ObjectHideFlags: 0
@@ -2472,7 +2472,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4a94d6d2d2b59f643a96bcf91e8be2a4, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.387
+  m_Volume: 0.095
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2547,7 +2547,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!1001 &1274682094
 Prefab:
   m_ObjectHideFlags: 0
@@ -3446,7 +3446,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!1 &1651196427
 GameObject:
   m_ObjectHideFlags: 0
@@ -3764,6 +3764,8 @@ MonoBehaviour:
   welcome: {fileID: 1529425888}
   fb: {fileID: 1082589493}
   fr: {fileID: 1277771240}
+  checkB: {fileID: 1126837194}
+  checkR: {fileID: 709999188}
   teams:
   - {fileID: 1774911593}
   - {fileID: 1774911592}
@@ -3879,7 +3881,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!1 &1858904585
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour {
     public AudioSource welcome;
     public SpriteRenderer fb;
     public SpriteRenderer fr;
+    public SpriteRenderer checkB;
+    public SpriteRenderer checkR;
     private Timer timer;
     public Team[] teams = new Team[2];
     private EventSystem eventSystem;
@@ -275,13 +277,8 @@ public class GameManager : MonoBehaviour {
             timer.Ready();
             turn++;
 
-            GameObject checkteam1GO = GameObject.Find("checkTeam1");
-            SpriteRenderer checkP1 = checkteam1GO.GetComponent<SpriteRenderer>();
-            checkP1.enabled = false;
-
-            GameObject checkteam2GO = GameObject.Find("checkTeam2");
-            SpriteRenderer checkP2 = checkteam2GO.GetComponent<SpriteRenderer>();
-            checkP2.enabled = false;
+            checkB.enabled = false;
+            checkR.enabled = false;
 
             playersHasAnswered[0] = false;
             playersHasAnswered[1] = false;
@@ -326,6 +323,10 @@ public class GameManager : MonoBehaviour {
         scoreFinal.GodFavor[1] = deusExManager.s_artGod.gameObject.GetComponentInChildren<DeusEx>().m_Slider.value;
         scoreFinal.GodFavor[2] = deusExManager.s_sleepGod.gameObject.GetComponentInChildren<DeusEx>().m_Slider.value;
         scoreFinal.GodFavor[3] = deusExManager.s_saltGod.gameObject.GetComponentInChildren<DeusEx>().m_Slider.value;
+        fb.enabled = false;
+        fr.enabled = false;
+        checkB.enabled = false;
+        checkR.enabled = false;
         gameHasEnded = true;
         gameIsRunning = false;
         Debug.Log("FUCK DA POLICE");
