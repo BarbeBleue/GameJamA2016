@@ -22,9 +22,6 @@ public class BaseCharacter : MonoBehaviour
 	public GameObject m_Programming;
 	public GameObject m_Arting;
 
-	public Transform m_characterPosition;
-
-
 	public DeusEx m_ArtGod;
 	public DeusEx m_ProgGod;
 	public DeusEx m_SleepGod;
@@ -40,14 +37,14 @@ public class BaseCharacter : MonoBehaviour
 	private int m_ProgProduced;
 	private int m_AttackProduced;
 
+    public float m_GodFavor = 0.125f;
+
 	private Vector3 translate = new Vector3 (0f, 1f, 0f);
 
 	void Awake()
 	{
 		m_SleepLevel = m_MaxSleep;
 		//m_Instance.GetComponent<> ();
-
-		m_characterPosition = this.transform;
 
     }
 
@@ -80,7 +77,8 @@ public class BaseCharacter : MonoBehaviour
 	{
 		m_SleepLevel += 50;
 
-		StartCoroutine (Sleeping (player));
+        StartCoroutine(Sleeping(player));
+
         return m_SleepLevel;
 	}
 
@@ -118,7 +116,7 @@ public class BaseCharacter : MonoBehaviour
 
 	IEnumerator SleepyHead()
 	{
-		GameObject patate = Instantiate (m_SleepyHead, m_characterPosition.position, m_characterPosition.rotation) as GameObject;
+		GameObject patate = Instantiate (m_SleepyHead, m_AwakeInstance.transform.position, m_AwakeInstance.transform.rotation) as GameObject;
 
 		yield return new WaitForSeconds(5);
 
@@ -127,7 +125,7 @@ public class BaseCharacter : MonoBehaviour
 
 	IEnumerator Dead()
 	{
-		GameObject patate = Instantiate (m_Dead, m_characterPosition.position, m_characterPosition.rotation) as GameObject;
+		GameObject patate = Instantiate (m_Dead, m_AwakeInstance.transform.position, m_AwakeInstance.transform.rotation) as GameObject;
 
 		yield return new WaitForSeconds(5);
 
@@ -136,7 +134,7 @@ public class BaseCharacter : MonoBehaviour
 
 	IEnumerator FeelingFresh()
 	{
-		GameObject patate = Instantiate (m_FeelingFresh, m_characterPosition.position + translate, m_characterPosition.rotation) as GameObject;
+		GameObject patate = Instantiate (m_FeelingFresh, m_AwakeInstance.transform.position + translate, m_AwakeInstance.transform.rotation) as GameObject;
 
 		yield return null;
 
@@ -151,9 +149,9 @@ public class BaseCharacter : MonoBehaviour
         m_AwakeInstance.GetComponent<SpriteRenderer>().enabled = false;
         m_SleepingInstance.GetComponent<SpriteRenderer>().enabled = true;
 
-        Vector3 godPosition = GameManager.Instance.m_MainCamera.ScreenToWorldPoint(m_SleepGod.transform.position);
+        Vector3 godPosition = GameManager.Instance.m_MainCamera.ScreenToWorldPoint(m_SleepGod.m_Slider.transform.position);
 
-        StartCoroutine(MoveFromTo(m_SleepingInstance.transform.position + translate, godPosition, 2.0f, patate));
+        StartCoroutine(MoveFromTo(m_AwakeInstance.transform.position + translate, godPosition, 4.0f, patate));
 
         yield return new WaitForSeconds(2);
 
@@ -165,78 +163,75 @@ public class BaseCharacter : MonoBehaviour
 			m_SleepLevel = 100;
 			StartCoroutine (FeelingFresh ());
 		}
-        /*
-		if (player == false)
-			m_SleepGod.Player1Favor ();
-		else if (player == true)
-			m_SleepGod.Player2Favor ();
-		*/
+
+        if (player == false)
+            m_SleepGod.Player1Favor(m_GodFavor);
+        else if (player == true)
+            m_SleepGod.Player2Favor(m_GodFavor);
+
         DestroyObject(patate2, 2f);
     }
 
 	IEnumerator Attacking(bool player)
 	{
-		GameObject patate = Instantiate (m_Attacking, m_characterPosition.position  + translate, m_characterPosition.rotation) as GameObject;
+		GameObject patate = Instantiate (m_Attacking, m_AwakeInstance.transform.position  + translate, m_AwakeInstance.transform.rotation) as GameObject;
 		float statImportance = m_AttackLevel / 10f;
         float x = patate.transform.localScale.x * statImportance;
         float y = patate.transform.localScale.y * statImportance;
         patate.transform.localScale = new Vector3(x, y, 0f);
 
-		Vector3 godPosition = GameManager.Instance.m_MainCamera.ScreenToWorldPoint(m_SaltGod.transform.position);
+		Vector3 godPosition = GameManager.Instance.m_MainCamera.ScreenToWorldPoint(m_SaltGod.m_Slider.transform.position) + new Vector3(7f, 2.5f, 0) ;
 
-		StartCoroutine (MoveFromTo (m_characterPosition.position + translate, godPosition, 2.0f, patate));
+		StartCoroutine (MoveFromTo (m_AwakeInstance.transform.position + translate, godPosition, 4.0f, patate));
 
 		yield return new WaitForSeconds(2);
-		/*
-		if (player == false)
-			m_SaltGod.Player1Favor ();
-		else if (player == true)
-			m_SaltGod.Player2Favor ();
-			*/
-	}
+
+        if (player == false)
+            m_SaltGod.Player1Favor(m_GodFavor);
+        else if (player == true)
+            m_SaltGod.Player2Favor(m_GodFavor);
+    }
 
 	IEnumerator Programming(bool player)
 	{
-		GameObject patate = Instantiate (m_Programming, m_characterPosition.position  + translate, m_characterPosition.rotation) as GameObject;
+		GameObject patate = Instantiate (m_Programming, m_AwakeInstance.transform.position  + translate, m_AwakeInstance.transform.rotation) as GameObject;
 		float statImportance = m_ProgLevel / 10f;
         float x = patate.transform.localScale.x * statImportance;
         float y = patate.transform.localScale.y * statImportance;
         patate.transform.localScale = new Vector3(x, y, 0f);
 
-		Vector3 godPosition = GameManager.Instance.m_MainCamera.ScreenToWorldPoint(m_ProgGod.transform.position);
+		Vector3 godPosition = GameManager.Instance.m_MainCamera.ScreenToWorldPoint(m_ProgGod.m_Slider.transform.position);
 
-        StartCoroutine (MoveFromTo (m_characterPosition.position + translate, godPosition, 2.0f, patate));
+        StartCoroutine (MoveFromTo (m_AwakeInstance.transform.position + translate, godPosition, 4.0f, patate));
 
 		yield return new WaitForSeconds(2);
-		/*
-		if (player == false)
-			m_ProgGod.Player1Favor ();
-		else if (player == true)
-			m_ProgGod.Player2Favor ();
-			*/
-	}
+
+        if (player == false)
+            m_ProgGod.Player1Favor(m_GodFavor);
+        else if (player == true)
+            m_ProgGod.Player2Favor(m_GodFavor);
+    }
 
 	IEnumerator Arting (bool player)
 	{
-		GameObject patate = Instantiate (m_Arting, m_characterPosition.position  + translate, m_characterPosition.rotation) as GameObject;
+		GameObject patate = Instantiate (m_Arting, m_AwakeInstance.transform.position  + translate, m_AwakeInstance.transform.rotation) as GameObject;
 		float statImportance = m_ArtLevel / 10f;
         float x = patate.transform.localScale.x * statImportance;
         float y = patate.transform.localScale.y * statImportance;
         patate.transform.localScale = new Vector3(x, y, 0f);
         //    new Vector3 (1f * statImportance, 1f * statImportance, 0);
 
-        Vector3 godPosition = GameManager.Instance.m_MainCamera.ScreenToWorldPoint(m_ArtGod.transform.position);
+        Vector3 godPosition = GameManager.Instance.m_MainCamera.ScreenToWorldPoint(m_ArtGod.m_Slider.transform.position) + new Vector3(-7f, 2.5f, 0);
 
-        StartCoroutine (MoveFromTo (m_characterPosition.position + translate, godPosition, 2.0f, patate));
+        StartCoroutine (MoveFromTo (m_AwakeInstance.transform.position + translate, godPosition, 4.0f, patate));
 
 		yield return new WaitForSeconds(2);
-		/*
-		if (player == false)
-			m_ArtGod.Player1Favor ();
-		else if (player == true)
-			m_ArtGod.Player2Favor ();
-			*/
-	}
+
+        if (player == false)
+            m_ArtGod.Player1Favor(m_GodFavor);
+        else if (player == true)
+            m_ArtGod.Player2Favor(m_GodFavor);
+    }
 
 	IEnumerator MoveFromTo(Vector3 pointA, Vector3 pointB, float time, GameObject potato){
 		if (!moving){ // do nothing if already moving
@@ -245,7 +240,7 @@ public class BaseCharacter : MonoBehaviour
 			while (t < 1f){
 				t += Time.deltaTime / time; // sweeps from 0 to 1 in time seconds
 				potato.transform.position = Vector3.Lerp(pointA, pointB, t); // set position proportional to t
-				yield return 0; // leave the routine and return here in the next frame
+                yield return 0; // leave the routine and return here in the next frame
 			}
 			moving = false; // finished moving
 

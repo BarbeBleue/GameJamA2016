@@ -22,13 +22,15 @@ public class DeusEx : MonoBehaviour {
 
 	public void Player2Favor(float adder)
 	{
-		m_CurrentFavor += adder;
-	}
+		m_CurrentFavor -= adder;
+        SetFavorUI();
+    }
 
-	public void Player1Favor(int substracter)
+	public void Player1Favor(float substracter)
 	{
-		m_CurrentFavor -= substracter;
-	}
+		m_CurrentFavor += substracter;
+        SetFavorUI();
+    }
 
 	public void SetFavorUI()
 	{
