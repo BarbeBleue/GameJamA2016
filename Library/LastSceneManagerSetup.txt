@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/_Scenes/Scene_Finale.unity
+- path: Assets/_Scenes/Scene_Gillian.unity
   isLoaded: 1
   isActive: 1
