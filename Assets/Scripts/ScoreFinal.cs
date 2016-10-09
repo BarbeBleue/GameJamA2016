@@ -35,49 +35,49 @@ public class ScoreFinal : MonoBehaviour {
     void Start () {
         scoreP = GameObject.FindGameObjectWithTag("Score").GetComponent<ScorePatate>();
         StartCoroutine("LaunchDoorsAnimation");
-        if (scoreP.GodFavor[0] > 0.5)
+        if (scoreP.GodFavor[0] < 0.5)
         {
             prog_god_1.SetActive(false);
             prog_god_2.SetActive(true);
             scoreP.ScoreTeam2[0]*= 1.15f;
         }
-        if (scoreP.GodFavor[0] < 0.5)
+        if (scoreP.GodFavor[0] > 0.5)
         {
             prog_god_1.SetActive(true);
             prog_god_2.SetActive(false);
             scoreP.ScoreTeam1[0] *= 1.15f;
         }
-        if (scoreP.GodFavor[1] > 0.5)
+        if (scoreP.GodFavor[1] < 0.5)
         {
             art_god_1.SetActive(false);
             art_god_2.SetActive(true);
             scoreP.ScoreTeam2[1] *= 1.15f;
         }
-        if (scoreP.GodFavor[1] < 0.5)
+        if (scoreP.GodFavor[1] > 0.5)
         {
             art_god_1.SetActive(true);
             art_god_2.SetActive(false);
             scoreP.ScoreTeam1[1] *= 1.15f;
         }
-        if (scoreP.GodFavor[2] > 0.5)
+        if (scoreP.GodFavor[2] < 0.5)
         {
             sleep_god_1.SetActive(false);
             sleep_god_2.SetActive(true);
             scoreP.ScoreTeam2[2] *= 1.15f;
         }
-        if (scoreP.GodFavor[2] < 0.5)
+        if (scoreP.GodFavor[2] > 0.5)
         {
             sleep_god_1.SetActive(true);
             sleep_god_2.SetActive(false);
             scoreP.ScoreTeam1[2] *= 1.15f;
         }
-        if (scoreP.GodFavor[3] > 0.5)
+        if (scoreP.GodFavor[3] < 0.5)
         {
             salt_god_1.SetActive(false);
             salt_god_2.SetActive(true);
             scoreP.ScoreTeam2[3] *= 1.15f;
         }
-        if (scoreP.GodFavor[3] < 0.5)
+        if (scoreP.GodFavor[3] > 0.5)
         {
             salt_god_1.SetActive(true);
             salt_god_2.SetActive(false);
@@ -155,9 +155,10 @@ public class ScoreFinal : MonoBehaviour {
     private string winnerPlayer()
     {
         welcome.Play();
+        Debug.Log(totalP2 + "");
         if (totalP1 > totalP2)
             return "PLAYER 1 WIN";
-        else if (totalP2 < totalP1)
+        else if (totalP1 < totalP2)
             return "PLAYER 2 WIN";
         else
             return "TIE !";
