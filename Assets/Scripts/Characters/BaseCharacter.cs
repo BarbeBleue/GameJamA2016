@@ -81,11 +81,11 @@ public class BaseCharacter : MonoBehaviour
 
 	public void IsNotSleeping ()
 	{
-		m_SleepLevel -= 10 / m_SleepResist;
+		m_SleepLevel -= 25 / m_SleepResist;
 
-		if (m_SleepLevel <= 50)
+		if (m_SleepLevel <= 50 && m_SleepLevel > 25)
 			StartCoroutine (SleepyHead ());
-		else if (m_SleepLevel <= 0)
+		else if (m_SleepLevel <= 0 && m_SleepLevel <= 25)
 			StartCoroutine (Dead ());
 	}
 
@@ -141,7 +141,7 @@ public class BaseCharacter : MonoBehaviour
 
 	IEnumerator SleepyHead()
 	{
-		GameObject patate = Instantiate (m_SleepyHead, m_AwakeInstance.transform.position, m_AwakeInstance.transform.rotation) as GameObject;
+		GameObject patate = Instantiate (m_SleepyHead, m_AwakeInstance.transform.position + translate, m_AwakeInstance.transform.rotation) as GameObject;
 
 		yield return new WaitForSeconds(5);
 
@@ -150,7 +150,7 @@ public class BaseCharacter : MonoBehaviour
 
 	IEnumerator Dead()
 	{
-		GameObject patate = Instantiate (m_Dead, m_AwakeInstance.transform.position, m_AwakeInstance.transform.rotation) as GameObject;
+		GameObject patate = Instantiate (m_Dead, m_AwakeInstance.transform.position + translate, m_AwakeInstance.transform.rotation) as GameObject;
 
 		yield return new WaitForSeconds(5);
 

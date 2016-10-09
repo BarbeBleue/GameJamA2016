@@ -18,14 +18,16 @@ public class GameManager : MonoBehaviour {
     public GameObject NextTurnText;
     public Player1IngameInput P1IngameInputs;
     public Player2IngameInput P2IngameInputs;
-
+    public GameObject TitleScreen;
+    public GameObject tutoGod;
+    public GameObject tutoChars;
     private Timer timer;
     public Team[] teams = new Team[2];
     private EventSystem eventSystem;
     private static GameManager patate = null;
     private bool gameIsRunning = false;
     private bool gameHasEnded = false;
-    private int turn = 12;
+    private int turn = 0;
     private bool[] playersHasAnswered = new bool[2];
     private int[] actionP1 = new int[4];
     private int[] actionP2 = new int[4];
@@ -69,7 +71,7 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-
+        StartCoroutine(launchGame());
         P1IngameInputs.enabled = false;
         P2IngameInputs.enabled = false;
         //deusExManager = DeusExManager.Instance;
@@ -411,6 +413,33 @@ public class GameManager : MonoBehaviour {
             }
             moving = false; // finished moving
         }
+    }
+
+    IEnumerator launchGame()
+    {
+        TitleScreen.SetActive(true);
+        tutoChars.SetActive(false);
+        tutoGod.SetActive(false);
+
+        yield return new WaitForSeconds(3);
+
+        TitleScreen.SetActive(false);
+        tutoChars.SetActive(true);
+        tutoGod.SetActive(false);
+
+        yield return new WaitForSeconds(10);
+
+        TitleScreen.SetActive(false);
+        tutoChars.SetActive(false);
+        tutoGod.SetActive(true);
+
+        yield return new WaitForSeconds(6);
+
+
+        TitleScreen.SetActive(false);
+        tutoChars.SetActive(false);
+        tutoGod.SetActive(false);
+
     }
 
 }

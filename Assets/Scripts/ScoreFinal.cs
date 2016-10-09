@@ -6,8 +6,6 @@ public class ScoreFinal : MonoBehaviour {
 
     ScorePatate scoreP;
     public GameObject gameHallah_doors;
-    public Text M_P1;
-    public Text M_P2;
     public Text TP1;
     public Text TP2;
     public Text winnerText;
@@ -128,8 +126,6 @@ public class ScoreFinal : MonoBehaviour {
         if (scoreP.style[1] == multThemeStyle[theme, 0] || scoreP.style[1] == multThemeStyle[theme, 1])
             mult_P2 = 1.10f;
         Debug.Log(mult_P1);
-        M_P1.text = mult_P1.ToString();
-        M_P2.text = mult_P2.ToString();
         totalP1 = scoreP.ScoreTeam1[0] + scoreP.ScoreTeam1[1] + scoreP.ScoreTeam1[2] + scoreP.ScoreTeam1[3] * mult_P1;
         totalP2 = scoreP.ScoreTeam2[0] + scoreP.ScoreTeam2[1] + scoreP.ScoreTeam2[2] + scoreP.ScoreTeam2[3] * mult_P2;
         TP1.text = totalP1.ToString();
