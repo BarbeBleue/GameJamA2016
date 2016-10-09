@@ -139,7 +139,6 @@ public class Team : MonoBehaviour {
         SpriteRenderer Generalist1 = GameObject.Find("Generalist1").GetComponent<SpriteRenderer>();
         SpriteRenderer Generalist2 = GameObject.Find("Generalist2").GetComponent<SpriteRenderer>();
 
-        SpriteRenderer Artist1 = GameObject.Find("Artist1").GetComponent<SpriteRenderer>();
         SpriteRenderer Artist2 = GameObject.Find("Artist2").GetComponent<SpriteRenderer>();
 
         SpriteRenderer Programmer1 = GameObject.Find("Programmer1").GetComponent<SpriteRenderer>();
@@ -152,7 +151,6 @@ public class Team : MonoBehaviour {
         SpriteRenderer Generalist_sleepin1 = GameObject.Find("Generalist_sleepin1").GetComponent<SpriteRenderer>();
         SpriteRenderer Generalist_sleepin2 = GameObject.Find("Generalist_sleepin2").GetComponent<SpriteRenderer>();
 
-        SpriteRenderer Artist_sleepin1 = GameObject.Find("Artist_sleepin1").GetComponent<SpriteRenderer>();
         SpriteRenderer Artist_sleepin2 = GameObject.Find("Artist_sleepin2").GetComponent<SpriteRenderer>();
 
         SpriteRenderer Programmer_sleepin1 = GameObject.Find("Programmer_sleepin1").GetComponent<SpriteRenderer>();
@@ -162,8 +160,13 @@ public class Team : MonoBehaviour {
             switch (x)
             {
                 case 0:
+                    SpriteRenderer Artist1 = GameObject.Find("Artist1").GetComponent<SpriteRenderer>();
+                    SpriteRenderer Artist_sleepin1 = GameObject.Find("Artist_sleepin1").GetComponent<SpriteRenderer>();
+                    Debug.Log("I want to sleep");
+
                     Artist1.enabled = false;
                     Artist_sleepin1.enabled = true;
+
                     break;
                 case 1:
                     break;

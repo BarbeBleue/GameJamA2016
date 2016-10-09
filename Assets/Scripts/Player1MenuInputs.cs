@@ -6,10 +6,9 @@ using System.IO;
 
 
 public class Player1MenuInputs : MonoBehaviour {
-    string pathThemes;
     string pathStyles;
 
-    List<string> lesThemes = new List<string>();
+    
     List<string> lesStyles = new List<string>();
 
     public Text leTheme;
@@ -28,20 +27,13 @@ public class Player1MenuInputs : MonoBehaviour {
 
     private string styleChoisi = "";
 
+
     // Use this for initialization
     void Start () {
-        pathThemes = "Assets/Ressources/themes.txt";
+       
         pathStyles = "Assets/Ressources/styles.txt";
 
-        using (StreamReader sr = File.OpenText(pathThemes))
-        {
-            string s = "";
-            while((s=sr.ReadLine()) != null)
-            {
-                lesThemes.Add(s);
-            }
-
-        }
+        
 
         using (StreamReader sr = File.OpenText(pathStyles))
         {
@@ -57,9 +49,7 @@ public class Player1MenuInputs : MonoBehaviour {
         choix2P1 = lesStyles[1];
         choix3P1 = lesStyles[2];
 
-        string themeChoisi = lesThemes[new System.Random().Next(0, lesThemes.Count)];
-        leTheme.text = "Theme: " + themeChoisi;
-        GameManager.Instance.SetTheme(themeChoisi);
+        
     }
 	
 	// Update is called once per frame

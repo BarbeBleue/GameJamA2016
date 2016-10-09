@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 public class GameManager : MonoBehaviour {
 
@@ -55,6 +57,7 @@ public class GameManager : MonoBehaviour {
 	void Start ()
     {
         themeSet = false;
+        SetTheme();
         styleSet[0] = false;
         styleSet[1] = false;
         timer = Timer.Instance;
@@ -99,7 +102,7 @@ public class GameManager : MonoBehaviour {
         {
             SetTeamStyle("Scrub",0);
             SetTeamStyle("Wololol",1);
-            SetTheme("Simon");
+            SetTheme();
         }
     }
 
@@ -130,9 +133,24 @@ public class GameManager : MonoBehaviour {
 
     }
 
-    public void SetTheme(string _theme)
+    public void SetTheme()
     {
-        theme = _theme;
+        List<string> lesThemes = new List<string>();
+        string pathThemes = "Assets/Ressources/themes.txt";
+        using (StreamReader sr = File.OpenText(pathThemes))
+        {
+            string s = "";
+            while ((s = sr.ReadLine()) != null)
+            {
+                lesThemes.Add(s);
+            }
+
+        }
+
+        theme = lesThemes[new System.Random().Next(0, lesThemes.Count)];
+
+        GameObject.Find("Theme").GetComponent<Text>().text = "Theme: " + theme;
+
         themeSet = true;
     }
 
@@ -205,7 +223,7 @@ public class GameManager : MonoBehaviour {
 
     private void CheckMenuStatus()
     {
-        Debug.Log("theme set");
+
         if (styleSet[0] == true && styleSet[1] == true && themeSet)
         {
             Debug.Log("All set");

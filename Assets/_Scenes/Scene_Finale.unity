@@ -463,7 +463,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1000011287070956, guid: eb69038ef2a0b0b4a9c54605d702ec0a, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114000011852183150, guid: eb69038ef2a0b0b4a9c54605d702ec0a,
         type: 2}
@@ -3213,6 +3213,7 @@ MonoBehaviour:
   - {fileID: 1774911593}
   - {fileID: 1774911592}
   playerReadiness: 0000
+  maxTurn: 16
   newT: 0
   potato: {fileID: 1000011179017322, guid: ba9dd5cb754334a49b50aea0336ac004, type: 2}
   eventChance: 0.25
