@@ -107,6 +107,8 @@ public class BaseCharacter : MonoBehaviour
         StartCoroutine(ResetAnimator());
         StartCoroutine (Programming (player));
 
+        IsNotSleeping();
+
         return m_ProgProduced;
 
 	}
@@ -119,6 +121,8 @@ public class BaseCharacter : MonoBehaviour
         StartCoroutine(ResetAnimator());
         StartCoroutine (Arting (player));
 
+        IsNotSleeping();
+
         return m_ArtProduced;
 	}
 
@@ -130,7 +134,9 @@ public class BaseCharacter : MonoBehaviour
         StartCoroutine(ResetAnimator());
         StartCoroutine (Attacking (player));
 
-		return m_AttackProduced;
+        IsNotSleeping();
+
+        return m_AttackProduced;
 	}
 
 	IEnumerator SleepyHead()
