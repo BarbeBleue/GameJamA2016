@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour {
 
     public Camera m_MainCamera;
     public DeusExManager deusExManager;
+    public AudioSource welcome;
+  
     private Timer timer;
     public Team[] teams = new Team[2];
     private EventSystem eventSystem;
@@ -229,7 +231,6 @@ public class GameManager : MonoBehaviour {
 
         if (styleSet[0] == true && styleSet[1] == true && themeSet)
         {
-            Debug.Log("All set");
             InitGame();
         }
 
