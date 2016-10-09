@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour {
     private GameObject refato;
 
     public float eventChance = 0.25f;
-    public float timeBetweenTurn = 2.0f;
+    public float timeBetweenTurn = 3.0f;
 
     //gets
 
@@ -312,10 +312,16 @@ public class GameManager : MonoBehaviour {
             if (turn >= maxTurn)
                 EndGame();
             yield return new WaitForSeconds(timeBetweenTurn);
+
+            P1IngameInputs.resetActions();
+            P2IngameInputs.resetActions();
+
             fb.enabled = true;
             fr.enabled = true;
             P1IngameInputs.enabled = true;
             P2IngameInputs.enabled = true;
+            /*P1IngameInputs.resetActions();
+            P2IngameInputs.resetActions();*/
         }
     }
 
