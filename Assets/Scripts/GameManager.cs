@@ -237,7 +237,7 @@ public class GameManager : MonoBehaviour {
             yield return new WaitUntil(() => bothPlayerReady == true);
             Debug.Log("END WAIT FOR INPUT");
             bothPlayerReady = false;
-            timer.Ready();
+            //timer.Ready();
             turn++;
 
             playersHasAnswered[0] = false;
