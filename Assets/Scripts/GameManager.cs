@@ -10,7 +10,8 @@ public class GameManager : MonoBehaviour {
     public Camera m_MainCamera;
     public DeusExManager deusExManager;
     public AudioSource welcome;
-  
+    public SpriteRenderer fb;
+    public SpriteRenderer fr;
     private Timer timer;
     public Team[] teams = new Team[2];
     private EventSystem eventSystem;
@@ -273,6 +274,7 @@ public class GameManager : MonoBehaviour {
             bothPlayerReady = false;
             timer.Ready();
             turn++;
+
             GameObject checkteam1GO = GameObject.Find("checkTeam1");
             SpriteRenderer checkP1 = checkteam1GO.GetComponent<SpriteRenderer>();
             checkP1.enabled = false;
@@ -289,7 +291,9 @@ public class GameManager : MonoBehaviour {
             executeActions();
             if (turn >= maxTurn)
                 EndGame();
-            yield return new WaitForSeconds(timeBetweenTurn);            
+            yield return new WaitForSeconds(timeBetweenTurn);
+            fb.enabled = true;
+            fr.enabled = true;
         }
     }
 
