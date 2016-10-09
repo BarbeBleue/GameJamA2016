@@ -55,6 +55,11 @@ public class BaseCharacter : MonoBehaviour
         
     }
 
+    virtual public void Panic()
+    {
+
+    }
+
     void Start()
     {
         m_ArtGod = GameManager.Instance.getDatDeuxSexManager().GetAGod(0);
