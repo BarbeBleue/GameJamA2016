@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour {
     //Called Before start
     void Awake()
     {
+        DontDestroyOnLoad(transform.gameObject);
         eventSystem = new EventSystem(eventChance);
         /*
             teams[0] = this.gameObject.AddComponent<Team>();
@@ -85,9 +86,7 @@ public class GameManager : MonoBehaviour {
         }
         else
         {
-
             CheckMenuStatus();
-
         }
 
         if (Input.GetKeyDown("p") == true)
@@ -100,13 +99,17 @@ public class GameManager : MonoBehaviour {
             SetTeamStyle("Wololol",1);
             SetTheme("Simon");
         }
+
+        if(styleSet[0] && styleSet[1])
+        {
+            GameObject.Find("Menu").SetActive(false);
+        }
     }
 
 
 
     private void InitGame()
     {
-
         gameIsRunning = true;
         playersHasAnswered[0] = false;
         playersHasAnswered[1] = false;
