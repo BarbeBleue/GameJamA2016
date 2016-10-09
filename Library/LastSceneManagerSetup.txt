@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/_Scenes/Scene_Samuel.unity
+- path: Assets/_Scenes/Scene_Semi-Finale.unity
   isLoaded: 1
   isActive: 1

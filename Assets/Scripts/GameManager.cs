@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        //deusExManager = DeusExManager.Instance;
         themeSet = false;
         styleSet[0] = false;
         styleSet[1] = false;
@@ -62,7 +63,6 @@ public class GameManager : MonoBehaviour {
         playerReadiness[1] = false;
 		teams[0].defineTeam(P1);
 		teams[1].defineTeam(P2);
-        deusExManager = DeusExManager.Instance;
 	}
 	
 	// Update is called once per frame
