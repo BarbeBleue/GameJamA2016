@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour {
     private EventSystem eventSystem;
     private static GameManager patate = null;
     private bool gameIsRunning = false;
+    private bool gameHasEnded = false;
     private int turn = 0;
     private bool[] playersHasAnswered = new bool[2];
     private int[] actionP1 = new int[4];
@@ -22,7 +23,7 @@ public class GameManager : MonoBehaviour {
     private bool bothPlayerReady = false;
 	private int P1 = 1, P2 = 2;
     private string theme;
-
+    public int maxTurn = 16;
     public bool newT;
 
     private Vector3[] spawnpoints = { new Vector3(-1,10,0),
@@ -61,20 +62,22 @@ public class GameManager : MonoBehaviour {
         playerReadiness[1] = false;
 		teams[0].defineTeam(P1);
 		teams[1].defineTeam(P2);
-        
+        deusExManager = DeusExManager.Instance;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
 
+        if (Input.GetKeyDown("r") == true)
+        {
+            RestartGame();
+        }
+
         if (gameIsRunning)
         {
             CheckPlayerStatus();
-            if (Input.GetKeyDown("r") == true)
-            {
-                RestartGame();
-            }
+
             if (Input.GetKeyDown("f") == true)
             {
                 int[] x = { 0, 1, 2, 3 };
@@ -83,7 +86,7 @@ public class GameManager : MonoBehaviour {
                 setAction(y, 1);
             }
         }
-        else
+        else if(!gameHasEnded)
         {
             CheckMenuStatus();
         }
@@ -158,6 +161,16 @@ public class GameManager : MonoBehaviour {
                 refato.GetComponent<Rigidbody2D>().velocity = new Vector2(12, 12);
                 break;
         }
+    }
+
+    IEnumerator Potagnarök()
+    {
+        while( 1 == 1)
+        {
+            LaunnchAPotato();
+            yield return new WaitForSeconds(0.2f);
+        }
+
     }
 
     public static GameManager Instance
@@ -252,7 +265,8 @@ public class GameManager : MonoBehaviour {
             playerReadiness[1] = false;
 
             executeActions();
-
+            if (turn >= maxTurn)
+                EndGame();
             yield return new WaitForSeconds(timeBetweenTurn);            
         }
     }
@@ -269,6 +283,16 @@ public class GameManager : MonoBehaviour {
     {
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+    }
+
+    public void EndGame()
+    {
+
+        gameHasEnded = true;
+        gameIsRunning = false;
+        Debug.Log("FUCK DA POLICE");
+        StartCoroutine(Potagnarök());
 
     }
 
