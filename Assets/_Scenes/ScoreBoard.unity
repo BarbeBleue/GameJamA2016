@@ -182,7 +182,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 48676590}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 5e17c04ad211c004bb372ee71f340155, type: 2}
   m_CullingMode: 0
@@ -1042,14 +1042,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a080bf6a42276847ab3d65c12f1c0d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Prog_1: {fileID: 0}
-  Art_1: {fileID: 0}
-  Salt_1: {fileID: 0}
-  Sleep_1: {fileID: 0}
-  Prog_2: {fileID: 0}
-  Art_2: {fileID: 0}
-  Salt_2: {fileID: 0}
-  Sleep_2: {fileID: 0}
   M_P1: {fileID: 1528947815}
   M_P2: {fileID: 1754766985}
   TP1: {fileID: 676014145}
