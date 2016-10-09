@@ -172,7 +172,7 @@ public class BaseCharacter : MonoBehaviour
         else if (player == true)
             m_SleepGod.Player2Favor(m_GodFavor);
 
-        DestroyObject(patate2, 2f);
+        DestroyObject(patate2);
     }
 
 	IEnumerator Attacking(bool player)
