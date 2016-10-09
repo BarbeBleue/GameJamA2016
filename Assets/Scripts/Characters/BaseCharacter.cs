@@ -24,11 +24,14 @@ public class BaseCharacter : MonoBehaviour
 
 	public Transform m_characterPosition;
 
+
 	public DeusEx m_ArtGod;
 	public DeusEx m_ProgGod;
 	public DeusEx m_SleepGod;
 	public DeusEx m_SaltGod;
-	public GameObject m_AwakeInstance;
+
+    public Camera m_MainCamera;
+    public GameObject m_AwakeInstance;
 	public GameObject m_SleepingInstance;
 
 	private int m_SleepLevel;
@@ -38,6 +41,8 @@ public class BaseCharacter : MonoBehaviour
 	private int m_ProgProduced;
 	private int m_AttackProduced;
 
+
+    private Vector3[] godPositions;
 	private Vector3 translate = new Vector3 (0f, 1f, 0f);
 
 	void Awake()
@@ -46,7 +51,6 @@ public class BaseCharacter : MonoBehaviour
 		//m_Instance.GetComponent<> ();
 
 		m_characterPosition = this.transform;
-        
 
     }
 
@@ -57,6 +61,7 @@ public class BaseCharacter : MonoBehaviour
 
     void Start()
     {
+        m_MainCamera = GameManager.Instance.m_MainCamera;
         m_ArtGod = GameManager.Instance.getDatDeuxSexManager().GetAGod(0);
         m_ProgGod = GameManager.Instance.getDatDeuxSexManager().GetAGod(1);
         m_SaltGod = GameManager.Instance.getDatDeuxSexManager().GetAGod(2);
@@ -169,9 +174,10 @@ public class BaseCharacter : MonoBehaviour
         float y = patate.transform.localScale.y * statImportance;
         patate.transform.localScale = new Vector3(x, y, 0f);
 
-		Vector3 godPosition = m_SaltGod.transform.position;
+		Vector3 godPosition = m_MainCamera.WorldToScreenPoint(m_SaltGod.transform.position);
+        Debug.Log(godPosition);
 
-		StartCoroutine (MoveFromTo (m_characterPosition.position + translate, godPosition, 2.0f, patate));
+		StartCoroutine (MoveFromTo (m_MainCamera.WorldToScreenPoint(m_characterPosition.position + translate), godPosition, 2.0f, patate));
 
 		yield return new WaitForSeconds(2);
 		/*
@@ -190,9 +196,10 @@ public class BaseCharacter : MonoBehaviour
         float y = patate.transform.localScale.y * statImportance;
         patate.transform.localScale = new Vector3(x, y, 0f);
 
-		Vector3 godPosition = m_ProgGod.transform.position;
+		Vector3 godPosition = m_MainCamera.WorldToScreenPoint(m_ProgGod.transform.position);
+        Debug.Log(godPosition);
 
-		StartCoroutine (MoveFromTo (m_characterPosition.position + translate, godPosition, 2.0f, patate));
+        StartCoroutine (MoveFromTo (m_MainCamera.WorldToScreenPoint(m_characterPosition.position + translate), godPosition, 2.0f, patate));
 
 		yield return new WaitForSeconds(2);
 		/*
@@ -212,9 +219,10 @@ public class BaseCharacter : MonoBehaviour
         patate.transform.localScale = new Vector3(x, y, 0f);
         //    new Vector3 (1f * statImportance, 1f * statImportance, 0);
 
-        Vector3 godPosition = m_ArtGod.transform.position;
+        Vector3 godPosition = m_MainCamera.WorldToScreenPoint(m_ArtGod.transform.position);
+        Debug.Log(godPosition);
 
-		StartCoroutine (MoveFromTo (m_characterPosition.position + translate, godPosition, 2.0f, patate));
+        StartCoroutine (MoveFromTo (m_MainCamera.WorldToScreenPoint(m_characterPosition.position + translate), godPosition, 2.0f, patate));
 
 		yield return new WaitForSeconds(2);
 		/*

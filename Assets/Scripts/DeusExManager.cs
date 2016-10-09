@@ -3,6 +3,11 @@ using System.Collections;
 
 public class DeusExManager : MonoBehaviour {
 
+    public GameObject s_artGod;
+    public GameObject s_progGod;
+    public GameObject s_saltGod;
+    public GameObject s_sleepGod;
+
     private DeusEx artGod;
     private DeusEx progGod;
     private DeusEx saltGod;
@@ -18,10 +23,10 @@ public class DeusExManager : MonoBehaviour {
     void Awake()
     {
 
-        artGod = this.gameObject.AddComponent<DeusEx>();
-        progGod = this.gameObject.AddComponent<DeusEx>();
-        saltGod = this.gameObject.AddComponent<DeusEx>();
-        sleepGod = this.gameObject.AddComponent<DeusEx>();
+        artGod = s_artGod.gameObject.AddComponent<DeusEx>();
+        progGod = s_progGod.gameObject.AddComponent<DeusEx>();
+        saltGod = s_saltGod.gameObject.AddComponent<DeusEx>();
+        sleepGod = s_sleepGod.gameObject.AddComponent<DeusEx>();
     }
 	
 	// Update is called once per frame
