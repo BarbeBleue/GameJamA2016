@@ -347,18 +347,14 @@ public class GameManager : MonoBehaviour {
         scoreFinal.GodFavor[1] = deusExManager.s_artGod.gameObject.GetComponentInChildren<DeusEx>().m_Slider.value;
         scoreFinal.GodFavor[2] = deusExManager.s_sleepGod.gameObject.GetComponentInChildren<DeusEx>().m_Slider.value;
         scoreFinal.GodFavor[3] = deusExManager.s_saltGod.gameObject.GetComponentInChildren<DeusEx>().m_Slider.value;
-<<<<<<< HEAD
         scoreFinal.theme = theme;
         scoreFinal.style[0] = teams[0].style;
         scoreFinal.style[1] = teams[1].style;
         SceneManager.LoadScene("ScoreBoard");
-=======
         fb.enabled = false;
         fr.enabled = false;
         checkB.enabled = false;
         checkR.enabled = false;
-
->>>>>>> 09eab9c79198529088c6e7db98c33d46ca32cb43
         gameHasEnded = true;
         gameIsRunning = false;
         StartCoroutine(Potagnarök());
