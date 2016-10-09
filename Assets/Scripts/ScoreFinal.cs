@@ -19,6 +19,7 @@ public class ScoreFinal : MonoBehaviour {
     public GameObject prog_god_2;
     public GameObject salt_god_2;
     public GameObject sleep_god_2;
+    public AudioSource welcome;
     public int theme;
 
     public float mult_P1 = 1;
@@ -153,6 +154,7 @@ public class ScoreFinal : MonoBehaviour {
 
     private string winnerPlayer()
     {
+        welcome.Play();
         if (totalP1 > totalP2)
             return "PLAYER 1 WIN";
         else if (totalP2 < totalP1)

@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour {
 
     public Camera m_MainCamera;
     public DeusExManager deusExManager;
-    public AudioSource welcome;
+    public AudioSource workHard;
     public SpriteRenderer fb;
     public SpriteRenderer fr;
     public SpriteRenderer checkB;
@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+
         P1IngameInputs.enabled = false;
         P2IngameInputs.enabled = false;
         //deusExManager = DeusExManager.Instance;
@@ -125,6 +126,7 @@ public class GameManager : MonoBehaviour {
     private void InitGame()
     {
         GameObject.Find("Menu").SetActive(false);
+        workHard.Play();
         gameIsRunning = true;
         playersHasAnswered[0] = false;
         playersHasAnswered[1] = false;
@@ -152,8 +154,7 @@ public class GameManager : MonoBehaviour {
     public void SetTheme()
     {
         List<string> lesThemes = new List<string>();
-        string pathThemes = "Assets/Ressources/themes.txt";
-        using (StreamReader sr = File.OpenText(pathThemes))
+        using (StreamReader sr = File.OpenText(Application.dataPath + "/themes.txt"))
         {
             string s = "";
             while ((s = sr.ReadLine()) != null)
@@ -309,10 +310,10 @@ public class GameManager : MonoBehaviour {
             playerReadiness[1] = false;
 
             executeActions();
+
+            yield return new WaitForSeconds(timeBetweenTurn);
             if (turn >= maxTurn)
                 EndGame();
-            yield return new WaitForSeconds(timeBetweenTurn);
-
             P1IngameInputs.resetActions();
             P2IngameInputs.resetActions();
 
@@ -320,8 +321,6 @@ public class GameManager : MonoBehaviour {
             fr.enabled = true;
             P1IngameInputs.enabled = true;
             P2IngameInputs.enabled = true;
-            /*P1IngameInputs.resetActions();
-            P2IngameInputs.resetActions();*/
         }
     }
 

@@ -19,7 +19,7 @@ public class EventSystem{
     {
         eventChance = _eventChance;
         eventContainer = new EventContainer();
-        eventContainer = eventContainer.Load("Assets/Ressources/Events.xml");
+        eventContainer = eventContainer.Load(Application.dataPath + "/Events.xml");
         baseEvent = new Event();
         //eventContainer.debugTabEvent();
 
