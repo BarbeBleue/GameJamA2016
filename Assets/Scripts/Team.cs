@@ -13,6 +13,33 @@ public class Team : MonoBehaviour {
 	public bool playerId;
     private string style;
 
+    SpriteRenderer Hacker1 = GameObject.Find("Hacker1").GetComponent<SpriteRenderer>();
+    SpriteRenderer Hacker2 = GameObject.Find("Hacker2").GetComponent<SpriteRenderer>();
+
+    SpriteRenderer Generalist1 = GameObject.Find("Generalist1").GetComponent<SpriteRenderer>();
+    SpriteRenderer Generalist2 = GameObject.Find("Generalist2").GetComponent<SpriteRenderer>();
+
+    SpriteRenderer Artist1 = GameObject.Find("Artist1").GetComponent<SpriteRenderer>();
+    SpriteRenderer Artist2 = GameObject.Find("Artist2").GetComponent<SpriteRenderer>();
+
+    SpriteRenderer Programmer1 = GameObject.Find("Programmer1").GetComponent<SpriteRenderer>();
+    SpriteRenderer Programmer2 = GameObject.Find("Programmer2").GetComponent<SpriteRenderer>();
+
+
+    SpriteRenderer Hacker_sleepin1 = GameObject.Find("Hacker_sleepin1").GetComponent<SpriteRenderer>();
+    SpriteRenderer Hacker_sleepin2 = GameObject.Find("Hacker_sleepin2").GetComponent<SpriteRenderer>();
+
+    SpriteRenderer Generalist_sleepin1 = GameObject.Find("Generalist_sleepin1").GetComponent<SpriteRenderer>();
+    SpriteRenderer Generalist_sleepin2 = GameObject.Find("Generalist_sleepin2").GetComponent<SpriteRenderer>();
+
+    SpriteRenderer Artist_sleepin1 = GameObject.Find("Artist_sleepin1").GetComponent<SpriteRenderer>();
+    SpriteRenderer Artist_sleepin2 = GameObject.Find("Artist_sleepin2").GetComponent<SpriteRenderer>();
+
+    SpriteRenderer Programmer_sleepin1 = GameObject.Find("Programmer_sleepin1").GetComponent<SpriteRenderer>();
+    SpriteRenderer Programmer_sleepin2 = GameObject.Find("Programmer_sleepin2").GetComponent<SpriteRenderer>();
+
+
+
     // gets
     public float GetProgScore()
     {
@@ -85,6 +112,7 @@ public class Team : MonoBehaviour {
                     break;
                 case 3:
                     incrementSleep(index);
+                    setSleeper(index);
                     break;
                 default:
                     break;
@@ -123,8 +151,47 @@ public class Team : MonoBehaviour {
         SleepnessScore += character[x].SleepAction(playerId) * eventEffect[3];
         //SleepnessScore++;
 
+
     }
 
+    private void setSleeper(int x)
+    {
+
+        if (playerId)
+        {
+            switch (x)
+            {
+                case 0:
+                    Artist1.enabled = false;
+                    Artist_sleepin1.enabled = true;
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                default:
+                    break;
+            }
+        }
+        else
+        {
+            switch (x)
+            {
+                case 0:
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
     private void SetEventValues()
     {
 
