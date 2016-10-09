@@ -1,12 +1,12 @@
-Tout par tour
+Turn by turn
 Romance
-Strategie
+Strategy
 Action
-Survie
+Survival
 Puzzle
-Course
-Competitif
-Interactif
+Racing
+Competition
+Interactive
 Exploration
-Gestion
-Rythme
+Management
+Pacing

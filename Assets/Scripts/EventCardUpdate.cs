@@ -29,11 +29,11 @@ public class EventCardUpdate : MonoBehaviour {
                 textM[0].text = curEvent.FlavorText + "\n ";
                 textM[1].text = "Art: ";
                 textM[1].text += definitionEvent((int)(curEvent.teamArtEffect*100)) + "\n";
-                textM[1].text += "Programmation: ";
+                textM[1].text += "Programming: ";
                 textM[1].text += definitionEvent((int)(curEvent.teamProgEffect * 100)) + "\n";
-                textM[1].text += "Salt: ";
+                textM[1].text += "Hack: ";
                 textM[1].text += definitionEvent((int)(curEvent.teamSaltEffect * 100)) + "\n";
-                textM[1].text += "Sommeil: ";
+                textM[1].text += "Sleeping: ";
                 textM[1].text += definitionEvent((int)(curEvent.teamSleepEffect * 100));
                 Destroy(patateobject, 3);
             }
@@ -46,16 +46,16 @@ public class EventCardUpdate : MonoBehaviour {
         Debug.Log(impact);
         switch (impact)
         {
-            case 1: return "positivement";
-            case 25: return "fortement";
-            case 50: return "moyennement";
-            case  75: return "peu";
-            case 100: return "aucunement";
+            case 1: return "Enough";
+            case 25: return "A lot";
+            case 50: return "fair";
+            case  75: return "A bit";
+            case 100: return "No bonus";
             case 125: if (curEvent.teamSaltEffect == 1.25)
-                    return "fortement";
+                    return "A lot";
                 else
-                    return "positivement";
-            default: return "peu";
+                    return "Enough";
+            default: return "A bit";
         }
     }
 }
