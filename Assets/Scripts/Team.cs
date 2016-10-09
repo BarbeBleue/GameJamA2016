@@ -13,30 +13,6 @@ public class Team : MonoBehaviour {
 	public bool playerId;
     private string style;
 
-    SpriteRenderer Hacker1 = GameObject.Find("Hacker1").GetComponent<SpriteRenderer>();
-    SpriteRenderer Hacker2 = GameObject.Find("Hacker2").GetComponent<SpriteRenderer>();
-
-    SpriteRenderer Generalist1 = GameObject.Find("Generalist1").GetComponent<SpriteRenderer>();
-    SpriteRenderer Generalist2 = GameObject.Find("Generalist2").GetComponent<SpriteRenderer>();
-
-    SpriteRenderer Artist1 = GameObject.Find("Artist1").GetComponent<SpriteRenderer>();
-    SpriteRenderer Artist2 = GameObject.Find("Artist2").GetComponent<SpriteRenderer>();
-
-    SpriteRenderer Programmer1 = GameObject.Find("Programmer1").GetComponent<SpriteRenderer>();
-    SpriteRenderer Programmer2 = GameObject.Find("Programmer2").GetComponent<SpriteRenderer>();
-
-
-    SpriteRenderer Hacker_sleepin1 = GameObject.Find("Hacker_sleepin1").GetComponent<SpriteRenderer>();
-    SpriteRenderer Hacker_sleepin2 = GameObject.Find("Hacker_sleepin2").GetComponent<SpriteRenderer>();
-
-    SpriteRenderer Generalist_sleepin1 = GameObject.Find("Generalist_sleepin1").GetComponent<SpriteRenderer>();
-    SpriteRenderer Generalist_sleepin2 = GameObject.Find("Generalist_sleepin2").GetComponent<SpriteRenderer>();
-
-    SpriteRenderer Artist_sleepin1 = GameObject.Find("Artist_sleepin1").GetComponent<SpriteRenderer>();
-    SpriteRenderer Artist_sleepin2 = GameObject.Find("Artist_sleepin2").GetComponent<SpriteRenderer>();
-
-    SpriteRenderer Programmer_sleepin1 = GameObject.Find("Programmer_sleepin1").GetComponent<SpriteRenderer>();
-    SpriteRenderer Programmer_sleepin2 = GameObject.Find("Programmer_sleepin2").GetComponent<SpriteRenderer>();
 
 
 
@@ -95,6 +71,7 @@ public class Team : MonoBehaviour {
 
     public void executeAction(int[] actions)
     {
+
         SetEventValues();
         int index = 0;
         foreach (int x in actions)
@@ -156,7 +133,30 @@ public class Team : MonoBehaviour {
 
     private void setSleeper(int x)
     {
+        SpriteRenderer Hacker1 = GameObject.Find("Hacker1").GetComponent<SpriteRenderer>();
+        SpriteRenderer Hacker2 = GameObject.Find("Hacker2").GetComponent<SpriteRenderer>();
 
+        SpriteRenderer Generalist1 = GameObject.Find("Generalist1").GetComponent<SpriteRenderer>();
+        SpriteRenderer Generalist2 = GameObject.Find("Generalist2").GetComponent<SpriteRenderer>();
+
+        SpriteRenderer Artist1 = GameObject.Find("Artist1").GetComponent<SpriteRenderer>();
+        SpriteRenderer Artist2 = GameObject.Find("Artist2").GetComponent<SpriteRenderer>();
+
+        SpriteRenderer Programmer1 = GameObject.Find("Programmer1").GetComponent<SpriteRenderer>();
+        SpriteRenderer Programmer2 = GameObject.Find("Programmer2").GetComponent<SpriteRenderer>();
+
+
+        SpriteRenderer Hacker_sleepin1 = GameObject.Find("Hacker_sleepin1").GetComponent<SpriteRenderer>();
+        SpriteRenderer Hacker_sleepin2 = GameObject.Find("Hacker_sleepin2").GetComponent<SpriteRenderer>();
+
+        SpriteRenderer Generalist_sleepin1 = GameObject.Find("Generalist_sleepin1").GetComponent<SpriteRenderer>();
+        SpriteRenderer Generalist_sleepin2 = GameObject.Find("Generalist_sleepin2").GetComponent<SpriteRenderer>();
+
+        SpriteRenderer Artist_sleepin1 = GameObject.Find("Artist_sleepin1").GetComponent<SpriteRenderer>();
+        SpriteRenderer Artist_sleepin2 = GameObject.Find("Artist_sleepin2").GetComponent<SpriteRenderer>();
+
+        SpriteRenderer Programmer_sleepin1 = GameObject.Find("Programmer_sleepin1").GetComponent<SpriteRenderer>();
+        SpriteRenderer Programmer_sleepin2 = GameObject.Find("Programmer_sleepin2").GetComponent<SpriteRenderer>();
         if (playerId)
         {
             switch (x)

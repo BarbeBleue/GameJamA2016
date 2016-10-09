@@ -100,8 +100,6 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-
-
     private void InitGame()
     {
         GameObject.Find("Menu").SetActive(false);
@@ -194,8 +192,10 @@ public class GameManager : MonoBehaviour {
 
     private void CheckMenuStatus()
     {
-        if(styleSet[0] == true && styleSet[1] == true && themeSet)
+        Debug.Log("theme set");
+        if (styleSet[0] == true && styleSet[1] == true && themeSet)
         {
+            Debug.Log("All set");
             InitGame();
         }
 
