@@ -13,6 +13,8 @@ public class DeusExManager : MonoBehaviour {
     private DeusEx saltGod;
     private DeusEx sleepGod;
 
+    private static DeusExManager patate = null;
+
     // Use this for initialization
     void Start () {
 
@@ -22,11 +24,11 @@ public class DeusExManager : MonoBehaviour {
 
     void Awake()
     {
-
-        artGod = s_artGod.gameObject.AddComponent<DeusEx>();
-        progGod = s_progGod.gameObject.AddComponent<DeusEx>();
-        saltGod = s_saltGod.gameObject.AddComponent<DeusEx>();
-        sleepGod = s_sleepGod.gameObject.AddComponent<DeusEx>();
+        patate = this;
+        artGod = s_artGod.gameObject.GetComponentInChildren<DeusEx>();
+        progGod = s_progGod.gameObject.GetComponentInChildren<DeusEx>();
+        saltGod = s_saltGod.gameObject.GetComponentInChildren<DeusEx>();
+        sleepGod = s_sleepGod.gameObject.GetComponentInChildren<DeusEx>();
     }
 	
 	// Update is called once per frame
@@ -50,5 +52,14 @@ public class DeusExManager : MonoBehaviour {
             default:
                 return artGod; ;
         }
+    }
+
+    public static DeusExManager Instance
+    {
+        get
+        {
+            return patate;
+        }
+
     }
 }

@@ -63,10 +63,14 @@ public class BaseCharacter : MonoBehaviour
     {
         m_MainCamera = GameManager.Instance.m_MainCamera;
         m_ArtGod = GameManager.Instance.getDatDeuxSexManager().GetAGod(0);
+        Debug.Log(m_ArtGod.m_Slider.value);
         m_ProgGod = GameManager.Instance.getDatDeuxSexManager().GetAGod(1);
+        Debug.Log(m_ProgGod.m_Slider.value);
         m_SaltGod = GameManager.Instance.getDatDeuxSexManager().GetAGod(2);
+        Debug.Log(m_SaltGod.m_Slider.value);
         m_SleepGod = GameManager.Instance.getDatDeuxSexManager().GetAGod(3);
-        
+        Debug.Log(m_SleepGod.m_Slider.value);
+
         Init();
     }
 

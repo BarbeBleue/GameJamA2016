@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour {
         playerReadiness[1] = false;
 		teams[0].defineTeam(P1);
 		teams[1].defineTeam(P2);
-        
+        deusExManager = DeusExManager.Instance;
 	}
 	
 	// Update is called once per frame
