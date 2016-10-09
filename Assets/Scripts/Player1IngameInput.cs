@@ -1,18 +1,17 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
 
 public class Player1IngameInput : MonoBehaviour {
 
-    private int selectedMemberP1 = 0;
-    private int[] actionsP1 = new int[4];
+    private int selectedMember = 0;
+    private int[] actions = new int[4];
 
     public SpriteRenderer fleche;
 
     // Use this for initialization
     void Start () {
-        foreach (int x in actionsP1)
-            actionsP1[x] = -1;
+        foreach (int x in actions)
+            actions[x] = -1;
 
     }
 	
@@ -22,33 +21,33 @@ public class Player1IngameInput : MonoBehaviour {
         if (Input.GetButtonDown("BoutonAP1"))
         {
             //ART
-            actionsP1[selectedMemberP1] = 2;
+            actions[selectedMember] = 2;
         }
         if (Input.GetButtonDown("BoutonBP1"))
         {
             //PROGRAMMER
-            actionsP1[selectedMemberP1] = 1;
+            actions[selectedMember] = 1;
         }
         if (Input.GetButtonDown("BoutonXP1"))
         {
             //HACKER
-            actionsP1[selectedMemberP1] = 3;
+            actions[selectedMember] = 3;
         }
         if (Input.GetButtonDown("BoutonYP1"))
         {
             //DORMIR
-            actionsP1[selectedMemberP1] = 0;
+            actions[selectedMember] = 0;
         }
 
         if (Input.GetButtonDown("BoutonStartP1"))
         {
             int cpt = 0;
-            foreach(int x in actionsP1)
+            foreach(int x in actions)
             {
                 if (x == -1)
                     break;
                 if (cpt == 3)
-                    GameManager.Instance.setAction(actionsP1, 0);
+                    GameManager.Instance.setAction(actions, 0);
                 cpt++;
             }
         }
@@ -56,37 +55,37 @@ public class Player1IngameInput : MonoBehaviour {
         if (Input.GetAxis("XDpadP1") == 1)
         {
             //UP ARROW ARTISTE
-            if (selectedMemberP1 != 0)
+            if (selectedMember != 0)
             {
-                selectedMemberP1 = 0;
-                fleche.transform.position = new Vector3((float)-3.36, (float)5.02, 0);
+                selectedMember = 0;
+                fleche.transform.position = new Vector3((float)-3.35, (float)5.16, 0);
             }
         }
         if (Input.GetAxis("XDpadP1") == -1)
         {
             //DOWN ARROW PROGRAMMEUR
-            if (selectedMemberP1 != 2)
+            if (selectedMember != 2)
             {
-                selectedMemberP1 = 2;
-                fleche.transform.position = new Vector3((float)-3.39, (float)2.83, 0);
+                selectedMember = 2;
+                fleche.transform.position = new Vector3((float)-3.27, (float)3.15, 0);
             }
         }
         if (Input.GetAxis("YDpadP1") == 1)
         {
             //RIGHT ARROW GENERALISTE
-            if (selectedMemberP1 != 1)
+            if (selectedMember != 1)
             {
-                selectedMemberP1 = 1;
-                fleche.transform.position = new Vector3((float)-1.77, (float)4.02, 0);
+                selectedMember = 1;
+                fleche.transform.position = new Vector3((float)-1.73, (float)4.14, 0);
             }
         }
         if (Input.GetAxis("YDpadP1") == -1)
         {
             //LEFT ARROW HACKER
-            if (selectedMemberP1 != 3)
+            if (selectedMember != 3)
             {
-                selectedMemberP1 = 3;
-                fleche.transform.position = new Vector3((float)-4.89, (float)3.87, 0);
+                selectedMember = 3;
+                fleche.transform.position = new Vector3((float)-4.83, (float)4.15, 0);
             }
         }
 
