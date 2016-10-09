@@ -310,7 +310,7 @@ public class GameManager : MonoBehaviour {
 
     public void EndGame()
     {
-        scoreFinal.ScoreTeam1[0]=teams[0].ProgrammingScore;
+        scoreFinal.ScoreTeam1[0] = teams[0].ProgrammingScore;
         scoreFinal.ScoreTeam1[1] = teams[0].ArtScore;
         scoreFinal.ScoreTeam1[2] = teams[0].SleepnessScore;
         scoreFinal.ScoreTeam1[3] = teams[0].SaltynessScore;
@@ -322,6 +322,10 @@ public class GameManager : MonoBehaviour {
         scoreFinal.GodFavor[1] = deusExManager.s_artGod.gameObject.GetComponentInChildren<DeusEx>().m_Slider.value;
         scoreFinal.GodFavor[2] = deusExManager.s_sleepGod.gameObject.GetComponentInChildren<DeusEx>().m_Slider.value;
         scoreFinal.GodFavor[3] = deusExManager.s_saltGod.gameObject.GetComponentInChildren<DeusEx>().m_Slider.value;
+        scoreFinal.theme = theme;
+        scoreFinal.style[0] = teams[0].style;
+        scoreFinal.style[1] = teams[1].style;
+        SceneManager.LoadScene("ScoreBoard");
         gameHasEnded = true;
         gameIsRunning = false;
         Debug.Log("FUCK DA POLICE");

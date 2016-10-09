@@ -11,7 +11,7 @@ public class Team : MonoBehaviour {
     public float[] eventEffect = new float[4];
     public BaseCharacter[] character = new BaseCharacter[4];
 	public bool playerId;
-    private string style;
+    public string style;
 
 
 
