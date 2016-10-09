@@ -310,10 +310,10 @@ public class GameManager : MonoBehaviour {
             playerReadiness[1] = false;
 
             executeActions();
+
+            yield return new WaitForSeconds(timeBetweenTurn);
             if (turn >= maxTurn)
                 EndGame();
-            yield return new WaitForSeconds(timeBetweenTurn);
-
             P1IngameInputs.resetActions();
             P2IngameInputs.resetActions();
 
@@ -321,8 +321,6 @@ public class GameManager : MonoBehaviour {
             fr.enabled = true;
             P1IngameInputs.enabled = true;
             P2IngameInputs.enabled = true;
-            /*P1IngameInputs.resetActions();
-            P2IngameInputs.resetActions();*/
         }
     }
 
