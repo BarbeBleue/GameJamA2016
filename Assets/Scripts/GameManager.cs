@@ -14,6 +14,10 @@ public class GameManager : MonoBehaviour {
     public SpriteRenderer fr;
     public SpriteRenderer checkB;
     public SpriteRenderer checkR;
+
+    public Player1IngameInput P1IngameInputs;
+    public Player2IngameInput P2IngameInputs;
+
     private Timer timer;
     public Team[] teams = new Team[2];
     private EventSystem eventSystem;
@@ -63,6 +67,8 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        P1IngameInputs.enabled = false;
+        P2IngameInputs.enabled = false;
         //deusExManager = DeusExManager.Instance;
         scoreFinal = ScorePatate.Instance;
         themeSet = false;
@@ -235,6 +241,8 @@ public class GameManager : MonoBehaviour {
         if (styleSet[0] == true && styleSet[1] == true && themeSet)
         {
             InitGame();
+            P1IngameInputs.enabled = true;
+            P2IngameInputs.enabled = true;
         }
 
     }
@@ -272,6 +280,7 @@ public class GameManager : MonoBehaviour {
             Debug.Log(GetCurrentEvent().FlavorText);
             Debug.Log("START WAIT FOR INPUT");
             yield return new WaitUntil(() => bothPlayerReady == true);
+
             Debug.Log("END WAIT FOR INPUT");
             bothPlayerReady = false;
             timer.Ready();
@@ -291,6 +300,8 @@ public class GameManager : MonoBehaviour {
             yield return new WaitForSeconds(timeBetweenTurn);
             fb.enabled = true;
             fr.enabled = true;
+            P1IngameInputs.enabled = true;
+            P2IngameInputs.enabled = true;
         }
     }
 
@@ -327,9 +338,9 @@ public class GameManager : MonoBehaviour {
         fr.enabled = false;
         checkB.enabled = false;
         checkR.enabled = false;
+
         gameHasEnded = true;
         gameIsRunning = false;
-        Debug.Log("FUCK DA POLICE");
         StartCoroutine(Potagnarök());
 
     }

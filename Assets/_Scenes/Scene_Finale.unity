@@ -156,6 +156,7 @@ MonoBehaviour:
   m_AwakeInstance: {fileID: 1959519933}
   m_SleepingInstance: {fileID: 132997392}
   m_GodFavor: 0.125
+  anim: {fileID: 0}
 --- !u!1 &23998999
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,6 +269,7 @@ MonoBehaviour:
   m_AwakeInstance: {fileID: 317376708}
   m_SleepingInstance: {fileID: 1858904585}
   m_GodFavor: 0.125
+  anim: {fileID: 0}
 --- !u!1 &132997392
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,6 +426,7 @@ MonoBehaviour:
   m_AwakeInstance: {fileID: 1896639871}
   m_SleepingInstance: {fileID: 1006294744}
   m_GodFavor: 0.125
+  anim: {fileID: 0}
 --- !u!1 &298763105
 GameObject:
   m_ObjectHideFlags: 0
@@ -1187,6 +1190,7 @@ MonoBehaviour:
   m_AwakeInstance: {fileID: 1995333145}
   m_SleepingInstance: {fileID: 1214500575}
   m_GodFavor: 0.125
+  anim: {fileID: 0}
 --- !u!1001 &432606848
 Prefab:
   m_ObjectHideFlags: 0
@@ -2135,6 +2139,7 @@ MonoBehaviour:
   m_AwakeInstance: {fileID: 1439734485}
   m_SleepingInstance: {fileID: 1758515445}
   m_GodFavor: 0.125
+  anim: {fileID: 0}
 --- !u!1 &1126837193
 GameObject:
   m_ObjectHideFlags: 0
@@ -2263,6 +2268,7 @@ MonoBehaviour:
   m_AwakeInstance: {fileID: 965198614}
   m_SleepingInstance: {fileID: 1765836991}
   m_GodFavor: 0.125
+  anim: {fileID: 0}
 --- !u!114 &1184575165 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114000010654230270, guid: fb98f9d845cffe847a47c669ec78a272,
@@ -3513,6 +3519,7 @@ MonoBehaviour:
   m_AwakeInstance: {fileID: 198092155}
   m_SleepingInstance: {fileID: 1765929105}
   m_GodFavor: 0.125
+  anim: {fileID: 0}
 --- !u!1 &1758515445
 GameObject:
   m_ObjectHideFlags: 0
@@ -3766,6 +3773,8 @@ MonoBehaviour:
   fr: {fileID: 1277771240}
   checkB: {fileID: 1126837194}
   checkR: {fileID: 709999188}
+  P1IngameInputs: {fileID: 330296025}
+  P2IngameInputs: {fileID: 23999001}
   teams:
   - {fileID: 1774911593}
   - {fileID: 1774911592}
@@ -4140,6 +4149,7 @@ MonoBehaviour:
   m_AwakeInstance: {fileID: 156879228}
   m_SleepingInstance: {fileID: 634121197}
   m_GodFavor: 0.125
+  anim: {fileID: 0}
 --- !u!1 &2033968816
 GameObject:
   m_ObjectHideFlags: 0
