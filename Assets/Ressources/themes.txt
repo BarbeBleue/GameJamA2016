@@ -1,4 +1,4 @@
-Jugement
+Judgment
 Undead
 Empire
 Light
@@ -8,4 +8,5 @@ Science
 Mythology
 Beach party
 Between us
+Food
 Astrology

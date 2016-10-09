@@ -25,7 +25,7 @@ public class ScoreFinal : MonoBehaviour {
     float totalP1;
     float totalP2;
 
-    string[,] multThemeStyle = new string[12, 2] { { "Competitif", "Gestion"}, { "Action", "Survie"}, { "Tour par tour", "Strategie"}, { "Romance", "Rythme"}, { "Puzzle", "Interactif"}, { "Course", "Exploration"}, { "Tour par tour", "Strategie"}, { "Romance", "Action"}, { "Competitif", "Interactif" }, { "Survie", "Exploration"}, { "Gestion", "Rythme"}, { "Puzzle", "Course"} };
+    string[,] multThemeStyle = new string[12, 2] { { "Competition", "Manage"}, { "Action", "Survival"}, { "Turn by turn", "Strategy"}, { "Romance", "Rythm"}, { "Puzzle", "Interactive"}, { "Racing", "Exploration"}, { "Turn by turn", "Strategy"}, { "Romance", "Action"}, { "Competition", "Interactive" }, { "Survival", "Exploration"}, { "Management", "Rythm"}, { "Puzzle", "Racing"} };
 
 
     // Use this for initialization
@@ -80,16 +80,16 @@ public class ScoreFinal : MonoBehaviour {
             scoreP.ScoreTeam1[3] *= 1.15f;
         }
         switch(scoreP.theme) {
-            case "Jugement":
+            case "Judgment":
                 theme = 0;  
                 break;
-            case "Mort-vivant":
+            case "Undead":
                 theme = 1;
                 break;
             case "Empire":
                 theme = 2;
                 break;
-            case "Lumiere":
+            case "Light":
                 theme = 3;
                 break;
             case "Deception":
@@ -101,19 +101,19 @@ public class ScoreFinal : MonoBehaviour {
             case "Science":
                 theme = 6;
                 break;
-            case "Olympe":
+            case "Mythology":
                 theme = 7;
                 break;
             case "Beach party":
                 theme = 8;
                 break;
-            case "Enre nous":
+            case "Between us":
                 theme = 9;
                 break;
-            case "Nourriture":
+            case "Food":
                 theme = 10;
                 break;
-            case "Astrologie":
+            case "Astrology":
                 theme = 11;
                 break;
             default : theme = 0;
