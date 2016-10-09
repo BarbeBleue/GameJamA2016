@@ -33,4 +33,5 @@ public class NADCharacter : BaseCharacter {
     /*void Update () {
 	
 	}*/
+	// Jeremy was here! In fact, It's the only line of code I wrote the entire GameJam! Talk about a loser...
 }
