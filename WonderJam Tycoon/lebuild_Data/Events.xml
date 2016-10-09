@@ -1,0 +1,39 @@
+ <EventContainer>
+   <Events>
+	      <Event id="0">
+		      <FlavorText>"My git is not working! D':"</FlavorText>
+          <teamProgEffect>0.25</teamProgEffect>
+          <teamArtEffect>0.75</teamArtEffect>
+          <teamSaltEffect>1</teamSaltEffect>
+          <teamSleepEffect>1</teamSleepEffect>
+	      </Event>
+	      <Event id="1">
+          <FlavorText>"My perforce is not working! D':"</FlavorText>
+          <teamProgEffect>0.75</teamProgEffect>
+          <teamArtEffect>0.25</teamArtEffect>
+          <teamSaltEffect>1</teamSaltEffect>
+          <teamSleepEffect>1</teamSleepEffect>
+	      </Event>
+       <Event id="2">
+         <FlavorText>"Power outage!"</FlavorText>
+         <teamProgEffect>0</teamProgEffect>
+         <teamArtEffect>0.25</teamArtEffect>
+         <teamSaltEffect>0.25</teamSaltEffect>
+         <teamSleepEffect>1.25</teamSleepEffect>
+       </Event>
+     <Event id="3">
+       <FlavorText>"Coffee delivery!"</FlavorText>
+       <teamProgEffect>1.25</teamProgEffect>
+       <teamArtEffect>1.25</teamArtEffect>
+       <teamSaltEffect>1</teamSaltEffect>
+       <teamSleepEffect>0.01</teamSleepEffect>
+     </Event>
+     <Event id="4">
+       <FlavorText>"HACKFEST"</FlavorText>
+       <teamProgEffect>0.75</teamProgEffect>
+       <teamArtEffect>0.75</teamArtEffect>
+       <teamSaltEffect>1.25</teamSaltEffect>
+       <teamSleepEffect>0.75</teamSleepEffect>
+     </Event>
+     </Events>
+ </EventContainer>
