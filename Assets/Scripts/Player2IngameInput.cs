@@ -7,11 +7,13 @@ public class Player2IngameInput : MonoBehaviour {
     private int[] actions = new int[4];
 
     public SpriteRenderer fleche;
+    public SpriteRenderer check;
 
     // Use this for initialization
     void Start () {
         foreach (int x in actions)
             actions[x] = -1;
+        check.enabled = false;
     }
 	
 	// Update is called once per frame
@@ -20,22 +22,22 @@ public class Player2IngameInput : MonoBehaviour {
         if (Input.GetButtonDown("BoutonAP2"))
         {
             //ART
-            actions[selectedMember] = 2;
+            actions[selectedMember] = 1;
         }
         if (Input.GetButtonDown("BoutonBP2"))
         {
             //PROGRAMMER
-            actions[selectedMember] = 1;
+            actions[selectedMember] = 0;
         }
         if (Input.GetButtonDown("BoutonXP2"))
         {
             //HACKER
-            actions[selectedMember] = 3;
+            actions[selectedMember] = 2;
         }
         if (Input.GetButtonDown("BoutonYP2"))
         {
             //DORMIR
-            actions[selectedMember] = 0;
+            actions[selectedMember] = 3;
         }
 
         if (Input.GetButtonDown("BoutonStartP2"))
@@ -46,7 +48,10 @@ public class Player2IngameInput : MonoBehaviour {
                 if (x == -1)
                     break;
                 if (cpt == 3)
+                {
                     GameManager.Instance.setAction(actions, 1);
+                    check.enabled = true;
+                }
                 cpt++;
             }
         }

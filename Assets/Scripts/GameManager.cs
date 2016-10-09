@@ -41,7 +41,6 @@ public class GameManager : MonoBehaviour {
     //Called Before start
     void Awake()
     {
-        DontDestroyOnLoad(transform.gameObject);
         eventSystem = new EventSystem(eventChance);
         /*
             teams[0] = this.gameObject.AddComponent<Team>();
@@ -103,6 +102,9 @@ public class GameManager : MonoBehaviour {
         if(styleSet[0] && styleSet[1])
         {
             GameObject.Find("Menu").SetActive(false);
+            styleSet[0] = false;
+            styleSet[1] = false;
+            InitGame();
         }
     }
 
@@ -200,7 +202,6 @@ public class GameManager : MonoBehaviour {
         if(styleSet[0] == true && styleSet[1] == true && themeSet)
         {
             InitGame();
-            
         }
 
     }
@@ -240,8 +241,15 @@ public class GameManager : MonoBehaviour {
             yield return new WaitUntil(() => bothPlayerReady == true);
             Debug.Log("END WAIT FOR INPUT");
             bothPlayerReady = false;
-            //timer.Ready();
+            timer.Ready();
             turn++;
+            GameObject checkteam1GO = GameObject.Find("checkTeam1");
+            SpriteRenderer checkP1 = checkteam1GO.GetComponent<SpriteRenderer>();
+            checkP1.enabled = false;
+
+            GameObject checkteam2GO = GameObject.Find("checkTeam2");
+            SpriteRenderer checkP2 = checkteam2GO.GetComponent<SpriteRenderer>();
+            checkP2.enabled = false;
 
             playersHasAnswered[0] = false;
             playersHasAnswered[1] = false;
@@ -253,6 +261,7 @@ public class GameManager : MonoBehaviour {
             yield return new WaitForSeconds(timeBetweenTurn);            
         }
     }
+
 
     public void StartGame()
     {
