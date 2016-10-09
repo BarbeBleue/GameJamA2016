@@ -5,14 +5,6 @@ using System.Collections;
 public class ScoreFinal : MonoBehaviour {
 
     ScorePatate scoreP;
-    public Text Prog_1;
-    public Text Art_1;
-    public Text Salt_1;
-    public Text Sleep_1;
-    public Text Prog_2;
-    public Text Art_2;
-    public Text Salt_2;
-    public Text Sleep_2;
     public Text M_P1;
     public Text M_P2;
     public Text TP1;
@@ -87,14 +79,6 @@ public class ScoreFinal : MonoBehaviour {
             salt_god_2.SetActive(false);
             scoreP.ScoreTeam1[3] *= 1.15f;
         }
-        Prog_1.text = scoreP.ScoreTeam1[0].ToString();
-        Art_1.text = scoreP.ScoreTeam1[1].ToString();
-        Sleep_1.text = scoreP.ScoreTeam1[2].ToString();
-        Salt_1.text = scoreP.ScoreTeam1[3].ToString();
-        Prog_2.text = scoreP.ScoreTeam2[0].ToString();
-        Art_2.text = scoreP.ScoreTeam2[1].ToString();
-        Sleep_2.text = scoreP.ScoreTeam2[2].ToString();
-        Salt_2.text = scoreP.ScoreTeam2[3].ToString();
         switch(scoreP.theme) {
             case "Jugement":
                 theme = 0;  
