@@ -22,6 +22,8 @@ public class BaseCharacter : MonoBehaviour
 	public GameObject m_Programming;
 	public GameObject m_Arting;
 
+    public AudioSource snoring;
+
 	public DeusEx m_ArtGod;
 	public DeusEx m_ProgGod;
 	public DeusEx m_SleepGod;
@@ -102,7 +104,7 @@ public class BaseCharacter : MonoBehaviour
 	public float ArtAction(bool player)
 	{
 		float m_TempArtLevel = m_ArtLevel * (m_SleepLevel / m_MaxSleep);
-		m_ArtProduced = 0.1f * m_TempArtLevel;
+		m_ArtProduced = 10 * m_TempArtLevel;
 
 		StartCoroutine (Arting (player));
 
@@ -154,6 +156,8 @@ public class BaseCharacter : MonoBehaviour
         m_AwakeInstance.GetComponent<SpriteRenderer>().enabled = false;
         m_SleepingInstance.GetComponent<SpriteRenderer>().enabled = true;
 
+        snoring.Play();
+
         Vector3 godPosition = GameManager.Instance.m_MainCamera.ScreenToWorldPoint(m_SleepGod.m_Slider.transform.position);
 
         StartCoroutine(MoveFromTo(m_AwakeInstance.transform.position + translate, godPosition, 4.0f, patate));
@@ -162,7 +166,6 @@ public class BaseCharacter : MonoBehaviour
 
         m_AwakeInstance.GetComponent<SpriteRenderer>().enabled = true;
         m_SleepingInstance.GetComponent<SpriteRenderer>().enabled = false;
-
         if (m_SleepLevel >= 100)
 		{
 			m_SleepLevel = 100;

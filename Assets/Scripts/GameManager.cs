@@ -9,13 +9,16 @@ public class GameManager : MonoBehaviour {
 
     public Camera m_MainCamera;
     public DeusExManager deusExManager;
+    public AudioSource welcome;
+    public SpriteRenderer fb;
+    public SpriteRenderer fr;
     private Timer timer;
     public Team[] teams = new Team[2];
     private EventSystem eventSystem;
     private static GameManager patate = null;
     private bool gameIsRunning = false;
     private bool gameHasEnded = false;
-    private int turn = 0;
+    private int turn = 12;
     private bool[] playersHasAnswered = new bool[2];
     private int[] actionP1 = new int[4];
     private int[] actionP2 = new int[4];
@@ -27,6 +30,8 @@ public class GameManager : MonoBehaviour {
     private string theme;
     public int maxTurn = 16;
     public bool newT;
+
+    ScorePatate scoreFinal;
 
     private Vector3[] spawnpoints = { new Vector3(-1,10,0),
                                       new Vector3(-1,20,0),
@@ -57,6 +62,7 @@ public class GameManager : MonoBehaviour {
 	void Start ()
     {
         //deusExManager = DeusExManager.Instance;
+        scoreFinal = ScorePatate.Instance;
         themeSet = false;
         SetTheme();
         styleSet[0] = false;
@@ -226,7 +232,6 @@ public class GameManager : MonoBehaviour {
 
         if (styleSet[0] == true && styleSet[1] == true && themeSet)
         {
-            Debug.Log("All set");
             InitGame();
         }
 
@@ -269,6 +274,7 @@ public class GameManager : MonoBehaviour {
             bothPlayerReady = false;
             timer.Ready();
             turn++;
+
             GameObject checkteam1GO = GameObject.Find("checkTeam1");
             SpriteRenderer checkP1 = checkteam1GO.GetComponent<SpriteRenderer>();
             checkP1.enabled = false;
@@ -285,7 +291,9 @@ public class GameManager : MonoBehaviour {
             executeActions();
             if (turn >= maxTurn)
                 EndGame();
-            yield return new WaitForSeconds(timeBetweenTurn);            
+            yield return new WaitForSeconds(timeBetweenTurn);
+            fb.enabled = true;
+            fr.enabled = true;
         }
     }
 
@@ -306,7 +314,18 @@ public class GameManager : MonoBehaviour {
 
     public void EndGame()
     {
-
+        scoreFinal.ScoreTeam1[0]=teams[0].ProgrammingScore;
+        scoreFinal.ScoreTeam1[1] = teams[0].ArtScore;
+        scoreFinal.ScoreTeam1[2] = teams[0].SleepnessScore;
+        scoreFinal.ScoreTeam1[3] = teams[0].SaltynessScore;
+        scoreFinal.ScoreTeam2[0] = teams[1].ProgrammingScore;
+        scoreFinal.ScoreTeam2[1] = teams[1].ArtScore;
+        scoreFinal.ScoreTeam2[2] = teams[1].SleepnessScore;
+        scoreFinal.ScoreTeam2[3] = teams[1].SaltynessScore;
+        scoreFinal.GodFavor[0] = deusExManager.s_progGod.gameObject.GetComponentInChildren<DeusEx>().m_Slider.value;
+        scoreFinal.GodFavor[1] = deusExManager.s_artGod.gameObject.GetComponentInChildren<DeusEx>().m_Slider.value;
+        scoreFinal.GodFavor[2] = deusExManager.s_sleepGod.gameObject.GetComponentInChildren<DeusEx>().m_Slider.value;
+        scoreFinal.GodFavor[3] = deusExManager.s_saltGod.gameObject.GetComponentInChildren<DeusEx>().m_Slider.value;
         gameHasEnded = true;
         gameIsRunning = false;
         Debug.Log("FUCK DA POLICE");
