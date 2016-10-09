@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour {
     private string theme;
     public int maxTurn = 16;
     public bool newT;
+    private Event Eve;
 
     ScorePatate scoreFinal;
 
@@ -268,6 +269,17 @@ public class GameManager : MonoBehaviour {
         {
             Debug.Log("Turn : " + turn);
             eventSystem.newTurn();
+
+            Eve = eventSystem.GetCurrentEvent();
+
+            if (Eve.id != -1)
+            {
+                foreach (BaseCharacter Char in teams[0].character)
+                    Char.Panic();
+                foreach (BaseCharacter Char in teams[1].character)
+                    Char.Panic();
+            }
+
             newT = true;
             Debug.Log(GetCurrentEvent().FlavorText);
             Debug.Log("START WAIT FOR INPUT");
