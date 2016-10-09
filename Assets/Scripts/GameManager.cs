@@ -184,6 +184,7 @@ public class GameManager : MonoBehaviour {
 
     }
 
+
     public void setAction(int[] teamAction, int teamId)
     {
         if(teamId == 0)
@@ -202,6 +203,7 @@ public class GameManager : MonoBehaviour {
             
 
     }
+
 
     private void CheckMenuStatus()
     {
