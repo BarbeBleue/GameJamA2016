@@ -12,7 +12,7 @@ public class ArtCharacter : BaseCharacter {
 		m_AttackLevel = 2;
 		m_SleepResist = 3;
 
-        anim = gameObject.GetComponent(typeof(Animator)) as Animator;
+        anim = m_AwakeInstance.GetComponent(typeof(Animator)) as Animator;
 
     }
 
@@ -26,7 +26,7 @@ public class ArtCharacter : BaseCharacter {
     IEnumerator panicUnpanic()
     {
         anim.SetBool("ArtistProblem", true);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(4);
         anim.SetBool("ArtistProblem", false);
     }
 

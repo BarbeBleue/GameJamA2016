@@ -12,7 +12,7 @@ public class HackerCharacter : BaseCharacter {
 		m_AttackLevel = 10;
 		m_SleepResist = 5;
 
-        anim = gameObject.GetComponent(typeof(Animator)) as Animator;
+        anim = m_AwakeInstance.GetComponent(typeof(Animator)) as Animator;
 
     }
 
@@ -26,7 +26,7 @@ public class HackerCharacter : BaseCharacter {
     IEnumerator panicUnpanic()
     {
         anim.SetBool("HackerProblem", true);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(4);
         anim.SetBool("HackerProblem", false);
     }
 
