@@ -53,6 +53,7 @@ public class Player1IngameInput : MonoBehaviour {
                     GameManager.Instance.setAction(actions, 0);
                     check.enabled = true;
                     fleche.enabled = false;
+                    this.enabled = false;
                 }
                 cpt++;
             }
