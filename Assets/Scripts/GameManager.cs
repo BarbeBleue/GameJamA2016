@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour {
 
     public Camera m_MainCamera;
     public DeusExManager deusExManager;
-    public AudioSource welcome;
+    public AudioSource workHard;
     public SpriteRenderer fb;
     public SpriteRenderer fr;
     public SpriteRenderer checkB;
@@ -125,6 +125,7 @@ public class GameManager : MonoBehaviour {
     private void InitGame()
     {
         GameObject.Find("Menu").SetActive(false);
+        workHard.Play();
         gameIsRunning = true;
         playersHasAnswered[0] = false;
         playersHasAnswered[1] = false;

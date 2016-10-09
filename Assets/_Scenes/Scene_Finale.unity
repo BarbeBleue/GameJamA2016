@@ -619,7 +619,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 4a94d6d2d2b59f643a96bcf91e8be2a4, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.621
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2312,22 +2312,22 @@ Prefab:
     - target: {fileID: 224000012159089650, guid: eb69038ef2a0b0b4a9c54605d702ec0a,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 423.89
+      value: 2292
       objectReference: {fileID: 0}
     - target: {fileID: 224000012159089650, guid: eb69038ef2a0b0b4a9c54605d702ec0a,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -0.00021839142
+      value: -36
       objectReference: {fileID: 0}
     - target: {fileID: 224000012159089650, guid: eb69038ef2a0b0b4a9c54605d702ec0a,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -67
       objectReference: {fileID: 0}
     - target: {fileID: 224000012159089650, guid: eb69038ef2a0b0b4a9c54605d702ec0a,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 800
+      value: 4326
       objectReference: {fileID: 0}
     - target: {fileID: 223000012828082732, guid: eb69038ef2a0b0b4a9c54605d702ec0a,
         type: 2}
@@ -2696,7 +2696,7 @@ GameObject:
   - 4: {fileID: 1258309568}
   - 82: {fileID: 1258309567}
   m_Layer: 0
-  m_Name: Audio Source (1)
+  m_Name: WonderJam_Tycoon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2714,7 +2714,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 00920cee08da89848b84d7bf8b0992e5, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.584
+  m_Volume: 0.626
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3359,7 +3359,7 @@ GameObject:
   - 4: {fileID: 1579984399}
   - 82: {fileID: 1579984398}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: WorkHardDreamBig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3375,7 +3375,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243000010910277548, guid: d8042e14554620846b73819f88d56580,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 9d1efdb8f1c407f4b8287f9cd1425afa, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1b9a8c4497cf5c7429e17add877758ab, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -3949,7 +3949,7 @@ MonoBehaviour:
   moving: 0
   m_MainCamera: {fileID: 1951604731}
   deusExManager: {fileID: 2068153570}
-  welcome: {fileID: 1579984398}
+  workHard: {fileID: 1579984398}
   fb: {fileID: 2058079118}
   fr: {fileID: 1872948343}
   checkB: {fileID: 143707357}
