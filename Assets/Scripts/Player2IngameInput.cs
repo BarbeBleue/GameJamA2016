@@ -95,4 +95,12 @@ public class Player2IngameInput : MonoBehaviour {
             }
         }
     }
+
+    public void resetActions()
+    {
+        actions[0] = -1;
+        actions[1] = -1;
+        actions[2] = -1;
+        actions[3] = -1;
+    }
 }

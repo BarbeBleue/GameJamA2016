@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using System.IO;
 
 public class GameManager : MonoBehaviour {
+    [HideInInspector]public bool moving = false;
 
     public Camera m_MainCamera;
     public DeusExManager deusExManager;
@@ -14,7 +15,7 @@ public class GameManager : MonoBehaviour {
     public SpriteRenderer fr;
     public SpriteRenderer checkB;
     public SpriteRenderer checkR;
-
+    public GameObject NextTurnText;
     public Player1IngameInput P1IngameInputs;
     public Player2IngameInput P2IngameInputs;
 
@@ -49,7 +50,7 @@ public class GameManager : MonoBehaviour {
     private GameObject refato;
 
     public float eventChance = 0.25f;
-    public float timeBetweenTurn = 2.0f;
+    public float timeBetweenTurn = 3.0f;
 
     //gets
 
@@ -298,7 +299,7 @@ public class GameManager : MonoBehaviour {
             bothPlayerReady = false;
             timer.Ready();
             turn++;
-
+            StartCoroutine(MoveFromTo(new Vector3(1800f, 600, 0), new Vector3(-1200f, 600, 0), 3f, NextTurnText));
             checkB.enabled = false;
             checkR.enabled = false;
 
@@ -311,10 +312,16 @@ public class GameManager : MonoBehaviour {
             if (turn >= maxTurn)
                 EndGame();
             yield return new WaitForSeconds(timeBetweenTurn);
+
+            P1IngameInputs.resetActions();
+            P2IngameInputs.resetActions();
+
             fb.enabled = true;
             fr.enabled = true;
             P1IngameInputs.enabled = true;
             P2IngameInputs.enabled = true;
+            /*P1IngameInputs.resetActions();
+            P2IngameInputs.resetActions();*/
         }
     }
 
@@ -391,5 +398,20 @@ public class GameManager : MonoBehaviour {
         Debug.Log("AFHAJDHS");
     }
 
+    IEnumerator MoveFromTo(Vector3 pointA, Vector3 pointB, float time, GameObject potato)
+    {
+        if (!moving)
+        { // do nothing if already moving
+            moving = true; // signals "I'm moving, don't bother me!"
+            float t = 0f;
+            while (t < 1f)
+            {
+                t += Time.deltaTime / time; // sweeps from 0 to 1 in time seconds
+                potato.transform.position = Vector3.Lerp(pointA, pointB, t); // set position proportional to t
+                yield return 0; // leave the routine and return here in the next frame
+            }
+            moving = false; // finished moving
+        }
+    }
 
 }
