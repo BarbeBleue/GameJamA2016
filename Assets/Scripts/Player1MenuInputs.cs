@@ -60,7 +60,7 @@ public class Player1MenuInputs : MonoBehaviour {
             {
                 Player1Fond.color = Color.green;
                 GameManager.Instance.SetTeamStyle(styleChoisi, 0);
-                
+                this.enabled = false;
             }
         }
 

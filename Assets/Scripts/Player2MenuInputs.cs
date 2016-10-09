@@ -49,6 +49,7 @@ public class Player2MenuInputs : MonoBehaviour {
         {
             if (styleChoisi != "")
             {
+                this.enabled = false;
                 Player2Fond.color = Color.green;
                 GameManager.Instance.SetTeamStyle(styleChoisi, 1);
             }
