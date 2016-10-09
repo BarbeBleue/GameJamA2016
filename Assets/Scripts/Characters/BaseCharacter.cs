@@ -145,7 +145,13 @@ public class BaseCharacter : MonoBehaviour
 	IEnumerator Sleeping(bool player)
 	{
 		GameObject patate = Instantiate (m_Sleeping, m_characterPosition.position + translate, m_characterPosition.rotation) as GameObject;
-		yield return new WaitForSeconds(2);
+        GameObject patate2 = Instantiate(m_Sleeping, m_characterPosition.position + translate, m_characterPosition.rotation) as GameObject;
+
+        Vector3 godPosition = m_SleepGod.transform.position;
+
+        StartCoroutine(MoveFromTo(m_characterPosition.position + translate, godPosition, 2.0f, patate));
+
+        yield return new WaitForSeconds(2);
 
 		if (m_SleepLevel >= 100)
 		{
@@ -158,7 +164,7 @@ public class BaseCharacter : MonoBehaviour
 		else if (player == true)
 			m_SleepGod.Player2Favor ();
 		*/
-		DestroyObject(patate);
+		DestroyObject(patate2, 2f);
 	}
 
 	IEnumerator Attacking(bool player)
