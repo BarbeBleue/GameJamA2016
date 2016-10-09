@@ -98,20 +98,13 @@ public class GameManager : MonoBehaviour {
             SetTeamStyle("Wololol",1);
             SetTheme("Simon");
         }
-
-        if(styleSet[0] && styleSet[1])
-        {
-            GameObject.Find("Menu").SetActive(false);
-            styleSet[0] = false;
-            styleSet[1] = false;
-            InitGame();
-        }
     }
 
 
 
     private void InitGame()
     {
+        GameObject.Find("Menu").SetActive(false);
         gameIsRunning = true;
         playersHasAnswered[0] = false;
         playersHasAnswered[1] = false;
@@ -178,6 +171,7 @@ public class GameManager : MonoBehaviour {
 
     }
 
+
     public void setAction(int[] teamAction, int teamId)
     {
         if(teamId == 0)
@@ -196,6 +190,7 @@ public class GameManager : MonoBehaviour {
             
 
     }
+
 
     private void CheckMenuStatus()
     {
