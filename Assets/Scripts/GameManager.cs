@@ -153,8 +153,8 @@ public class GameManager : MonoBehaviour {
     public void SetTheme()
     {
         List<string> lesThemes = new List<string>();
-        string pathThemes = "Assets/Ressources/themes.txt";
-        using (StreamReader sr = File.OpenText(pathThemes))
+        //string pathThemes = "Assets/Ressources/themes.txt";
+        using (StreamReader sr = File.OpenText(Application.dataPath + "/Ressources/themes.txt"))
         {
             string s = "";
             while ((s = sr.ReadLine()) != null)
