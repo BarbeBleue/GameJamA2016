@@ -99,7 +99,7 @@ public class BaseCharacter : MonoBehaviour
 	public float ArtAction(bool player)
 	{
 		float m_TempArtLevel = m_ArtLevel * (m_SleepLevel / m_MaxSleep);
-		m_ArtProduced = 0.1f * m_TempArtLevel;
+		m_ArtProduced = 10 * m_TempArtLevel;
 
 		StartCoroutine (Arting (player));
 
