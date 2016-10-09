@@ -282,6 +282,7 @@ public class GameManager : MonoBehaviour {
 
             if (Eve.id != -1)
             {
+                Debug.Log("patate");
                 foreach (BaseCharacter Char in teams[0].character)
                     Char.Panic();
                 foreach (BaseCharacter Char in teams[1].character)

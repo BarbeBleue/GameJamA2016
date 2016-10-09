@@ -12,7 +12,7 @@ public class NADCharacter : BaseCharacter {
 		m_AttackLevel = 5;
 		m_SleepResist = 2;
 
-        anim = gameObject.GetComponent(typeof(Animator)) as Animator;
+        anim = m_AwakeInstance.GetComponent(typeof(Animator)) as Animator;
 
     }
 
@@ -26,7 +26,7 @@ public class NADCharacter : BaseCharacter {
     IEnumerator panicUnpanic()
     {
         anim.SetBool("GeneralistProblem", true);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(4);
         anim.SetBool("GeneralistProblem", false);
     }
 

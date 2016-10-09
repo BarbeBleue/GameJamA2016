@@ -35,7 +35,7 @@ public class EventCardUpdate : MonoBehaviour {
                 textM[1].text += definitionEvent((int)(curEvent.teamSaltEffect * 100)) + "\n";
                 textM[1].text += "Sommeil: ";
                 textM[1].text += definitionEvent((int)(curEvent.teamSleepEffect * 100));
-                Destroy(patateobject, 5);
+                Destroy(patateobject, 3);
             }
             gameM.newT = false;
             Debug.Log(curEvent.id);
